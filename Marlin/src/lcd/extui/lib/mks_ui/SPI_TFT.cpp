@@ -159,7 +159,7 @@ void TFT::LCD_init() {
   LCD_clear(0x0000);    //
   LCD_Draw_Logo();
   TFT_BLK_H;
-  delay(2000);
+  delay(4000); //Malderin длительность показа лого
 }
 
 void TFT::LCD_clear(uint16_t color) {

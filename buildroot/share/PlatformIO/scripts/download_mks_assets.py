@@ -39,10 +39,13 @@ def copy_mks_assets():
 		shutil.copy(os.path.join(output_path, base_path, 'Firmware', 'mks_pic', filename), assets_path)
 	shutil.rmtree(output_path, ignore_errors=True)
 
+
+#Malderin
+#Секция загрузки моего лого к прошивке
+
 url1 = "https://github.com/Malderin/Marlin_2.0.x_official/raw/Marlin2.0.7_bugfix/Download/master1.zip"
 zip_path1 = os.path.join(env.Dictionary("PROJECT_LIBDEPS_DIR"), "mks-assets1.zip")
 assets_path1 = os.path.join(env.Dictionary("PROJECT_BUILD_DIR"), env.Dictionary("PIOENV"), "assets")
-
 
 def download_mks_assets1():
 	print("Downloading Logo KingRoonKP3")

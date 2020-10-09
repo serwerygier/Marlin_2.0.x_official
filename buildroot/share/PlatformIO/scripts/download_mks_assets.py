@@ -45,7 +45,7 @@ assets_path1 = os.path.join(env.Dictionary("PROJECT_BUILD_DIR"), env.Dictionary(
 
 
 def download_mks_assets1():
-	print("Downloading MKS Assets logo")
+	print("Downloading Logo KingRoonKP3")
 	r = requests.get(url1, stream=True)
 	# the user may have a very clean workspace,
 	# so create the PROJECT_LIBDEPS_DIR directory if not exits

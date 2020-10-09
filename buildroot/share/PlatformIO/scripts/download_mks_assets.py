@@ -75,13 +75,9 @@ def copy_mks_assets1():
 	shutil.rmtree(output_path, ignore_errors=True)
 
 if os.path.exists(zip_path1) == False:
+	download_mks_assets()
 	download_mks_assets1()
 
 if os.path.exists(assets_path1) == False:
-	copy_mks_assets1()
-
-if os.path.exists(zip_path) == False:
-	download_mks_assets()
-
-if os.path.exists(assets_path) == False:
 	copy_mks_assets()
+	copy_mks_assets1()

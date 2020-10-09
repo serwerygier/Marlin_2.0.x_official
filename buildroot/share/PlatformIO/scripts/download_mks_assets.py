@@ -56,7 +56,7 @@ def download_mks_assets1():
 			fd.write(chunk)
 
 def copy_mks_assets1():
-	print("Copying MKS Assets logo")
+	print("Copying Logo KingRoonKP3")
 	output_path = tempfile.mkdtemp()
 	zip_obj = zipfile.ZipFile(zip_path1, 'r')
 	zip_obj.extractall(output_path)

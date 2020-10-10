@@ -1,4 +1,4 @@
-<img align="center" width=175 src="Download/kp3_.bmp" />
+<img align="left" width=300 src="Download/kp3_.bmp" />
 
 # Marlin 3D Printer Firmware
 

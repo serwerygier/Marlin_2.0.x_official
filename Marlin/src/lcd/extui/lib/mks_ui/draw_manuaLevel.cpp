@@ -61,7 +61,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
           queue.enqueue_now_P(PSTR("G1 Z10"));
 
           ZERO(public_buf_l);
-          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d"), (int)gCfgItems.levelingPos[0][0], (int)gCfgItems.levelingPos[0][1]);
+          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d F5000"), (int)gCfgItems.levelingPos[0][0], (int)gCfgItems.levelingPos[0][1]);
           queue.enqueue_one_now(public_buf_l);
           queue.enqueue_now_P(PSTR("G1 Z0"));
         }
@@ -81,7 +81,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
           queue.enqueue_now_P(PSTR("G1 Z10"));
 
           ZERO(public_buf_l);
-          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d"), (int)gCfgItems.levelingPos[1][0], (int)gCfgItems.levelingPos[1][1]);
+          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d F5000"), (int)gCfgItems.levelingPos[1][0], (int)gCfgItems.levelingPos[1][1]);
           queue.enqueue_one_now(public_buf_l);
           queue.enqueue_now_P(PSTR("G1 Z0"));
         }
@@ -101,7 +101,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
           queue.enqueue_now_P(PSTR("G1 Z10"));
 
           ZERO(public_buf_l);
-          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d"), (int)gCfgItems.levelingPos[2][0], (int)gCfgItems.levelingPos[2][1]);
+          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d F5000"), (int)gCfgItems.levelingPos[2][0], (int)gCfgItems.levelingPos[2][1]);
           queue.enqueue_one_now(public_buf_l);
           queue.enqueue_now_P(PSTR("G1 Z0"));
         }
@@ -122,7 +122,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
           queue.enqueue_now_P(PSTR("G1 Z10"));
 
           ZERO(public_buf_l);
-          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d"), (int)gCfgItems.levelingPos[3][0], (int)gCfgItems.levelingPos[3][1]);
+          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d F5000"), (int)gCfgItems.levelingPos[3][0], (int)gCfgItems.levelingPos[3][1]);
           queue.enqueue_one_now(public_buf_l);
           queue.enqueue_now_P(PSTR("G1 Z0"));
         }
@@ -142,7 +142,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
           queue.enqueue_now_P(PSTR("G1 Z10"));
 
           ZERO(public_buf_l);
-          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d"), (int)gCfgItems.levelingPos[4][0], (int)gCfgItems.levelingPos[4][1]);
+          sprintf_P(public_buf_l, PSTR("G1 X%d Y%d F5000"), (int)gCfgItems.levelingPos[4][0], (int)gCfgItems.levelingPos[4][1]);
           queue.enqueue_one_now(public_buf_l);
           queue.enqueue_now_P(PSTR("G1 Z0"));
         }

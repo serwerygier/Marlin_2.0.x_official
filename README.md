@@ -1,15 +1,8 @@
 # Прошивка Marlin для принтера KingRoon KP3
 
-<img align="left" width=300 src="Download/kp3_.bmp" />
+<img align="right" width=300 src="Download/kp3_.bmp" />
 
 Данный fork создан на основе последнего marlin 2.x bugfix, дополняется и периодически обновляется из официального репозитория Marlin.
-
-
-
-
-
-
-
 
 
 # Назначение сборки:

@@ -21,7 +21,9 @@
 #pragma once
 
 /**
- * HAL Timers for Teensy 3.5 (MK64FX512) and Teensy 3.6 (MK66FX1M0)
+ * Description: HAL for
+ * Teensy3.5 (__MK64FX512__)
+ * Teensy3.6 (__MK66FX1M0__)
  */
 
 #include <stdint.h>

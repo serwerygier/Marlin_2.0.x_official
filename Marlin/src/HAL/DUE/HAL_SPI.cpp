@@ -30,7 +30,7 @@
  */
 
 /**
- * HAL for Arduino Due and compatible (SAM3X8E)
+ * Description: HAL for Arduino Due and compatible (SAM3X8E)
  *
  * For ARDUINO_ARCH_SAM
  */

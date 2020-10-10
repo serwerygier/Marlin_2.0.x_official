@@ -27,7 +27,8 @@
 #if USE_WIRED_EEPROM
 
 /**
- * HAL PersistentStore for Teensy 4.0 (IMXRT1062DVL6A) / 4.1 (IMXRT1062DVJ6A)
+ * PersistentStore for Arduino-style EEPROM interface
+ * with implementations supplied by the framework.
  */
 
 #include "../shared/eeprom_api.h"

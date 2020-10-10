@@ -235,8 +235,8 @@ void lv_draw_tool(void) {
   lv_obj_set_pos(buttonLevel, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   //lv_obj_set_pos(buttonFilament,BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight);
   //lv_obj_set_pos(buttonMore,BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight);
-  lv_obj_set_pos(buttonFilament,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin BTN_X_PIXEL*2+INTERVAL_V*3 -третья
   lv_obj_set_pos(buttonMore,BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin Порядок кнопок INTERVAL_V*2 -вторая
+  lv_obj_set_pos(buttonFilament,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin BTN_X_PIXEL*2+INTERVAL_V*3 -третья
   lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
 
   // Create labels on the image buttons

@@ -1,6 +1,13 @@
 <img align="left" width=300 src="Download/kp3_.bmp" />
 
-# Marlin 3D Printer Firmware
+<img align="left" width=175 src="Download/kp3_.bmp" />
+# Прошивка Marlin для принтера KingRoon KP3
+
+Данный fork создан на основе последнего marlin 2.x bugfix, дополняется и периодически обновляется из официального репозитория Marlin.
+Назначение сборки:
+•	Принтер KingRoon KP3 с датчиком автоуровня BLTouch
+•	Информация по замене стоковой платы на MKS Robin nano v. 2.0: https://3dtoday.ru/blogs/malderin/kingroon-kp3-menyaem-platu-na-mks-robin-nano-v20-s-draiverami-tms-2209
+•	В прошивку забиты параметры, взятые с моего экземпляра принтера (например, PID экструдера и стола, отступы по X и Z под датчик автоуровня и т.п.)
 
 Особенности сборки (обновляемый и дополняемый раздел):
 1.	Используется графический интерфейс от производителя платы Makerbase;

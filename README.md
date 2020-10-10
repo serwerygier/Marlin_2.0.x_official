@@ -1,3 +1,5 @@
+<img align="right" width=175 src="Download/kp3_.bmp" />
+
 # Marlin 3D Printer Firmware
 
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)

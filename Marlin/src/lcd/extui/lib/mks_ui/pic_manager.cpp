@@ -143,14 +143,17 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_zpos_state.bin",
   "bmp_operate.bin",
 
-  //manual leval screen (only if disabled auto level)
-  #if DISABLED(AUTO_BED_LEVELING_BILINEAR)
+//manual leval screen (only if disabled auto level)
+
+//Malderin
+//Закомментил условие ниже, т.к. оно не дает прошивать картинки ручного левелинга
+  //#if DISABLED(AUTO_BED_LEVELING_BILINEAR)
     "bmp_leveling1.bin",
     "bmp_leveling2.bin",
     "bmp_leveling3.bin",
     "bmp_leveling4.bin",
     "bmp_leveling5.bin",
-  #endif
+  //#endif
 
   //lang select screen
   #if HAS_LANG_SELECT_SCREEN
@@ -543,7 +546,7 @@ void Pic_Read(uint8_t *Pname, uint8_t *P_Rbuff) {
   PIC_MSG PIC;
 
   W25QXX.SPI_FLASH_BufferRead(&Pic_cnt, PIC_COUNTER_ADDR, 1);
-  if (Pic_cnt == 0xff)
+  if (Pic_cnt == 0xFF)
     Pic_cnt = 0;
 
   for (i = 0; i < Pic_cnt; i++) {

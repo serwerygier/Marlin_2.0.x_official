@@ -2229,7 +2229,7 @@
  *   Resolution: TFT_WIDTH and TFT_HEIGHT
  *   Interface:  TFT_INTERFACE_FSMC or TFT_INTERFACE_SPI
  */
-//#define TFT_GENERIC
+#define MKS_TS35_V2_0
 
 /**
  * TFT UI - User Interface Selection. Enable one of the following options:
@@ -2243,7 +2243,7 @@
  */
 //#define TFT_CLASSIC_UI
 //#define TFT_COLOR_UI
-//#define TFT_LVGL_UI
+#define TFT_LVGL_UI
 
 /**
  * TFT Rotation. Set to one of the following values:

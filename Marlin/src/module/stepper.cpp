@@ -3061,6 +3061,19 @@ void Stepper::report_positions() {
         #ifdef __AVR__
           SET_CS5(PRESCALER_1);
         #endif
+//Malderin изменение частоты ШИМ вентилятора
+// Для лучшего эффекта закомментировать #define SOFT_PWM_SCALE 0 в configuration.h
+        #if MB(BOARD_MKS_ROBIN_NANO_V2)
+                timer_pause(  &timer3 );
+                timer_set_count(  &timer3 , 0 );
+                /* set prescaller to 9*/
+                timer_set_prescaler( &timer3, (9-1) );
+                /* 72000000/9/256 = 31250Hz */
+                timer_set_reload(  &timer3 , (256-1) );
+                timer_generate_update(  &timer3 );
+                timer_resume(  &timer3 );
+         #endif
+
       #endif
     }
 

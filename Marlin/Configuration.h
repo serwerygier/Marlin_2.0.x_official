@@ -2245,8 +2245,6 @@
 //#define TFT_CLASSIC_UI
 //#define TFT_COLOR_UI
 #define TFT_LVGL_UI
-
-//
 =======
 //
 // TFT display with optional touch screen
@@ -2263,9 +2261,9 @@
 // Available drivers are: ST7735, ST7789, ST7796, R61505, ILI9328, ILI9341, ILI9488
 //
 //#define TFT_DRIVER AUTO
+>>>>>>> parent of f024fa159... Merge branch 'bugfix-2.0.x' into Marlin2.0.7_bugfix
 
 //
->>>>>>> parent of f024fa159... Merge branch 'bugfix-2.0.x' into Marlin2.0.7_bugfix
 // SPI display (MKS Robin Nano V2.0, MKS Gen L V2.0)
 // Upscaled 128x64 Marlin UI
 //

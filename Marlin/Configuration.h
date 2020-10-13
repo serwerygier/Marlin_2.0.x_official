@@ -2265,6 +2265,7 @@
 //#define TFT_DRIVER AUTO
 
 //
+>>>>>>> parent of f024fa159... Merge branch 'bugfix-2.0.x' into Marlin2.0.7_bugfix
 // SPI display (MKS Robin Nano V2.0, MKS Gen L V2.0)
 // Upscaled 128x64 Marlin UI
 //

@@ -2254,6 +2254,8 @@
 //#define TFT_COLOR_UI
 #define TFT_LVGL_UI
 
+//#define TFT_COLOR TFT_COLOR_BGR //Malderin
+
 /**
  * TFT Rotation. Set to one of the following values:
  *

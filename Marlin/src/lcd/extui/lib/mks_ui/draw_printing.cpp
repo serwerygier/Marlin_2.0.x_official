@@ -46,8 +46,7 @@
 
 extern lv_group_t * g;
 static lv_obj_t * scr;
-static lv_obj_t *labelExt1, * labelFan, * labelZpos, * labelTime;
-TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2;)
+static lv_obj_t *labelExt1, * labelExt2, * labelFan, * labelZpos, * labelTime;
 static lv_obj_t *labelPause, * labelStop, * labelOperat;
 static lv_obj_t * bar1, *bar1ValueText;
 static lv_obj_t * buttonPause, *buttonOperat, *buttonStop;
@@ -138,6 +137,9 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
 }
 
 void lv_draw_printing(void) {
+  lv_obj_t *buttonExt1, *buttonExt2, *buttonFanstate, *buttonZpos, *buttonTime;
+  TERN_(HAS_HEATED_BED, lv_obj_t * buttonBedstate);
+
   disp_state_stack._disp_index = 0;
   ZERO(disp_state_stack._disp_state);
   disp_state_stack._disp_state[disp_state_stack._disp_index] = PRINTING_UI;
@@ -160,16 +162,16 @@ void lv_draw_printing(void) {
   lv_refr_now(lv_refr_get_disp_refreshing());
 
   // Create image buttons
-  lv_obj_t *buttonExt1 = lv_img_create(scr, NULL);
+  buttonExt1 = lv_img_create(scr, NULL);
   #if HAS_MULTI_EXTRUDER
-    lv_obj_t *buttonExt2 = lv_img_create(scr, NULL);
+    buttonExt2 = lv_img_create(scr, NULL);
   #endif
   #if HAS_HEATED_BED
-    lv_obj_t *buttonBedstate = lv_img_create(scr, NULL);
+    buttonBedstate = lv_img_create(scr, NULL);
   #endif
-  lv_obj_t *buttonFanstate = lv_img_create(scr, NULL);
-  lv_obj_t *buttonTime     = lv_img_create(scr, NULL);
-  lv_obj_t *buttonZpos     = lv_img_create(scr, NULL);
+  buttonFanstate = lv_img_create(scr, NULL);
+  buttonTime     = lv_img_create(scr, NULL);
+  buttonZpos     = lv_img_create(scr, NULL);
   buttonPause    = lv_imgbtn_create(scr, NULL);
   buttonStop     = lv_imgbtn_create(scr, NULL);
   buttonOperat   = lv_imgbtn_create(scr, NULL);

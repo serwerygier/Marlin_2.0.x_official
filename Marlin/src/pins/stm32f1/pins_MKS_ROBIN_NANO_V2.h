@@ -269,11 +269,19 @@
   #define TOUCH_BUTTONS_HW_SPI
   #define TOUCH_BUTTONS_HW_SPI_DEVICE          1
 
+  #ifndef TFT_WIDTH
+    #define TFT_WIDTH                        480
+  #endif
+  #ifndef TFT_HEIGHT
+    #define TFT_HEIGHT                       320
+  #endif
+
+  #define LCD_READ_ID                       0xD3
   #define LCD_USE_DMA_SPI
 
 #endif
 
-#if ENABLED(TFT_CLASSIC_UI)
+#if ENABLED(SPI_GRAPHICAL_TFT)
   // Emulated DOGM SPI
   #ifndef GRAPHICAL_TFT_UPSCALE
     #define GRAPHICAL_TFT_UPSCALE              3
@@ -289,12 +297,12 @@
   #define LCD_PINS_ENABLE                   PD13
   #define LCD_PINS_RS                       PC6
 
-#elif ENABLED(TFT_COLOR_UI)
+#elif ENABLED(TFT_480x320_SPI)
+  #define TFT_DRIVER                      ST7796
   #define TFT_BUFFER_SIZE                  14400
 #endif
 
-// XPT2046 Touch Screen calibration
-#if EITHER(TFT_LVGL_UI, TFT_COLOR_UI)
+#if EITHER(TFT_LVGL_UI_SPI, TFT_480x320_SPI)
   #ifndef XPT2046_X_CALIBRATION
     #define XPT2046_X_CALIBRATION         -17253
   #endif
@@ -307,7 +315,7 @@
   #ifndef XPT2046_Y_OFFSET
     #define XPT2046_Y_OFFSET                 -24
   #endif
-#elif ENABLED(TFT_CLASSIC_UI)
+#elif ENABLED(SPI_GRAPHICAL_TFT)
   #ifndef XPT2046_X_CALIBRATION
     #define XPT2046_X_CALIBRATION         -11386
   #endif

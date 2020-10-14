@@ -64,7 +64,7 @@ void TFT::LCD_init() {
     OUT_WRITE(TFT_BACKLIGHT_PIN, HIGH);
   #endif
   #if HAS_LOGO_IN_FLASH
-    delay(4000); //Malderin
+    delay(2000); //Malderin
   #endif
 }
 

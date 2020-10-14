@@ -143,8 +143,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_zpos_state.bin",
   "bmp_operate.bin",
 
-//manual leval screen (only if disabled auto level)
-
 //Malderin
 //Закомментил условие ниже, т.к. оно не дает прошивать картинки ручного левелинга
   //#if DISABLED(AUTO_BED_LEVELING_BILINEAR)
@@ -434,7 +432,6 @@ uint8_t public_buf[512];
         watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         Pic_Logo_Write((uint8_t *)fn, public_buf, pbr);
-        watchdog_refresh();
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
     else if (assetType == ASSET_TYPE_TITLE_LOGO) {
@@ -442,7 +439,6 @@ uint8_t public_buf[512];
         watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         Pic_TitleLogo_Write((uint8_t *)fn, public_buf, pbr);
-        watchdog_refresh();
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
     else if (assetType == ASSET_TYPE_G_PREVIEW) {
@@ -450,7 +446,6 @@ uint8_t public_buf[512];
         watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         default_view_Write(public_buf, pbr);
-        watchdog_refresh();
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
     else if (assetType == ASSET_TYPE_ICON) {
@@ -462,7 +457,6 @@ uint8_t public_buf[512];
           pbr = file.read(public_buf, SPI_FLASH_PageSize);
           TERN_(MARLIN_DEV_MODE, totalSizes += pbr);
           SPIFlash.writeData(public_buf, SPI_FLASH_PageSize);
-          watchdog_refresh();
         } while (pbr >= SPI_FLASH_PageSize);
       #else
         do {
@@ -484,7 +478,6 @@ uint8_t public_buf[512];
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         W25QXX.SPI_FLASH_BufferWrite(public_buf, Pic_Write_Addr, pbr);
         Pic_Write_Addr += pbr;
-        watchdog_refresh();
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
 
@@ -504,7 +497,6 @@ uint8_t public_buf[512];
       watchdog_refresh();
       spiFlashErase_PIC();
       #if HAS_SPI_FLASH_FONT
-        watchdog_refresh();
         disp_assets_update_progress("Erasing fonts...");
         watchdog_refresh();
         spiFlashErase_FONT();

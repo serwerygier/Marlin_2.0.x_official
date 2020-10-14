@@ -125,9 +125,12 @@ void tft_lvgl_init() {
 
   //spi_flash_read_test();
   #if ENABLED(SDSUPPORT)
+    watchdog_refresh();
     UpdateAssets();
     watchdog_refresh();
   #endif
+
+  watchdog_refresh();
   mks_test_get();
 
   touch.Init();

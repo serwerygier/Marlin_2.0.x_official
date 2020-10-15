@@ -43,7 +43,8 @@ static lv_obj_t * scr;
 #define ID_T_HOME       4
 #define ID_T_LEVELING   5
 #define ID_T_FILAMENT   7
-#define ID_T_MORE       6 //Malderin добавил меню "уровень"
+//#define ID_T_MORE       6 //Malderin добавил меню "уровень"
+#define ID_T_MLEVELING   6
 #define ID_T_RETURN     8
 
 #if ENABLED(MKS_TEST)
@@ -119,7 +120,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
     //case ID_T_MORE: break;
 
           //Malderin пункт левелинг
-    case ID_T_MORE:
+    case ID_T_MLEVELING:
       if (event == LV_EVENT_CLICKED) {
           // nothing to do
         }
@@ -146,7 +147,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
 
 void lv_draw_tool(void) {
   lv_obj_t *buttonPreHeat, *buttonExtrusion, *buttonMove, *buttonHome, *buttonLevel;
-  lv_obj_t *buttonFilament, *buttonMore;
+  lv_obj_t *buttonFilament, *buttonMLevel;
   lv_obj_t *buttonBack;
 
   if (disp_state_stack._disp_state[disp_state_stack._disp_index] != TOOL_UI) {
@@ -177,7 +178,7 @@ void lv_draw_tool(void) {
   buttonHome      = lv_imgbtn_create(scr, NULL);
   buttonLevel     = lv_imgbtn_create(scr, NULL);
   buttonFilament  = lv_imgbtn_create(scr, NULL);
-  buttonMore      = lv_imgbtn_create(scr, NULL);
+  buttonMLevel    = lv_imgbtn_create(scr, NULL);
   buttonBack      = lv_imgbtn_create(scr, NULL);
 
   lv_obj_set_event_cb_mks(buttonPreHeat, event_handler, ID_T_PRE_HEAT, NULL, 0);
@@ -216,11 +217,11 @@ void lv_draw_tool(void) {
   lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_REL, &tft_style_label_rel);
 
-  lv_obj_set_event_cb_mks(buttonMore, event_handler, ID_T_MORE, NULL, 0);
-  lv_imgbtn_set_src(buttonMore, LV_BTN_STATE_REL, "F:/bmp_leveling.bin");
-  lv_imgbtn_set_src(buttonMore, LV_BTN_STATE_PR, "F:/bmp_leveling.bin");
-  lv_imgbtn_set_style(buttonMore, LV_BTN_STATE_PR, &tft_style_label_pre);
-  lv_imgbtn_set_style(buttonMore, LV_BTN_STATE_REL, &tft_style_label_rel);
+  lv_obj_set_event_cb_mks(buttonMLevel, event_handler, ID_T_MLEVELING, NULL, 0);
+  lv_imgbtn_set_src(buttonMLevel, LV_BTN_STATE_REL, "F:/bmp_leveling.bin");
+  lv_imgbtn_set_src(buttonMLevel, LV_BTN_STATE_PR, "F:/bmp_leveling.bin");
+  lv_imgbtn_set_style(buttonMLevel, LV_BTN_STATE_PR, &tft_style_label_pre);
+  lv_imgbtn_set_style(buttonMLevel, LV_BTN_STATE_REL, &tft_style_label_rel);
 
   lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_T_RETURN, NULL, 0);
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
@@ -235,7 +236,7 @@ void lv_draw_tool(void) {
   lv_obj_set_pos(buttonLevel, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   //lv_obj_set_pos(buttonFilament,BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight);
   //lv_obj_set_pos(buttonMore,BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight);
-  lv_obj_set_pos(buttonMore,BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin Порядок кнопок INTERVAL_V*2 -вторая
+  lv_obj_set_pos(buttonMLevel,BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin Порядок кнопок INTERVAL_V*2 -вторая
   lv_obj_set_pos(buttonFilament,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin BTN_X_PIXEL*2+INTERVAL_V*3 -третья
   lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
 
@@ -246,7 +247,7 @@ void lv_draw_tool(void) {
   lv_btn_set_layout(buttonHome, LV_LAYOUT_OFF);
   lv_btn_set_layout(buttonLevel, LV_LAYOUT_OFF);
   lv_btn_set_layout(buttonFilament, LV_LAYOUT_OFF);
-  lv_btn_set_layout(buttonMore, LV_LAYOUT_OFF);
+  lv_btn_set_layout(buttonMLevel, LV_LAYOUT_OFF);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
 
   lv_obj_t *labelPreHeat   = lv_label_create(buttonPreHeat, NULL);
@@ -255,7 +256,7 @@ void lv_draw_tool(void) {
   lv_obj_t *label_Home     = lv_label_create(buttonHome, NULL);
   lv_obj_t *label_Level    = lv_label_create(buttonLevel, NULL);
   lv_obj_t *label_Filament = lv_label_create(buttonFilament, NULL);
-  lv_obj_t *label_More   = lv_label_create(buttonMore, NULL);
+  lv_obj_t *label_MLevel   = lv_label_create(buttonMLevel, NULL);
   lv_obj_t *label_Back     = lv_label_create(buttonBack, NULL);
 
   if (gCfgItems.multiple_language != 0) {
@@ -277,8 +278,8 @@ void lv_draw_tool(void) {
     lv_label_set_text(label_Filament, tool_menu.filament);
     lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
-    lv_label_set_text(label_More, tool_menu.leveling);
-    lv_obj_align(label_More, buttonMore, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    lv_label_set_text(label_MLevel, tool_menu.mleveling);                                               //Malderin подпись под кнопкой
+    lv_obj_align(label_MLevel, buttonMLevel, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
     //lv_label_set_text(label_More, tool_menu.more);
     //lv_obj_align(label_More, buttonMore, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
@@ -294,7 +295,7 @@ void lv_draw_tool(void) {
       lv_group_add_obj(g, buttonHome);
       lv_group_add_obj(g, buttonLevel);
       lv_group_add_obj(g, buttonFilament);
-      lv_group_add_obj(g, buttonMore);
+      lv_group_add_obj(g, buttonMLevel);
       lv_group_add_obj(g, buttonBack);
     }
   #endif

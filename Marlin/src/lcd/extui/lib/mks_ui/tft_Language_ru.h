@@ -29,7 +29,8 @@
 #define PRINT_TEXT_RU                   " печать"
 #define EXTRUDE_TEXT_RU                 "экструзия"
 #define LEVELING_TEXT_RU                "уровень"
-#define AUTO_LEVELING_TEXT_RU           "aвто"
+#define MLEVELING_TEXT_RU                "углы"
+#define AUTO_LEVELING_TEXT_RU           "aвтоуровень"
 #define SET_TEXT_RU                     "настройки"
 #define MORE_TEXT_RU                    "больше"
 
@@ -50,7 +51,9 @@
 #define TOOL_MOVE_RU                    "движение"
 #define TOOL_HOME_RU                    "домой"
 #define TOOL_LEVELING_RU                "уровень"
-#define TOOL_AUTO_LEVELING_RU           "aвто"
+#define TOOL_MLEVELING_RU                "углы"
+//#define TOOL_MLEVELING_RU                "выровнять\nуглы"    //Malderin
+#define TOOL_AUTO_LEVELING_RU           "aвтоуровень"
 #define TOOL_FILAMENT_RU                "замена"
 #define TOOL_MORE_RU                    "больше"
 
@@ -211,6 +214,7 @@
 #define TITLE_HOME_RU                       "Home"
 #define TITLE_EXTRUDE_RU                    "экструзия"
 #define TITLE_LEVELING_RU                   "уровень"
+#define TITLE_MLEVELING_RU                   "углы"
 #define TITLE_SET_RU                        "настройки"
 #define TITLE_MORE_RU                       "больше"
 #define TITLE_CHOOSEFILE_RU                 "файла"

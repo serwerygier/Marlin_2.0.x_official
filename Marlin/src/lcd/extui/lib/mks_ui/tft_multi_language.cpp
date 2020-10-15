@@ -883,6 +883,7 @@ void disp_language_init() {
       main_menu.print        = PRINT_TEXT_CN;
       main_menu.extrude      = EXTRUDE_TEXT_CN;
       main_menu.leveling     = LEVELING_TEXT_CN;
+      main_menu.mleveling     = MLEVELING_TEXT_CN;
       main_menu.autoleveling = AUTO_LEVELING_TEXT_CN;
       main_menu.fan          = FAN_TEXT_CN;
       main_menu.set          = SET_TEXT_CN;
@@ -895,6 +896,7 @@ void disp_language_init() {
       tool_menu.move         = TOOL_MOVE_CN;
       tool_menu.home         = TOOL_HOME_CN;
       tool_menu.leveling     = TOOL_LEVELING_CN;
+      tool_menu.mleveling     = TOOL_MLEVELING_CN;
       tool_menu.autoleveling = TOOL_AUTO_LEVELING_CN;
       tool_menu.filament     = TOOL_FILAMENT_CN;
       tool_menu.more         = TOOL_MORE_CN;
@@ -1114,6 +1116,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_T_CN;
             main_menu.extrude      = EXTRUDE_TEXT_T_CN;
             main_menu.leveling     = LEVELING_TEXT_T_CN;
+            main_menu.mleveling     = MLEVELING_TEXT_T_CN;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_T_CN;
             main_menu.fan          = FAN_TEXT_T_CN;
             main_menu.set          = SET_TEXT_T_CN;
@@ -1126,6 +1129,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_T_CN;
             tool_menu.home         = TOOL_HOME_T_CN;
             tool_menu.leveling     = TOOL_LEVELING_T_CN;
+            tool_menu.mleveling     = TOOL_MLEVELING_T_CN;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_T_CN;
             tool_menu.filament     = TOOL_FILAMENT_T_CN;
             tool_menu.more         = TOOL_MORE_T_CN;
@@ -1338,6 +1342,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_EN;
             main_menu.extrude      = EXTRUDE_TEXT_EN;
             main_menu.leveling     = LEVELING_TEXT_EN;
+            main_menu.mleveling     = MLEVELING_TEXT_EN;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_EN;
             main_menu.fan          = FAN_TEXT_EN;
             main_menu.set          = SET_TEXT_EN;
@@ -1350,6 +1355,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_EN;
             tool_menu.home         = TOOL_HOME_EN;
             tool_menu.leveling     = TOOL_LEVELING_EN;
+            tool_menu.mleveling    = TOOL_MLEVELING_EN;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_EN;
             tool_menu.filament     = TOOL_FILAMENT_EN;
             tool_menu.more         = TOOL_MORE_EN;
@@ -1553,6 +1559,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_RU;
             main_menu.extrude      = EXTRUDE_TEXT_RU;
             main_menu.leveling     = LEVELING_TEXT_RU;
+            main_menu.mleveling     = MLEVELING_TEXT_RU;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_RU;
             main_menu.fan          = FAN_TEXT_RU;
             main_menu.set          = SET_TEXT_RU;
@@ -1565,6 +1572,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_RU;
             tool_menu.home         = TOOL_HOME_RU;
             tool_menu.leveling     = TOOL_LEVELING_RU;
+            tool_menu.mleveling     = TOOL_MLEVELING_RU;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_RU;
             tool_menu.filament     = TOOL_FILAMENT_RU;
             tool_menu.more         = TOOL_MORE_RU;
@@ -1864,6 +1872,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_SP;
             main_menu.extrude      = EXTRUDE_TEXT_SP;
             main_menu.leveling     = LEVELING_TEXT_SP;
+            main_menu.mleveling     = MLEVELING_TEXT_SP;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_SP;
             main_menu.fan          = FAN_TEXT_SP;
             main_menu.set          = SET_TEXT_SP;
@@ -1876,6 +1885,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_SP;
             tool_menu.home         = TOOL_HOME_SP;
             tool_menu.leveling     = TOOL_LEVELING_SP;
+            tool_menu.mleveling     = TOOL_MLEVELING_SP;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_SP;
             tool_menu.filament     = TOOL_FILAMENT_SP;
             tool_menu.more         = TOOL_MORE_SP;
@@ -2088,6 +2098,7 @@ void disp_language_init() {
           main_menu.print        = PRINT_TEXT_FR;
           main_menu.extrude      = EXTRUDE_TEXT_FR;
           main_menu.leveling     = LEVELING_TEXT_FR;
+          main_menu.mleveling     = MLEVELING_TEXT_FR;
           main_menu.autoleveling = AUTO_LEVELING_TEXT_FR;
           main_menu.fan          = FAN_TEXT_FR;
           main_menu.set          = SET_TEXT_FR;
@@ -2100,6 +2111,7 @@ void disp_language_init() {
           tool_menu.move         = TOOL_MOVE_FR;
           tool_menu.home         = TOOL_HOME_FR;
           tool_menu.leveling     = TOOL_LEVELING_FR;
+          tool_menu.mleveling     = TOOL_MLEVELING_FR;
           tool_menu.autoleveling = TOOL_AUTO_LEVELING_FR;
           tool_menu.filament     = TOOL_FILAMENT_FR;
           tool_menu.more         = TOOL_MORE_FR;
@@ -2304,6 +2316,7 @@ void disp_language_init() {
           main_menu.print        = PRINT_TEXT_IT;
           main_menu.extrude      = EXTRUDE_TEXT_IT;
           main_menu.leveling     = LEVELING_TEXT_IT;
+          main_menu.mleveling     = MLEVELING_TEXT_IT;
           main_menu.autoleveling = AUTO_LEVELING_TEXT_IT;
           main_menu.fan          = FAN_TEXT_IT;
           main_menu.set          = SET_TEXT_IT;
@@ -2316,6 +2329,7 @@ void disp_language_init() {
           tool_menu.move         = TOOL_MOVE_IT;
           tool_menu.home         = TOOL_HOME_IT;
           tool_menu.leveling     = TOOL_LEVELING_IT;
+          tool_menu.mleveling     = TOOL_MLEVELING_IT;
           tool_menu.autoleveling = TOOL_AUTO_LEVELING_IT;
           tool_menu.filament     = TOOL_FILAMENT_IT;
           tool_menu.more         = TOOL_MORE_IT;
@@ -2521,6 +2535,7 @@ void disp_language_init() {
       main_menu.print        = PRINT_TEXT_EN;
       main_menu.extrude      = EXTRUDE_TEXT_EN;
       main_menu.leveling     = LEVELING_TEXT_EN;
+      main_menu.mleveling     = MLEVELING_TEXT_EN;
       main_menu.autoleveling = AUTO_LEVELING_TEXT_EN;
       main_menu.fan          = FAN_TEXT_EN;
       main_menu.set          = SET_TEXT_EN;
@@ -2533,6 +2548,7 @@ void disp_language_init() {
       tool_menu.move         = TOOL_MOVE_EN;
       tool_menu.home         = TOOL_HOME_EN;
       tool_menu.leveling     = TOOL_LEVELING_EN;
+      tool_menu.mleveling     = TOOL_MLEVELING_EN;
       tool_menu.autoleveling = TOOL_AUTO_LEVELING_EN;
       tool_menu.filament     = TOOL_FILAMENT_EN;
       tool_menu.more         = TOOL_MORE_EN;

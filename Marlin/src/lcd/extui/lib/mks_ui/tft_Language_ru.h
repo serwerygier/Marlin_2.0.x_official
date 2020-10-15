@@ -47,7 +47,7 @@
 #define BACK_TEXT_RU                    "назад"
 
 #define TOOL_PREHEAT_RU                 "нагрев"
-#define TOOL_EXTRUDE_RU                 "экструзия"
+#define TOOL_EXTRUDE_RU                 "экструдер"
 #define TOOL_MOVE_RU                    "движение"
 #define TOOL_HOME_RU                    "домой"
 #define TOOL_LEVELING_RU                "уровень"
@@ -275,6 +275,14 @@
 #define EEPROM_SETTINGS_STORE_RU      "Cохранение настроек в EEPROM"
 #define EEPROM_SETTINGS_READ_RU       "Чтение настроек из EEPROM"
 #define EEPROM_SETTINGS_REVERT_RU     "Bосстановить заводские настройки по умолчанию"
+
+#define MORE_CUSTOM1_TEXT_RU  USER_DESC_1
+#define MORE_CUSTOM2_TEXT_RU  USER_DESC_2
+#define MORE_CUSTOM3_TEXT_RU  USER_DESC_3
+#define MORE_CUSTOM4_TEXT_RU  USER_DESC_4
+#define MORE_CUSTOM5_TEXT_RU  USER_DESC_5
+#define MORE_CUSTOM6_TEXT_RU  USER_DESC_6
+#define MORE_CUSTOM7_TEXT_RU  USER_DESC_7
 
 //Malderin translate
 //

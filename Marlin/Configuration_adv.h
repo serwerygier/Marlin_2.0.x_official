@@ -3232,7 +3232,7 @@
    //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
    #define USER_CMD_1_ENABLE
-   #define USER_DESC_1 "Bed"
+   #define USER_DESC_1 "стол"
    #define USER_GCODE_1 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED)
 
    #define USER_CMD_2_ENABLE
@@ -3244,7 +3244,7 @@
    #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
    #define USER_CMD_4_ENABLE
-   #define USER_DESC_4 "Cool"
+   #define USER_DESC_4 "охлаждение"
    #define USER_GCODE_4 "M108\nM106 255"
 
    //#define USER_CMD_5_ENABLE

@@ -35,7 +35,7 @@
 
 extern lv_group_t * g;
 static lv_obj_t * scr;
-static lv_obj_t * fw_type, *board; //*fw_version;
+static lv_obj_t * fw_type, *board, *web_url; //*fw_version;
 
 #define ID_A_RETURN   1
 
@@ -104,15 +104,20 @@ void lv_draw_about(void) {
   //lv_label_set_text(fw_version, SHORT_BUILD_VERSION);
   //lv_obj_align(fw_version, NULL, LV_ALIGN_CENTER, 0, -60);
 
+  web_url = lv_label_create(scr, NULL);
+  lv_obj_set_style(web_url, &tft_style_label_rel);
+  lv_label_set_text(web_url, "Telegramm chat: " WEBSITE_URL);
+  lv_obj_align(web_url, NULL, LV_ALIGN_CENTER, 0, 0);
+
   fw_type = lv_label_create(scr, NULL);
   lv_obj_set_style(fw_type, &tft_style_label_rel);
   lv_label_set_text(fw_type, "Firmware: Marlin " SHORT_BUILD_VERSION);
-  lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -20);
+  lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -40);
 
   board = lv_label_create(scr, NULL);
   lv_obj_set_style(board, &tft_style_label_rel);
   lv_label_set_text(board, "Board: " BOARD_INFO_NAME);
-  lv_obj_align(board, NULL, LV_ALIGN_CENTER, 0, -60);
+  lv_obj_align(board, NULL, LV_ALIGN_CENTER, 0, -80);
 }
 
 void lv_clear_about() {

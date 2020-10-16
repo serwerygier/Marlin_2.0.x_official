@@ -130,6 +130,7 @@ case ID_T_MORE:
   break;
           //Malderin пункт левелинг
     case ID_T_MLEVELING:
+    #if ENABLED(BLTOUCH)
       if (event == LV_EVENT_CLICKED) {
           // nothing to do
         }
@@ -140,6 +141,7 @@ case ID_T_MORE:
                   lv_draw_manualLevel();
                 #endif
         }
+    #endif
         break;
     case ID_T_RETURN:
       if (event == LV_EVENT_CLICKED) {
@@ -155,7 +157,10 @@ case ID_T_MORE:
 }
 
 void lv_draw_tool(void) {
-  lv_obj_t *buttonPreHeat, *buttonExtrusion, *buttonMove, *buttonHome, *buttonLevel, *buttonMLevel;
+  lv_obj_t *buttonPreHeat, *buttonExtrusion, *buttonMove, *buttonHome, *buttonLevel;
+  #if ENABLED(BLTOUCH)
+    lv_obj_t *buttonMLevel;
+  #endif
   //lv_obj_t *buttonFilament, *buttonMLevel;
 #if ENABLED(CUSTOM_USER_MENUS)
   lv_obj_t *buttonMore;
@@ -190,7 +195,9 @@ void lv_draw_tool(void) {
   buttonHome      = lv_imgbtn_create(scr, NULL);
   buttonLevel     = lv_imgbtn_create(scr, NULL);
 //  buttonFilament  = lv_imgbtn_create(scr, NULL);
+  #if ENABLED(BLTOUCH)
   buttonMLevel    = lv_imgbtn_create(scr, NULL);
+  #endif
   #if ENABLED(CUSTOM_USER_MENUS)
     buttonMore    = lv_imgbtn_create(scr, NULL);
   #endif
@@ -232,11 +239,13 @@ void lv_draw_tool(void) {
 //  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_PR, &tft_style_label_pre);
 //  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_REL, &tft_style_label_rel);
 
+  #if ENABLED(BLTOUCH)
   lv_obj_set_event_cb_mks(buttonMLevel, event_handler, ID_T_MLEVELING, NULL, 0);
   lv_imgbtn_set_src(buttonMLevel, LV_BTN_STATE_REL, "F:/bmp_leveling.bin");
   lv_imgbtn_set_src(buttonMLevel, LV_BTN_STATE_PR, "F:/bmp_leveling.bin");
   lv_imgbtn_set_style(buttonMLevel, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonMLevel, LV_BTN_STATE_REL, &tft_style_label_rel);
+  #endif
 
   #if ENABLED(CUSTOM_USER_MENUS)
     lv_obj_set_event_cb_mks(buttonMore, event_handler,ID_T_MORE,NULL,0);
@@ -257,8 +266,10 @@ void lv_draw_tool(void) {
   lv_obj_set_pos(buttonMove, BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight);
   lv_obj_set_pos(buttonHome, BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight);
   lv_obj_set_pos(buttonLevel, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
-  lv_obj_set_pos(buttonMLevel,BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin Порядок кнопок INTERVAL_V*2 -вторая
-  //lv_obj_set_pos(buttonFilament,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin BTN_X_PIXEL*2+INTERVAL_V*3 -третья
+
+  #if ENABLED(BLTOUCH)
+    lv_obj_set_pos(buttonMLevel,BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight); //Malderin
+  #endif
   #if ENABLED(CUSTOM_USER_MENUS)
     lv_obj_set_pos(buttonMore ,BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight);
   #endif
@@ -271,7 +282,9 @@ void lv_draw_tool(void) {
   lv_btn_set_layout(buttonHome, LV_LAYOUT_OFF);
   lv_btn_set_layout(buttonLevel, LV_LAYOUT_OFF);
 //  lv_btn_set_layout(buttonFilament, LV_LAYOUT_OFF);
+  #if ENABLED(BLTOUCH)
   lv_btn_set_layout(buttonMLevel, LV_LAYOUT_OFF);
+  #endif
   #if ENABLED(CUSTOM_USER_MENUS)
     lv_btn_set_layout(buttonMore, LV_LAYOUT_OFF);
   #endif
@@ -283,7 +296,9 @@ void lv_draw_tool(void) {
   lv_obj_t *label_Home     = lv_label_create(buttonHome, NULL);
   lv_obj_t *label_Level    = lv_label_create(buttonLevel, NULL);
 //  lv_obj_t *label_Filament = lv_label_create(buttonFilament, NULL);
+  #if ENABLED(BLTOUCH)
   lv_obj_t *label_MLevel   = lv_label_create(buttonMLevel, NULL);
+  #endif
   #if ENABLED(CUSTOM_USER_MENUS)
     lv_obj_t * label_More   = lv_label_create(buttonMore, NULL);
   #endif
@@ -308,8 +323,10 @@ void lv_draw_tool(void) {
 //    lv_label_set_text(label_Filament, tool_menu.filament);
 //    lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
-    lv_label_set_text(label_MLevel, tool_menu.mleveling);                                               //Malderin подпись под кнопкой
+    #if ENABLED(BLTOUCH)
+      lv_label_set_text(label_MLevel, tool_menu.mleveling);                                               //Malderin
     lv_obj_align(label_MLevel, buttonMLevel, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    #endif
 
     #if ENABLED(CUSTOM_USER_MENUS)
       lv_label_set_text(label_More, tool_menu.more);
@@ -327,7 +344,9 @@ void lv_draw_tool(void) {
       lv_group_add_obj(g, buttonHome);
       lv_group_add_obj(g, buttonLevel);
 //      lv_group_add_obj(g, buttonFilament);
+    #if ENABLED(BLTOUCH)
       lv_group_add_obj(g, buttonMLevel);
+    #endif
       #if ENABLED(CUSTOM_USER_MENUS)
         lv_group_add_obj(g, buttonMore);
       #endif

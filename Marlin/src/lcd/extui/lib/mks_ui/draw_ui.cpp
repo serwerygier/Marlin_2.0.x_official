@@ -1148,7 +1148,7 @@ void clear_cur_ui() {
       lv_clear_extrusion();
       break;
     case EXTRUSION_UI_M:
-        lv_clear_extrusion_m();
+        lv_clear_extrusion();
         break;
     case PRE_HEAT_UI:
       lv_clear_preHeat();

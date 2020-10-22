@@ -55,24 +55,24 @@ const uint8_t ESP_MEM_END = 0x06;
 const uint8_t ESP_MEM_DATA = 0x07;
 const uint8_t ESP_SYNC = 0x08;
 const uint8_t ESP_WRITE_REG = 0x09;
-const uint8_t ESP_READ_REG = 0x0a;
+const uint8_t ESP_READ_REG = 0x0A;
 
 // MAC address storage locations
-const uint32_t ESP_OTP_MAC0 = 0x3ff00050;
-const uint32_t ESP_OTP_MAC1 = 0x3ff00054;
-const uint32_t ESP_OTP_MAC2 = 0x3ff00058;
-const uint32_t ESP_OTP_MAC3 = 0x3ff0005c;
+const uint32_t ESP_OTP_MAC0 = 0x3FF00050;
+const uint32_t ESP_OTP_MAC1 = 0x3FF00054;
+const uint32_t ESP_OTP_MAC2 = 0x3FF00058;
+const uint32_t ESP_OTP_MAC3 = 0x3FF0005C;
 
 const size_t EspFlashBlockSize = 0x0400;      // 1K byte blocks
 
-const uint8_t ESP_IMAGE_MAGIC = 0xe9;
-const uint8_t ESP_CHECKSUM_MAGIC = 0xef;
+const uint8_t ESP_IMAGE_MAGIC = 0xE9;
+const uint8_t ESP_CHECKSUM_MAGIC = 0xEF;
 
 const uint32_t ESP_ERASE_CHIP_ADDR = 0x40004984;  // &SPIEraseChip
-const uint32_t ESP_SEND_PACKET_ADDR = 0x40003c80; // &send_packet
-const uint32_t ESP_SPI_READ_ADDR = 0x40004b1c;    // &SPIRead
+const uint32_t ESP_SEND_PACKET_ADDR = 0x40003C80; // &send_packet
+const uint32_t ESP_SPI_READ_ADDR = 0x40004B1C;    // &SPIRead
 const uint32_t ESP_UNKNOWN_ADDR = 0x40001121;   // not used
-const uint32_t ESP_USER_DATA_RAM_ADDR = 0x3ffe8000; // &user data ram
+const uint32_t ESP_USER_DATA_RAM_ADDR = 0x3FFE8000; // &user data ram
 const uint32_t ESP_IRAM_ADDR = 0x40100000;      // instruction RAM
 const uint32_t ESP_FLASH_ADDR = 0x40200000;     // address of start of Flash
 //const uint32_t ESP_FLASH_READ_STUB_BEGIN = IRAM_ADDR + 0x18;
@@ -177,7 +177,7 @@ void putData(uint32_t val, unsigned byteCnt, uint8_t *buf, int ofst) {
       byteCnt = 4;
     }
     do {
-      buf[ofst++] = (uint8_t)(val & 0xff);
+      buf[ofst++] = (uint8_t)(val & 0xFF);
       val >>= 8;
     } while (--byteCnt);
   }
@@ -188,7 +188,7 @@ void putData(uint32_t val, unsigned byteCnt, uint8_t *buf, int ofst) {
 //  2 - an escaped byte was read successfully
 //  1 - a non-escaped byte was read successfully
 //  0 - no data was available
-//   -1 - the value 0xc0 was encountered (shouldn't happen)
+//   -1 - the value 0xC0 was encountered (shouldn't happen)
 //   -2 - a SLIP escape byte was found but the following byte wasn't available
 //   -3 - a SLIP escape byte was followed by an invalid byte
 int ReadByte(uint8_t *data, signed char slipDecode) {
@@ -202,13 +202,13 @@ int ReadByte(uint8_t *data, signed char slipDecode) {
     return(1);
   }
 
-  if (*data == 0xc0) {
+  if (*data == 0xC0) {
     // this shouldn't happen
     return(-1);
   }
 
   // if not the SLIP escape, we're done
-  if (*data != 0xdb) {
+  if (*data != 0xDB) {
     return(1);
   }
 
@@ -219,13 +219,13 @@ int ReadByte(uint8_t *data, signed char slipDecode) {
 
   // process the escaped byte
   *data = uploadPort_read();
-  if (*data == 0xdc) {
-    *data = 0xc0;
+  if (*data == 0xDC) {
+    *data = 0xC0;
     return(2);
   }
 
-  if (*data == 0xdd) {
-    *data = 0xdb;
+  if (*data == 0xDD) {
+    *data = 0xDB;
     return(2);
   }
   // invalid
@@ -414,8 +414,8 @@ void _writePacket(const uint8_t *data, size_t len) {
 }
 
 // Send a packet to the serial port while performing SLIP framing. The packet data comprises a header and an optional data block.
-// A SLIP packet begins and ends with 0xc0.  The data encapsulated has the bytes
-// 0xc0 and 0xdb replaced by the two-byte sequences {0xdb, 0xdc} and {0xdb, 0xdd} respectively.
+// A SLIP packet begins and ends with 0xC0.  The data encapsulated has the bytes
+// 0xC0 and 0xDB replaced by the two-byte sequences {0xDB, 0xDC} and {0xDB, 0xDD} respectively.
 
 void writePacket(const uint8_t *hdr, size_t hdrLen, const uint8_t *data, size_t dataLen) {
   WriteByteRaw(0xC0);           // send the packet start character
@@ -567,7 +567,7 @@ EspUploadResult flashWriteBlock(uint16_t flashParmVal, uint16_t flashParmMask) {
   if (cnt != blkSize) {
     if (f_tell(&esp_upload.uploadFile) == esp_upload.fileSize) {
       // partial last block, fill the remainder
-      memset(blkBuf + dataOfst + cnt, 0xff, blkSize - cnt);
+      memset(blkBuf + dataOfst + cnt, 0xFF, blkSize - cnt);
     }
     else {
       return fileRead;

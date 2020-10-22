@@ -123,8 +123,11 @@ void tft_lvgl_init() {
 
   //spi_flash_read_test();
   #if ENABLED(SDSUPPORT)
+    watchdog_refresh();
     UpdateAssets();
   #endif
+
+  watchdog_refresh();
   mks_test_get();
 
   touch.Init();
@@ -472,7 +475,6 @@ void lv_encoder_pin_init() {
           constexpr uint8_t newbutton = 0;
 
         #endif
-
 
         static uint8_t buttons = 0;
         buttons = newbutton;

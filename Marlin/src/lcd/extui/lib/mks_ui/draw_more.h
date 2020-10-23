@@ -21,25 +21,14 @@
  */
 #pragma once
 
-#include "../inc/MarlinConfigPre.h"
-
-#if ENABLED(CASE_LIGHT_USE_NEOPIXEL)
-  #include "leds/leds.h"
+#ifdef __cplusplus
+extern "C" { /* C-declarations for C++ */
 #endif
 
-class CaseLight {
-public:
-  static uint8_t brightness;
-  static bool on;
+extern void lv_draw_more(void);
+extern void lv_clear_more();
 
-  static void update(const bool sflag);
-  static inline void update_brightness() { update(false); }
-  static inline void update_enabled() { update(true); }
-
-private:
-  #if ENABLED(CASE_LIGHT_USE_NEOPIXEL)
-    static LEDColor color;
-  #endif
-};
-
-extern CaseLight caselight;
+//extern void disp_temp_ready_print();
+#ifdef __cplusplus
+} /* C-declarations for C++ */
+#endif

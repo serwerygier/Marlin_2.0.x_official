@@ -181,7 +181,10 @@ void lv_draw_tool(void) {
   lv_scr_load(scr);
   lv_obj_clean(scr);
 
-  (void)lv_label_create(scr, TITLE_XPOS, TITLE_YPOS, creat_title_text());
+  lv_obj_t * title = lv_label_create(scr, NULL);
+  lv_obj_set_style(title, &tft_style_label_rel);
+  lv_obj_set_pos(title, TITLE_XPOS, TITLE_YPOS);
+  lv_label_set_text(title, creat_title_text());
 
   lv_refr_now(lv_refr_get_disp_refreshing());
 
@@ -300,28 +303,6 @@ void lv_draw_tool(void) {
     lv_obj_t * label_More   = lv_label_create(buttonMore, NULL);
   #endif
   lv_obj_t *label_Back     = lv_label_create(buttonBack, NULL);
-
-
-//  buttonPreHeat   = lv_imgbtn_create(scr, "F:/bmp_preHeat.bin", INTERVAL_V, titleHeight, event_handler, ID_T_PRE_HEAT);
-//  buttonExtrusion = lv_imgbtn_create(scr, "F:/bmp_extruct.bin", BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_T_EXTRUCT);
-//  buttonMove      = lv_imgbtn_create(scr, "F:/bmp_mov.bin", BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight, event_handler, ID_T_MOV);
-//  buttonHome      = lv_imgbtn_create(scr, "F:/bmp_zero.bin", BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight, event_handler, ID_T_HOME);
-//  buttonLevel     = lv_imgbtn_create(scr, "F:/bmp_leveling.bin", INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_LEVELING);
-//  buttonFilament  = lv_imgbtn_create(scr, "F:/bmp_filamentchange.bin",BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler,ID_T_FILAMENT);
-  //buttonMore    = lv_imgbtn_createx(scr, NULL);
-  //lv_obj_set_pos(buttonMore,BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight);
-//  buttonBack      = lv_imgbtn_create(scr, "F:/bmp_return.bin", BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
-
-  // Create labels on the image buttons
-//  lv_obj_t *labelPreHeat   = lv_label_create_empty(buttonPreHeat);
-//  lv_obj_t *labelExtrusion = lv_label_create_empty(buttonExtrusion);
-//  lv_obj_t *label_Move     = lv_label_create_empty(buttonMove);
-//  lv_obj_t *label_Home     = lv_label_create_empty(buttonHome);
-//  lv_obj_t *label_Level    = lv_label_create_empty(buttonLevel);
-//  lv_obj_t *label_Filament = lv_label_create_empty(buttonFilament);
-  //lv_obj_t *label_More   = lv_label_create_empty(buttonMore);
-//  lv_obj_t *label_Back     = lv_label_create_empty(buttonBack);
-
 
   if (gCfgItems.multiple_language) {
     lv_label_set_text(labelPreHeat, tool_menu.preheat);

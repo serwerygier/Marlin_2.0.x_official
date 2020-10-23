@@ -217,10 +217,7 @@ void lv_draw_filament_settings(void) {
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
 
-    buttonTurnPage = lv_btn_create(scr, NULL);
-    lv_obj_set_event_cb_mks(buttonTurnPage, event_handler, ID_FILAMENT_SET_DOWN, NULL, 0);
-    lv_btn_set_style(buttonTurnPage, LV_BTN_STYLE_REL, &style_para_back);
-    lv_btn_set_style(buttonTurnPage, LV_BTN_STYLE_PR, &style_para_back);
+    buttonTurnPage = lv_btn_create_back(scr, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y, PARA_UI_BACK_BTN_X_SIZE, PARA_UI_BACK_BTN_Y_SIZE, event_handler, ID_FILAMENT_SET_DOWN);
 
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) {

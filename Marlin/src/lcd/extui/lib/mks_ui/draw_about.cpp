@@ -98,11 +98,6 @@ void lv_draw_about(void) {
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
   }
 
-  //fw_version = lv_label_create(scr, NULL);
-  //lv_obj_set_style(fw_version, &tft_style_label_rel);
-  //lv_label_set_text(fw_version, SHORT_BUILD_VERSION);
-  //lv_obj_align(fw_version, NULL, LV_ALIGN_CENTER, 0, -60);
-
   web_url = lv_label_create(scr, NULL);
   lv_obj_set_style(web_url, &tft_style_label_rel);
   lv_label_set_text(web_url, "Telegramm chat: " WEBSITE_URL);
@@ -117,14 +112,13 @@ void lv_draw_about(void) {
   lv_obj_set_style(board, &tft_style_label_rel);
   lv_label_set_text(board, "Board: " BOARD_INFO_NAME);
   lv_obj_align(board, NULL, LV_ALIGN_CENTER, 0, -80);
+
+//  fw_type = lv_label_create(scr, "Firmware: Marlin " SHORT_BUILD_VERSION);
+//  lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -40);
+
+//  board = lv_label_create(scr, "Board: " BOARD_INFO_NAME);
+//  lv_obj_align(board, NULL, LV_ALIGN_CENTER, 0, -80);
 }
-
-//fw_type = lv_label_create(scr, "Firmware: Marlin " SHORT_BUILD_VERSION);
-//lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -20);
-
-//board = lv_label_create(scr, "Board: " BOARD_INFO_NAME);
-//lv_obj_align(board, NULL, LV_ALIGN_CENTER, 0, -60);
-
 
 void lv_clear_about() {
   #if HAS_ROTARY_ENCODER

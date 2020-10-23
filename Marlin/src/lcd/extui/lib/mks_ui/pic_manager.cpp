@@ -55,10 +55,9 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_preHeat.bin",
   "bmp_extruct.bin",
   "bmp_mov.bin",
-  // "bmp_zero.bin",
+  // "bmp_Zero.bin",
   "bmp_leveling.bin",
   "bmp_filamentchange.bin",
-  "bmp_more.bin",
 
   //fan screen
   "bmp_Add.bin",
@@ -144,15 +143,14 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_zpos_state.bin",
   "bmp_operate.bin",
 
-//Malderin
-//Закомментил условие ниже, т.к. оно не дает прошивать картинки ручного левелинга
-  //#if DISABLED(AUTO_BED_LEVELING_BILINEAR)
+  //manual leval screen (only if disabled auto level)
+  #if DISABLED(AUTO_BED_LEVELING_BILINEAR)
     "bmp_leveling1.bin",
     "bmp_leveling2.bin",
     "bmp_leveling3.bin",
     "bmp_leveling4.bin",
     "bmp_leveling5.bin",
-  //#endif
+  #endif
 
   //lang select screen
   #if HAS_LANG_SELECT_SCREEN
@@ -184,9 +182,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
 
   // settings screen
   "bmp_about.bin",
-  "bmp_eeprom_settings.bin",
-  "bmp_machine_para.bin",
-  "bmp_function1.bin",
   //"bmp_Language.bin",
   //"bmp_Fan.bin",
   //"bmp_manual_off.bin",
@@ -195,6 +190,11 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_printing.bin",
   "bmp_set.bin",
   "bmp_tool.bin",
+
+  // settings screen
+  "bmp_eeprom_settings.bin",
+  "bmp_machine_para.bin",
+  "bmp_function1.bin",
 
   // base icons
   "bmp_arrow.bin",
@@ -213,21 +213,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   // babystep screen
   "bmp_baby_move0_01.bin",
   "bmp_baby_move0_05.bin",
-  "bmp_baby_move0_1.bin",
-
-  //presets screen
-  //"bmp_preHeat.bin",
-  //"bmp_preHeat.bin",
-  //"bmp_Fan.bin",
-
-   // more screen
-  "bmp_custom1.bin",
-  "bmp_custom2.bin",
-  "bmp_custom3.bin",
-  "bmp_custom4.bin",
-  "bmp_custom5.bin",
-  "bmp_custom6.bin",
-  "bmp_custom7.bin"
+  "bmp_baby_move0_1.bin"
 };
 
 #if HAS_SPI_FLASH_FONT

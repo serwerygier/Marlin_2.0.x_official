@@ -463,9 +463,6 @@ char *getDispText(int index) {
     case EXTRUSION_UI:
       strcpy(public_buf_l, extrude_menu.title);
       break;
-    case EXTRUSION_UI_M:
-        strcpy(public_buf_l, extrude_menu.title);
-        break;
     case CHANGE_SPEED_UI:
       strcpy(public_buf_l, speed_menu.title);
       break;
@@ -502,7 +499,6 @@ char *getDispText(int index) {
       strcpy(public_buf_l, wifi_menu.title);
       break;
     case MORE_UI:
-      strcpy(public_buf_l, more_menu.title);
     case PRINT_MORE_UI:
       strcpy(public_buf_l, more_menu.title);
       break;
@@ -943,7 +939,6 @@ void GUI_RefreshPage() {
         disp_hotend_temp();
       }
       break;
-    case EXTRUSION_UI_M: break;
     case PRE_HEAT_UI:
       if (temperature_change_frequency == 1) {
         temperature_change_frequency = 0;
@@ -1145,9 +1140,6 @@ void clear_cur_ui() {
     case EXTRUSION_UI:
       lv_clear_extrusion();
       break;
-//    case EXTRUSION_UI_M:
-//        lv_clear_extrusion();
-//        break;
     case PRE_HEAT_UI:
       lv_clear_preHeat();
       break;
@@ -1187,7 +1179,7 @@ void clear_cur_ui() {
         break;
     #endif
     case MORE_UI:
-      lv_clear_more();
+      //Clear_more();
       break;
     case FILETRANSFER_UI:
       //Clear_fileTransfer();
@@ -1385,9 +1377,6 @@ void draw_return_ui() {
       case EXTRUSION_UI:
         lv_draw_extrusion();
         break;
-        case EXTRUSION_UI_M:
-          lv_draw_extrusion_m();
-          break;
       case PRE_HEAT_UI:
         lv_draw_preHeat();
         break;
@@ -1428,7 +1417,7 @@ void draw_return_ui() {
           break;
       #endif
       case MORE_UI:
-        lv_clear_more();
+        //draw_More();
         break;
       case PRINT_MORE_UI:
         //draw_printmore();
@@ -1586,6 +1575,105 @@ void draw_return_ui() {
       default: break;
     }
   }
+}
+
+// Set the same image for both Released and Pressed
+void lv_imgbtn_set_src_both(lv_obj_t *imgbtn, const void *src) {
+  lv_imgbtn_set_src(imgbtn, LV_BTN_STATE_REL, src);
+  lv_imgbtn_set_src(imgbtn, LV_BTN_STATE_PR,  src);
+}
+
+// Use label style for the image button
+void lv_imgbtn_use_label_style(lv_obj_t *imgbtn) {
+  lv_imgbtn_set_style(imgbtn, LV_BTN_STATE_REL, &tft_style_label_rel);
+  lv_imgbtn_set_style(imgbtn, LV_BTN_STATE_PR,  &tft_style_label_pre);
+}
+
+// Use label style for the image button
+void lv_btn_use_label_style(lv_obj_t *btn) {
+  lv_btn_set_style(btn, LV_BTN_STYLE_REL, &tft_style_label_rel);
+  lv_btn_set_style(btn, LV_BTN_STYLE_PR,  &tft_style_label_pre);
+}
+
+// Use a single style for both Released and Pressed
+void lv_btn_set_style_both(lv_obj_t *btn, lv_style_t *style) {
+  lv_btn_set_style(btn, LV_BTN_STYLE_REL, style);
+  lv_btn_set_style(btn, LV_BTN_STYLE_PR,  style);
+}
+
+// Create an empty label
+lv_obj_t* lv_label_create_empty(lv_obj_t *par) {
+  return lv_label_create(par, (lv_obj_t*)NULL);
+}
+
+// Create a label with style and text
+lv_obj_t* lv_label_create(lv_obj_t *par, const char *text) {
+  lv_obj_t *label = lv_label_create_empty(par);
+  if (text) lv_label_set_text(label, text);
+  return label;
+}
+
+// Create a label with style, position, and text
+lv_obj_t* lv_label_create(lv_obj_t *par, lv_coord_t x, lv_coord_t y, const char *text) {
+  lv_obj_t *label = lv_label_create(par, text);
+  lv_obj_set_pos(label, x, y);
+  return label;
+}
+
+// Create a button with callback, ID, and Style.
+lv_obj_t* lv_btn_create(lv_obj_t *par, lv_event_cb_t cb, const int id, lv_style_t *style) {
+  lv_obj_t *btn = lv_btn_create(par, NULL);
+  if (id)
+    lv_obj_set_event_cb_mks(btn, cb, id, NULL, 0);
+  else
+    lv_obj_set_event_cb(btn, cb);
+  lv_btn_set_style_both(btn, style);
+  return btn;
+}
+
+// Create a button with callback and ID. Style set to style_para_value.
+lv_obj_t* lv_btn_create(lv_obj_t *par, lv_event_cb_t cb, const int id) {
+  return lv_btn_create(par, cb, id, &style_para_value);
+}
+
+// Create a button with position, size, callback, and ID. Style set to style_para_value.
+lv_obj_t* lv_btn_create(lv_obj_t *par, lv_coord_t x, lv_coord_t y, lv_coord_t w, lv_coord_t h, lv_event_cb_t cb, const int id) {
+  lv_obj_t *btn = lv_btn_create(par, cb, id);
+  lv_obj_set_pos(btn, x, y);
+  lv_obj_set_size(btn, w, h);
+  return btn;
+}
+
+// Create a button with callback and ID. Style set to style_para_back.
+lv_obj_t* lv_btn_create_back(lv_obj_t *par, lv_event_cb_t cb, const int id) {
+  return lv_btn_create(par, cb, id, &style_para_back);
+}
+// Create a button with position, size, callback, and ID. Style set to style_para_back.
+lv_obj_t* lv_btn_create_back(lv_obj_t *par, lv_coord_t x, lv_coord_t y, lv_coord_t w, lv_coord_t h, lv_event_cb_t cb, const int id) {
+  lv_obj_t *btn = lv_btn_create_back(par, cb, id);
+  lv_obj_set_pos(btn, x, y);
+  lv_obj_set_size(btn, w, h);
+  return btn;
+}
+
+// Create an image button with image, callback, and ID. Use label style.
+lv_obj_t* lv_imgbtn_create(lv_obj_t *par, const char *img, lv_event_cb_t cb, const int id) {
+  lv_obj_t *btn = lv_imgbtn_create(par, NULL);
+  if (img) lv_imgbtn_set_src_both(btn, img);
+  if (id)
+    lv_obj_set_event_cb_mks(btn, cb, id, NULL, 0);
+  else
+    lv_obj_set_event_cb(btn, cb);
+  lv_imgbtn_use_label_style(btn);
+  lv_btn_set_layout(btn, LV_LAYOUT_OFF);
+  return btn;
+}
+
+// Create an image button with image, position, callback, and ID. Use label style.
+lv_obj_t* lv_imgbtn_create(lv_obj_t *par, const char *img, lv_coord_t x, lv_coord_t y, lv_event_cb_t cb, const int id) {
+  lv_obj_t *btn = lv_imgbtn_create(par, img, cb, id);
+  lv_obj_set_pos(btn, x, y);
+  return btn;
 }
 
 #if ENABLED(SDSUPPORT)

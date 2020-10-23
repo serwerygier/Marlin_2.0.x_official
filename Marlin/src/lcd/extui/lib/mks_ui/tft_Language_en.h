@@ -275,7 +275,6 @@
 #define PRINT_TEXT_EN           "Printing"
 #define EXTRUDE_TEXT_EN         "Extrusion"
 #define LEVELING_TEXT_EN        "Leveling"
-#define MLEVELING_TEXT_EN        "Leveling"
 #define AUTO_LEVELING_TEXT_EN   "AutoLevel"
 #define SET_TEXT_EN             "Settings"
 #define MORE_TEXT_EN            "More"
@@ -297,7 +296,6 @@
 #define TOOL_MOVE_EN            "Move"
 #define TOOL_HOME_EN            "Home"
 #define TOOL_LEVELING_EN        "Leveling"
-#define TOOL_MLEVELING_EN        "Leveling"
 #define TOOL_AUTO_LEVELING_EN   "AutoLevel"
 #define TOOL_FILAMENT_EN        "Filament"
 #define TOOL_MORE_EN            "More"
@@ -766,11 +764,3 @@
 #define EEPROM_STORE_TIPS_EN  "Store settings to EEPROM?"
 #define EEPROM_READ_TIPS_EN   "Read settings from EEPROM?"
 #define EEPROM_REVERT_TIPS_EN "Revert settings to factory defaults?"
-
-#define MORE_CUSTOM1_TEXT_EN  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_EN  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_EN  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_EN  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_EN  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_EN  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_EN  USER_DESC_7

@@ -188,7 +188,10 @@ void lv_draw_manualLevel(void) {
   lv_scr_load(scr);
   lv_obj_clean(scr);
 
-  (void)lv_label_create(scr, TITLE_XPOS, TITLE_YPOS, creat_title_text());
+  lv_obj_t * title = lv_label_create(scr, NULL);
+  lv_obj_set_style(title, &tft_style_label_rel);
+  lv_obj_set_pos(title, TITLE_XPOS, TITLE_YPOS);
+  lv_label_set_text(title, creat_title_text());
 
   lv_refr_now(lv_refr_get_disp_refreshing());
 

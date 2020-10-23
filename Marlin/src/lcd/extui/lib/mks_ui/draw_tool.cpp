@@ -42,7 +42,8 @@ static lv_obj_t * scr;
 #define ID_T_MOV        3
 #define ID_T_HOME       4
 #define ID_T_LEVELING   5
-#define ID_T_FILAMENT   6
+//#define ID_T_FILAMENT   7
+#define ID_T_MLEVELING  6 //Malderin ������� ���� "�������"
 #define ID_T_MORE       7
 #define ID_T_RETURN     8
 
@@ -67,7 +68,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
       }
       else if (event == LV_EVENT_RELEASED) {
         lv_clear_tool();
-        lv_draw_extrusion();
+        lv_draw_extrusion_m();
       }
       break;
     case ID_T_MOV:
@@ -106,17 +107,42 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
         #endif
       }
       break;
-    case ID_T_FILAMENT:
+//    case ID_T_FILAMENT:
+//      if (event == LV_EVENT_CLICKED) {
+//        // nothing to do
+//      }
+//      else if (event == LV_EVENT_RELEASED) {
+//        uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
+//        lv_clear_tool();
+//        lv_draw_filament_change();
+//      }
+//      break;
+case ID_T_MORE:
+  #if ENABLED(CUSTOM_USER_MENUS)
+    if (event == LV_EVENT_CLICKED) {
+      // nothing to do
+    }
+    else if (event == LV_EVENT_RELEASED) {
+      lv_clear_tool();
+      lv_draw_more();
+    }
+  #endif
+  break;
+          //Malderin ����� ��������
+    case ID_T_MLEVELING:
+    #if ENABLED(BLTOUCH)
       if (event == LV_EVENT_CLICKED) {
-        // nothing to do
-      }
-      else if (event == LV_EVENT_RELEASED) {
-        uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
-        lv_clear_tool();
-        lv_draw_filament_change();
-      }
-      break;
-    case ID_T_MORE: break;
+          // nothing to do
+        }
+        else if (event == LV_EVENT_RELEASED) {
+              #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
+                  uiCfg.leveling_first_time = 1;
+                  lv_clear_tool();
+                  lv_draw_manualLevel();
+                #endif
+        }
+    #endif
+        break;
     case ID_T_RETURN:
       if (event == LV_EVENT_CLICKED) {
         // nothing to do
@@ -132,7 +158,13 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
 
 void lv_draw_tool(void) {
   lv_obj_t *buttonPreHeat, *buttonExtrusion, *buttonMove, *buttonHome, *buttonLevel;
-  lv_obj_t *buttonFilament;
+  #if ENABLED(BLTOUCH)
+    lv_obj_t *buttonMLevel;
+  #endif
+//  lv_obj_t *buttonFilament, *buttonMLevel;
+#if ENABLED(CUSTOM_USER_MENUS)
+  lv_obj_t *buttonMore;
+#endif
   lv_obj_t *buttonBack;
 
   if (disp_state_stack._disp_state[disp_state_stack._disp_index] != TOOL_UI) {
@@ -159,9 +191,16 @@ void lv_draw_tool(void) {
   buttonMove      = lv_imgbtn_create(scr, "F:/bmp_mov.bin", BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight, event_handler, ID_T_MOV);
   buttonHome      = lv_imgbtn_create(scr, "F:/bmp_zero.bin", BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight, event_handler, ID_T_HOME);
   buttonLevel     = lv_imgbtn_create(scr, "F:/bmp_leveling.bin", INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_LEVELING);
-  buttonFilament  = lv_imgbtn_create(scr, "F:/bmp_filamentchange.bin",BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler,ID_T_FILAMENT);
-  //buttonMore    = lv_imgbtn_createx(scr, NULL);
-  //lv_obj_set_pos(buttonMore,BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight);
+  //buttonFilament  = lv_imgbtn_create(scr, "F:/bmp_filamentchange.bin",BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler,ID_T_FILAMENT);
+
+  #if ENABLED(BLTOUCH)
+    buttonMLevel  = lv_imgbtn_create(scr, "F:/bmp_leveling.bin", BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler, ID_T_MLEVELING);
+  #endif
+
+  #if ENABLED(CUSTOM_USER_MENUS)
+    buttonMore  = lv_imgbtn_create(scr, "F:/bmp_more.bin", BTN_X_PIXEL*2+INTERVAL_V*3, BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler, ID_T_MORE);
+  #endif
+
   buttonBack      = lv_imgbtn_create(scr, "F:/bmp_return.bin", BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
 
   // Create labels on the image buttons
@@ -170,8 +209,9 @@ void lv_draw_tool(void) {
   lv_obj_t *label_Move     = lv_label_create_empty(buttonMove);
   lv_obj_t *label_Home     = lv_label_create_empty(buttonHome);
   lv_obj_t *label_Level    = lv_label_create_empty(buttonLevel);
-  lv_obj_t *label_Filament = lv_label_create_empty(buttonFilament);
-  //lv_obj_t *label_More   = lv_label_create_empty(buttonMore);
+//  lv_obj_t *label_Filament = lv_label_create_empty(buttonFilament);
+  lv_obj_t *label_MLevel     = lv_label_create_empty(buttonMLevel);
+  lv_obj_t *label_More     = lv_label_create_empty(buttonMore);
   lv_obj_t *label_Back     = lv_label_create_empty(buttonBack);
 
   if (gCfgItems.multiple_language) {
@@ -190,11 +230,21 @@ void lv_draw_tool(void) {
     lv_label_set_text(label_Level, tool_menu.TERN(AUTO_BED_LEVELING_BILINEAR, autoleveling, leveling));
     lv_obj_align(label_Level, buttonLevel, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
-    lv_label_set_text(label_Filament, tool_menu.filament);
-    lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+//    lv_label_set_text(label_Filament, tool_menu.filament);
+//    lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
-    //lv_label_set_text(label_More, tool_menu.more);
-    //lv_obj_align(label_More, buttonMore, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    #if ENABLED(BLTOUCH)
+      lv_label_set_text(label_MLevel, tool_menu.mleveling);                                               //Malderin
+    lv_obj_align(label_MLevel, buttonMLevel, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    #endif
+
+    #if ENABLED(CUSTOM_USER_MENUS)
+      lv_label_set_text(label_More, tool_menu.more);
+      lv_obj_align(label_More, buttonMore, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    #endif
+
+    lv_label_set_text(label_More, tool_menu.more);
+    lv_obj_align(label_More, buttonMore, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
     lv_label_set_text(label_Back, common_menu.text_back);
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
@@ -206,7 +256,13 @@ void lv_draw_tool(void) {
       lv_group_add_obj(g, buttonMove);
       lv_group_add_obj(g, buttonHome);
       lv_group_add_obj(g, buttonLevel);
-      lv_group_add_obj(g, buttonFilament);
+//      lv_group_add_obj(g, buttonFilament);
+    #if ENABLED(BLTOUCH)
+      lv_group_add_obj(g, buttonMLevel);
+    #endif
+      #if ENABLED(CUSTOM_USER_MENUS)
+        lv_group_add_obj(g, buttonMore);
+      #endif
       lv_group_add_obj(g, buttonBack);
     }
   #endif

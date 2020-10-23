@@ -83,8 +83,8 @@ void lv_draw_about(void) {
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
   }
 
-  fw_version = lv_label_create(scr, "Telegramm chat: " WEBSITE_URL);
-  lv_obj_align(fw_version, NULL, LV_ALIGN_CENTER, 0, -20);
+  fw_version = lv_label_create(scr, "Telegramm: " WEBSITE_URL);
+  lv_obj_align(fw_version, NULL, LV_ALIGN_CENTER, 0, 0);
 
   fw_type = lv_label_create(scr, "Firmware: Marlin " SHORT_BUILD_VERSION);
   lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -40);

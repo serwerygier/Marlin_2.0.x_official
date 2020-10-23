@@ -196,10 +196,10 @@ void lv_draw_tmc_step_mode_settings(void) {
   lv_obj_t *buttonE0Text = NULL, *labelE0Text = NULL;
 
   lv_obj_t * line1 = NULL, * line2 = NULL, * line3 = NULL, * line4 = NULL;
-  //#if AXIS_HAS_STEALTHCHOP(E1)
+  #if AXIS_HAS_STEALTHCHOP(E1)
     lv_obj_t *buttonTurnPage = NULL, *labelTurnPage = NULL;
     lv_obj_t *buttonE1Text = NULL, *labelE1Text = NULL;
-  //#endif
+  #endif
 
   labelXState   = NULL;
   buttonXState  = NULL;
@@ -304,15 +304,15 @@ void lv_draw_tmc_step_mode_settings(void) {
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
 
-    //#if AXIS_HAS_STEALTHCHOP(E1)
+    #if AXIS_HAS_STEALTHCHOP(E1)
       buttonTurnPage = lv_imgbtn_create(scr, "F:/bmp_back70x40.bin", event_handler, ID_TMC_MODE_DOWN);
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonTurnPage);
       #endif
-    //#endif
+    #endif
   }
   else {
-    //#if AXIS_HAS_STEALTHCHOP(E1)
+    #if AXIS_HAS_STEALTHCHOP(E1)
       buttonE1Text = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
       lv_btn_use_label_style(buttonE1Text);
       lv_btn_set_layout(buttonE1Text, LV_LAYOUT_OFF);
@@ -328,13 +328,13 @@ void lv_draw_tmc_step_mode_settings(void) {
       lv_ex_line(line1, line_points[0]);
 
       buttonTurnPage = lv_imgbtn_create(scr, "F:/bmp_back70x40.bin", event_handler, ID_TMC_MODE_UP);
-    //#endif
+    #endif
   }
-  //#if AXIS_HAS_STEALTHCHOP(E1)
+  #if AXIS_HAS_STEALTHCHOP(E1)
     lv_obj_set_pos(buttonTurnPage, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y);
     lv_btn_set_layout(buttonTurnPage, LV_LAYOUT_OFF);
     labelTurnPage = lv_label_create_empty(buttonTurnPage);
-  //#endif
+  #endif
 
   buttonBack = lv_imgbtn_create(scr, "F:/bmp_back70x40.bin", PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y, event_handler, ID_TMC_MODE_RETURN);
   #if HAS_ROTARY_ENCODER
@@ -368,13 +368,13 @@ void lv_draw_tmc_step_mode_settings(void) {
       lv_label_set_text(labelE0State, stealth_E0 ? machine_menu.enable : machine_menu.disable);
       lv_obj_align(labelE0State, buttonE0State, LV_ALIGN_CENTER, 0, 0);
 
-      //#if AXIS_HAS_STEALTHCHOP(E1)
+      #if AXIS_HAS_STEALTHCHOP(E1)
         lv_label_set_text(labelTurnPage, machine_menu.next);
         lv_obj_align(labelTurnPage, buttonTurnPage, LV_ALIGN_CENTER, 0, 0);
-      //#endif
+      #endif
     }
     else {
-      //#if AXIS_HAS_STEALTHCHOP(E1)
+      #if AXIS_HAS_STEALTHCHOP(E1)
         lv_label_set_text(labelE1Text, machine_menu.E1_StepMode);
         lv_obj_align(labelE1Text, buttonE1Text, LV_ALIGN_IN_LEFT_MID, 0, 0);
         lv_label_set_text(labelE1State, stealth_E1 ? machine_menu.enable : machine_menu.disable);
@@ -382,7 +382,7 @@ void lv_draw_tmc_step_mode_settings(void) {
 
         lv_label_set_text(labelTurnPage, machine_menu.previous);
         lv_obj_align(labelTurnPage, buttonTurnPage, LV_ALIGN_CENTER, 0, 0);
-      //#endif
+      #endif
     }
 
     lv_label_set_text(label_Back, common_menu.text_back);

@@ -201,7 +201,9 @@ void lv_draw_machine_para(void) {
   lv_obj_set_pos(buttonLevel, PARA_UI_POS_X, PARA_UI_POS_Y * 3);          /*Set its position*/
   lv_obj_set_size(buttonLevel, PARA_UI_SIZE_X, PARA_UI_SIZE_Y);           /*Set its size*/
   //lv_obj_set_event_cb(buttonMotor, event_handler);
-  lv_btn_use_label_style(buttonLevel);
+  lv_obj_set_event_cb_mks(buttonLevel, event_handler, ID_PARA_LEVEL, NULL, 0);
+  lv_btn_set_style(buttonLevel, LV_BTN_STYLE_REL, &tft_style_label_rel);  /*Set the button's released style*/
+  lv_btn_set_style(buttonLevel, LV_BTN_STYLE_PR, &tft_style_label_pre);   /*Set the button's pressed style*/
   lv_btn_set_layout(buttonLevel, LV_LAYOUT_OFF);
   labelLevel = lv_label_create(buttonLevel, NULL);                      /*Add a label to the button*/
 

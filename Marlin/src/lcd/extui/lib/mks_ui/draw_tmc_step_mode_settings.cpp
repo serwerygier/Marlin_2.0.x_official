@@ -263,10 +263,31 @@ void lv_draw_tmc_step_mode_settings(void) {
   lv_refr_now(lv_refr_get_disp_refreshing());
 
   if (uiCfg.para_ui_page != 1) {
-    buttonXText = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
-    lv_btn_use_label_style(buttonXText);
+    buttonXText = lv_btn_create(scr, NULL);                                 /*Add a button the current screen*/
+    lv_obj_set_pos(buttonXText, PARA_UI_POS_X, PARA_UI_POS_Y);              /*Set its position*/
+    lv_obj_set_size(buttonXText, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y);     /*Set its size*/
+    lv_obj_set_event_cb(buttonXText, event_handler);
+    lv_btn_set_style(buttonXText, LV_BTN_STYLE_REL, &tft_style_label_rel);  /*Set the button's released style*/
+    lv_btn_set_style(buttonXText, LV_BTN_STYLE_PR, &tft_style_label_pre);   /*Set the button's pressed style*/
     lv_btn_set_layout(buttonXText, LV_LAYOUT_OFF);
-    labelXText = lv_label_create_empty(buttonXText);                        /*Add a label to the button*/
+    labelXText = lv_label_create(buttonXText, NULL);                        /*Add a label to the button*/
+
+    buttonXState = lv_imgbtn_create(scr, NULL);
+    lv_obj_set_pos(buttonXState, PARA_UI_STATE_POS_X, PARA_UI_POS_Y + PARA_UI_STATE_V);
+    #if AXIS_HAS_STEALTHCHOP(X)
+    if (stepperX.get_stealthChop_status()) {
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_REL, "F:/bmp_enable.bin");
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_PR, "F:/bmp_enable.bin");
+    }
+    else {
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+    }
+    #else
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+      lv_imgbtn_set_src(buttonXState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+    #endif
+    lv_obj_set_event_cb_mks(buttonXState, event_handler, ID_TMC_MODE_X, NULL, 0);
 
     lv_imgbtn_set_style(buttonXState, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonXState, LV_BTN_STATE_REL, &tft_style_label_rel);
@@ -279,10 +300,31 @@ void lv_draw_tmc_step_mode_settings(void) {
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
 
-    buttonYText = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y * 2, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
-    lv_btn_use_label_style(buttonYText);
+    buttonYText = lv_btn_create(scr, NULL);                                 /*Add a button the current screen*/
+    lv_obj_set_pos(buttonYText, PARA_UI_POS_X, PARA_UI_POS_Y * 2);          /*Set its position*/
+    lv_obj_set_size(buttonYText, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y);     /*Set its size*/
+    lv_obj_set_event_cb(buttonYText, event_handler);
+    lv_btn_set_style(buttonYText, LV_BTN_STYLE_REL, &tft_style_label_rel);  /*Set the button's released style*/
+    lv_btn_set_style(buttonYText, LV_BTN_STYLE_PR, &tft_style_label_pre);   /*Set the button's pressed style*/
     lv_btn_set_layout(buttonYText, LV_LAYOUT_OFF);
-    labelYText = lv_label_create_empty(buttonYText);                        /*Add a label to the button*/
+    labelYText = lv_label_create(buttonYText, NULL);                        /*Add a label to the button*/
+
+    buttonYState = lv_imgbtn_create(scr, NULL);
+    lv_obj_set_pos(buttonYState, PARA_UI_STATE_POS_X, PARA_UI_POS_Y * 2 + PARA_UI_STATE_V);
+    #if AXIS_HAS_STEALTHCHOP(Y)
+      if (stepperY.get_stealthChop_status()) {
+        lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_REL, "F:/bmp_enable.bin");
+        lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_PR, "F:/bmp_enable.bin");
+      }
+      else {
+        lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+        lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+      }
+    #else
+      lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+      lv_imgbtn_set_src(buttonYState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+    #endif
+    lv_obj_set_event_cb_mks(buttonYState, event_handler, ID_TMC_MODE_Y, NULL, 0);
 
     lv_imgbtn_set_style(buttonYState, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonYState, LV_BTN_STATE_REL, &tft_style_label_rel);
@@ -295,13 +337,35 @@ void lv_draw_tmc_step_mode_settings(void) {
     line2 = lv_line_create(scr, NULL);
     lv_ex_line(line2, line_points[1]);
 
-    buttonZText = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y * 3, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
-    lv_btn_use_label_style(buttonZText);
+    buttonZText = lv_btn_create(scr, NULL);                                 /*Add a button the current screen*/
+    lv_obj_set_pos(buttonZText, PARA_UI_POS_X, PARA_UI_POS_Y * 3);          /*Set its position*/
+    lv_obj_set_size(buttonZText, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y);     /*Set its size*/
+    lv_obj_set_event_cb(buttonZText, event_handler);
+    lv_btn_set_style(buttonZText, LV_BTN_STYLE_REL, &tft_style_label_rel);  /*Set the button's released style*/
+    lv_btn_set_style(buttonZText, LV_BTN_STYLE_PR, &tft_style_label_pre);   /*Set the button's pressed style*/
     lv_btn_set_layout(buttonZText, LV_LAYOUT_OFF);
-    labelZText = lv_label_create_empty(buttonZText);                        /*Add a label to the button*/
+    labelZText = lv_label_create(buttonZText, NULL);                        /*Add a label to the button*/
 
-    buttonZState = lv_imgbtn_create(scr, stealth_Z ? "F:/bmp_enable.bin" : "F:/bmp_disable.bin", PARA_UI_STATE_POS_X, PARA_UI_POS_Y * 3 + PARA_UI_STATE_V, event_handler, ID_TMC_MODE_Z);
-    labelZState = lv_label_create_empty(buttonZState);
+    buttonZState = lv_imgbtn_create(scr, NULL);
+    lv_obj_set_pos(buttonZState, PARA_UI_STATE_POS_X, PARA_UI_POS_Y * 3 + PARA_UI_STATE_V);
+    #if AXIS_HAS_STEALTHCHOP(Z)
+      if (stepperZ.get_stealthChop_status()) {
+        lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_REL, "F:/bmp_enable.bin");
+        lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_PR, "F:/bmp_enable.bin");
+      }
+      else {
+        lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+        lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+      }
+    #else
+      lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+      lv_imgbtn_set_src(buttonZState, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+    #endif
+    lv_obj_set_event_cb_mks(buttonZState, event_handler, ID_TMC_MODE_Z, NULL, 0);
+    lv_imgbtn_set_style(buttonZState, LV_BTN_STATE_PR, &tft_style_label_pre);
+    lv_imgbtn_set_style(buttonZState, LV_BTN_STATE_REL, &tft_style_label_rel);
+    lv_btn_set_layout(buttonZState, LV_LAYOUT_OFF);
+    labelZState = lv_label_create(buttonZState, NULL);
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonZState);
     #endif
@@ -309,10 +373,32 @@ void lv_draw_tmc_step_mode_settings(void) {
     line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3, line_points[2]);
 
-    buttonE0Text = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y * 4, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
-    lv_btn_use_label_style(buttonE0Text);
+    buttonE0Text = lv_btn_create(scr, NULL);                                /*Add a button the current screen*/
+    lv_obj_set_pos(buttonE0Text, PARA_UI_POS_X, PARA_UI_POS_Y * 4);         /*Set its position*/
+    lv_obj_set_size(buttonE0Text, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y);    /*Set its size*/
+    lv_obj_set_event_cb(buttonE0Text, event_handler);
+    lv_btn_set_style(buttonE0Text, LV_BTN_STYLE_REL, &tft_style_label_rel); /*Set the button's released style*/
+    lv_btn_set_style(buttonE0Text, LV_BTN_STYLE_PR, &tft_style_label_pre);  /*Set the button's pressed style*/
     lv_btn_set_layout(buttonE0Text, LV_LAYOUT_OFF);
-    labelE0Text = lv_label_create_empty(buttonE0Text);                      /*Add a label to the button*/
+    labelE0Text = lv_label_create(buttonE0Text, NULL);                      /*Add a label to the button*/
+
+    buttonE0State = lv_imgbtn_create(scr, NULL);
+    lv_obj_set_pos(buttonE0State, PARA_UI_STATE_POS_X, PARA_UI_POS_Y * 4 + PARA_UI_STATE_V);
+    #if AXIS_HAS_STEALTHCHOP(E0)
+      if (stepperE0.get_stealthChop_status()) {
+        lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_REL, "F:/bmp_enable.bin");
+        lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_PR, "F:/bmp_enable.bin");
+      }
+      else {
+        lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+        lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+      }
+    #else
+      lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+      lv_imgbtn_set_src(buttonE0State, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+    #endif
+
+    lv_obj_set_event_cb_mks(buttonE0State, event_handler, ID_TMC_MODE_E0, NULL, 0);
 
     lv_imgbtn_set_style(buttonE0State, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonE0State, LV_BTN_STATE_REL, &tft_style_label_rel);
@@ -340,13 +426,35 @@ void lv_draw_tmc_step_mode_settings(void) {
   }
   else {
     //#if AXIS_HAS_STEALTHCHOP(E1)
-      buttonE1Text = lv_btn_create(scr, PARA_UI_POS_X, PARA_UI_POS_Y, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y, event_handler, 0);
-      lv_btn_use_label_style(buttonE1Text);
+      buttonE1Text = lv_btn_create(scr, NULL);                                /*Add a button the current screen*/
+      lv_obj_set_pos(buttonE1Text, PARA_UI_POS_X, PARA_UI_POS_Y);             /*Set its position*/
+      lv_obj_set_size(buttonE1Text, PARA_UI_VALUE_SIZE_X, PARA_UI_SIZE_Y);    /*Set its size*/
+      lv_obj_set_event_cb(buttonE1Text, event_handler);
+      lv_btn_set_style(buttonE1Text, LV_BTN_STYLE_REL, &tft_style_label_rel); /*Set the button's released style*/
+      lv_btn_set_style(buttonE1Text, LV_BTN_STYLE_PR, &tft_style_label_pre);  /*Set the button's pressed style*/
       lv_btn_set_layout(buttonE1Text, LV_LAYOUT_OFF);
-      labelE1Text = lv_label_create_empty(buttonE1Text);                      /*Add a label to the button*/
+      labelE1Text = lv_label_create(buttonE1Text, NULL);                      /*Add a label to the button*/
 
-      buttonE1State = lv_imgbtn_create(scr, stealth_E1 ? "F:/bmp_enable.bin" : "F:/bmp_disable.bin", PARA_UI_STATE_POS_X, PARA_UI_POS_Y + PARA_UI_STATE_V, event_handler, ID_TMC_MODE_E1);
-      labelE1State = lv_label_create_empty(buttonE1State);
+      buttonE1State = lv_imgbtn_create(scr, NULL);
+      lv_obj_set_pos(buttonE1State, PARA_UI_STATE_POS_X, PARA_UI_POS_Y + PARA_UI_STATE_V);
+      #if AXIS_HAS_STEALTHCHOP(E1)
+        if (stepperE1.get_stealthChop_status()) {
+          lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_REL, "F:/bmp_enable.bin");
+          lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_PR, "F:/bmp_enable.bin");
+          }
+        else {
+          lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+          lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+        }
+      #else
+        lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_REL, "F:/bmp_disable.bin");
+        lv_imgbtn_set_src(buttonE1State, LV_BTN_STATE_PR, "F:/bmp_disable.bin");
+      #endif
+      lv_obj_set_event_cb_mks(buttonE1State, event_handler, ID_TMC_MODE_E1, NULL, 0);
+      lv_imgbtn_set_style(buttonE1State, LV_BTN_STATE_PR, &tft_style_label_pre);
+      lv_imgbtn_set_style(buttonE1State, LV_BTN_STATE_REL, &tft_style_label_rel);
+      lv_btn_set_layout(buttonE1State, LV_LAYOUT_OFF);
+      labelE1State = lv_label_create(buttonE1State, NULL);
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonE1State);
       #endif

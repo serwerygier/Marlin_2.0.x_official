@@ -287,11 +287,11 @@
 
 //Malderin translate
 //
-//#define EEPROM_STORE_TIPS_RU          "Cохранить настройки в EEPROM?"
-#define EEPROM_STORE_TIPS_RU          "Store settings to EEPROM?"
+#define EEPROM_STORE_TIPS_RU          "Cохранить настройки в EEPROM?"
+//#define EEPROM_STORE_TIPS_RU          "Store settings to EEPROM?"
 #define EEPROM_READ_TIPS_RU           "читать настройки из EEPROM?"
-//#define EEPROM_REVERT_TIPS_RU         "Cбросить настройки к значениям по умолчанию?"
-#define EEPROM_REVERT_TIPS_RU         "Revert settings to factory defaults?"
+#define EEPROM_REVERT_TIPS_RU         "Cбросить настройки к значениям по умолчанию?"
+//#define EEPROM_REVERT_TIPS_RU         "Revert settings to factory defaults?"
 #define EEPROM_SETTINGS_RU            "EEPROM"
 
 

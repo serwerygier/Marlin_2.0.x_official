@@ -62,7 +62,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       break;
     case ID_T_EXTRUCT:
       lv_clear_tool();
-      lv_draw_extrusion();
+      lv_draw_extrusion_m();
       break;
     case ID_T_MOV:
       lv_clear_tool();
@@ -95,7 +95,6 @@ case ID_T_MORE:
   #if ENABLED(CUSTOM_USER_MENUS)
       lv_clear_tool();
       lv_draw_more();
-    }
   #endif
   break;
 case ID_T_MLEVELING:

@@ -37,40 +37,27 @@
 extern lv_group_t * g;
 static lv_obj_t * scr;
 
-#define ID_T_EXTRUCT      1
-#define ID_T_FILAMENT     2
-#define ID_T_RETURN       3
+enum {
+  ID_T_EXTRUCT = 1,
+  ID_T_FILAMENT,
+  ID_T_RETURN
+};
 
 static void event_handler(lv_obj_t * obj, lv_event_t event) {
+  if (event != LV_EVENT_RELEASED) return;
   switch (obj->mks_obj_id) {
     case ID_T_EXTRUCT:
-    if (event == LV_EVENT_CLICKED) {
-      // nothing to do
-    }
-    else if (event == LV_EVENT_RELEASED) {
       lv_clear_tool();
       lv_draw_extrusion();
-    }
     break;
     case ID_T_FILAMENT:
-    if (event == LV_EVENT_CLICKED) {
-      // nothing to do
-    }
-    else if (event == LV_EVENT_RELEASED) {
       uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
       lv_clear_tool();
       lv_draw_filament_change();
-    }
     break;
     case ID_T_RETURN:
-      if (event == LV_EVENT_CLICKED) {
-        // nothing to do
-      }
-      else if (event == LV_EVENT_RELEASED) {
-        TERN_(MKS_TEST, curent_disp_ui = 1);
         lv_clear_tool();
         lv_draw_tool();
-      }
       break;
     }
   }
@@ -78,60 +65,19 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
   void lv_draw_extrusion_m(void) {
     scr = lv_screen_create(EXTRUSION_UI_M);
 
-    lv_obj_t *buttonExtrusion, *buttonFilament;
-    lv_obj_t *buttonBack;
-
-  if (disp_state_stack._disp_state[disp_state_stack._disp_index] != EXTRUSION_UI_M) {
-    disp_state_stack._disp_index++;
-    disp_state_stack._disp_state[disp_state_stack._disp_index] = EXTRUSION_UI_M;
-  }
-  disp_state = EXTRUSION_UI_M;
-
-  scr = lv_obj_create(NULL, NULL);
-
-  lv_obj_set_style(scr, &tft_style_scr);
-  lv_scr_load(scr);
-  lv_obj_clean(scr);
-
-  (void)lv_label_create(scr, TITLE_XPOS, TITLE_YPOS, creat_title_text());
-
-  lv_refr_now(lv_refr_get_disp_refreshing());
-
   // Create image buttons
-
-  buttonExtrusion = lv_imgbtn_create(scr, "F:/bmp_extruct.bin", INTERVAL_V, titleHeight, event_handler, ID_T_EXTRUCT);
-  buttonFilament = lv_imgbtn_create(scr, "F:/bmp_filamentchange.bin", BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_T_FILAMENT);
-  buttonBack = lv_imgbtn_create(scr, "F:/bmp_return.bin", BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
-
-  lv_obj_set_pos(buttonFilament, INTERVAL_V, titleHeight);
-  lv_obj_set_pos(buttonExtrusion, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight);
-  lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
+  lv_obj_t *buttonFilament = lv_big_button_create(scr, "F:/bmp_filamentchange.bin", tool_menu.filament, INTERVAL_V, titleHeight, event_handler, ID_T_FILAMENT);
+  lv_obj_clear_protect(buttonFilament, LV_PROTECT_FOLLOW);
+  lv_big_button_create(scr, "F:/bmp_extruct.bin", tool_menu.extrude, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_T_EXTRUCT);
+  lv_big_button_create(scr, "F:/bmp_return.bin", common_menu.text_back, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
 // #endif
+}
 
-  // Create labels on the image buttons
-
-  lv_obj_t *labelExtrusion  = lv_label_create_empty(buttonExtrusion);
-  lv_obj_t *labelFilament   = lv_label_create_empty(buttonFilament);
-  lv_obj_t *label_Back      = lv_label_create_empty(buttonBack);
-
-  if (gCfgItems.multiple_language != 0) {
-    lv_label_set_text(labelExtrusion, tool_menu.extrude);
-    lv_obj_align(labelExtrusion, buttonExtrusion, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
-
-    lv_label_set_text(labelFilament, tool_menu.filament);
-    lv_obj_align(labelFilament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
-
-    lv_label_set_text(label_Back, common_menu.text_back);
-    lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
-  }
-
+void lv_clear_extrusion_m() {
   #if HAS_ROTARY_ENCODER
-    if (gCfgItems.encoder_enable) {
-      lv_group_add_obj(g, buttonExtrusion);
-      lv_group_add_obj(g, buttonFilament);
-      lv_group_add_obj(g, buttonBack);
-    }
+    if (gCfgItems.encoder_enable) lv_group_remove_all_objs(g);
   #endif
+  lv_obj_del(scr);
 }
 
 #endif // HAS_TFT_LVGL_UI

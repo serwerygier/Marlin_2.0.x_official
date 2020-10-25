@@ -76,6 +76,8 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
   }
 
   void lv_draw_extrusion_m(void) {
+    scr = lv_screen_create(EXTRUSION_UI_M);
+
     lv_obj_t *buttonExtrusion, *buttonFilament;
     lv_obj_t *buttonBack;
 

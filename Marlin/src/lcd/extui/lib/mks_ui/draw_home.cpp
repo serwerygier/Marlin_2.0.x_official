@@ -78,6 +78,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 void lv_draw_home(void) {
   scr = lv_screen_create(ZERO_UI);
+  lv_refr_now(lv_refr_get_disp_refreshing());
   lv_big_button_create(scr, "F:/bmp_zeroAll.bin", home_menu.home_all, INTERVAL_V, titleHeight, event_handler, ID_H_ALL);
   lv_big_button_create(scr, "F:/bmp_zeroX.bin", home_menu.home_x, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_H_X);
   lv_big_button_create(scr, "F:/bmp_zeroY.bin", home_menu.home_y, BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight, event_handler, ID_H_Y);

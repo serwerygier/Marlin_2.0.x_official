@@ -1939,8 +1939,8 @@ void disp_language_init() {
             eeprom_menu.read             = EEPROM_SETTINGS_READ_RU;
             eeprom_menu.revert           = EEPROM_SETTINGS_REVERT_RU;
             eeprom_menu.storeTips        = EEPROM_STORE_TIPS_RU;
-            eeprom_menu.readTips         =  EEPROM_READ_TIPS_RU;
-            eeprom_menu.revertTips       =  EEPROM_REVERT_TIPS_RU;
+            eeprom_menu.readTips         = EEPROM_READ_TIPS_RU;
+            eeprom_menu.revertTips       = EEPROM_REVERT_TIPS_RU;
             break;
           case LANG_SPANISH:
             common_menu.dialog_confirm_title  = TITLE_DIALOG_CONFIRM_SP;

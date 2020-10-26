@@ -206,7 +206,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_return.bin",
 
   #if ENABLED(USE_WIFI_FUNCTION)
-    // wifi screen
+    // wifi screen 
     "bmp_wifi.bin",
   #endif
 

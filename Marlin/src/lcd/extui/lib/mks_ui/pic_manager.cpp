@@ -213,7 +213,16 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   // babystep screen
   "bmp_baby_move0_01.bin",
   "bmp_baby_move0_05.bin",
-  "bmp_baby_move0_1.bin"
+  "bmp_baby_move0_1.bin",
+
+  // more screen
+"bmp_custom1.bin",
+"bmp_custom2.bin",
+"bmp_custom3.bin",
+"bmp_custom4.bin",
+"bmp_custom5.bin",
+"bmp_custom6.bin",
+"bmp_custom7.bin"
 };
 
 #if HAS_SPI_FLASH_FONT

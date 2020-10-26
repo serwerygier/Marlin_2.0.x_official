@@ -116,7 +116,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 void lv_draw_move_motor(void) {
 //  scr = lv_screen_create(MOVE_MOTOR_UI, tool_menu.move);
-  scr = lv_screen_create(MOVE_MOTOR_UI);
+//  scr = lv_screen_create(MOVE_MOTOR_UI);
   lv_refr_now(lv_refr_get_disp_refreshing());
   lv_obj_t *buttonXI = lv_big_button_create(scr, "F:/bmp_xAdd.bin", move_menu.x_add, INTERVAL_V, titleHeight, event_handler, ID_M_X_P);
   lv_obj_clear_protect(buttonXI, LV_PROTECT_FOLLOW);

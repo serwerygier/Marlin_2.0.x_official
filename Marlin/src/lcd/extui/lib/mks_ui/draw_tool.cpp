@@ -123,7 +123,7 @@ case ID_T_MLEVELING:
 
 void lv_draw_tool(void) {
   scr = lv_screen_create(TOOL_UI);
-  lv_refr_now(lv_refr_get_disp_refreshing());
+//  lv_refr_now(lv_refr_get_disp_refreshing());
   lv_big_button_create(scr, "F:/bmp_preHeat.bin", tool_menu.preheat, INTERVAL_V, titleHeight, event_handler, ID_T_PRE_HEAT);
   lv_big_button_create(scr, "F:/bmp_extruct.bin", tool_menu.extrude, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_T_EXTRUCT);
   lv_big_button_create(scr, "F:/bmp_mov.bin", tool_menu.move, BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight, event_handler, ID_T_MOV);

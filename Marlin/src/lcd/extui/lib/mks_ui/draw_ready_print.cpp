@@ -44,6 +44,12 @@
 //static lv_obj_t *buttonPrint, *buttonTool, *buttonSet;
 extern lv_group_t*  g;
 static lv_obj_t *scr;
+static lv_obj_t *labelExt1;
+TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2);
+#if HAS_HEATED_BED
+  static lv_obj_t* labelBed;
+#endif
+
 #if ENABLED(MKS_TEST)
   uint8_t curent_disp_ui = 0;
 #endif
@@ -214,6 +220,48 @@ void lv_draw_ready_print(void) {
     lv_big_button_create(scr, "F:/bmp_tool.bin", main_menu.tool, 20, 90, event_handler, ID_TOOL);
     lv_big_button_create(scr, "F:/bmp_set.bin", main_menu.set, 180, 90, event_handler, ID_SET);
     lv_big_button_create(scr, "F:/bmp_printing.bin", main_menu.print, 340, 90, event_handler, ID_PRINT);
+
+    //Malderin
+    // Create image buttons
+    #if HAS_HEATED_BED
+      lv_obj_t *buttonBedstate = lv_img_create(scr, nullptr);
+      lv_img_set_src(buttonBedstate, "F:/bmp_bed_state.bin");
+      lv_obj_set_pos(buttonBedstate, 20, 260);
+    #endif
+
+    lv_obj_t *buttonExt1 = lv_img_create(scr, nullptr);
+    lv_img_set_src(buttonExt1, "F:/bmp_ext1_state.bin");
+    lv_obj_set_pos(buttonExt1, 180, 260);
+
+    #if HAS_MULTI_EXTRUDER
+      lv_obj_t *buttonExt2 = lv_img_create(scr, nullptr);
+      lv_img_set_src(buttonExt2, "F:/bmp_ext2_state.bin");
+      lv_obj_set_pos(buttonExt2, 325, 260);
+    #endif
+
+    #if HAS_HEATED_BED
+      labelBed = lv_label_create(scr, 80, 270, nullptr);
+    #endif
+
+    labelExt1 = lv_label_create(scr, 225, 270, nullptr);
+
+    #if HAS_MULTI_EXTRUDER
+      labelExt2 = lv_label_create(scr, 370, 270, nullptr);
+    #endif
+
+
+    #if HAS_HEATED_BED
+      sprintf(public_buf_l, printing_menu.bed_temp, (int)thermalManager.temp_bed.celsius, (int)thermalManager.temp_bed.target);
+      lv_label_set_text(labelBed, public_buf_l);
+    #endif
+
+    sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[0].celsius, (int)thermalManager.temp_hotend[0].target);
+    lv_label_set_text(labelExt1, public_buf_l);
+
+    #if HAS_MULTI_EXTRUDER
+      sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[1].celsius, (int)thermalManager.temp_hotend[1].target);
+      lv_label_set_text(labelExt2, public_buf_l);
+    #endif
   }
 }
 

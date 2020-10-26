@@ -1667,7 +1667,6 @@ lv_obj_t* lv_screen_create(DISP_STATE newScreenType, const char* title) {
 // Create an empty label
 lv_obj_t* lv_label_create_empty(lv_obj_t *par) {
   lv_obj_t *label = lv_label_create(par, (lv_obj_t*)nullptr);
-  lv_obj_set_style(label, &tft_style_label_rel);
   return label;
 }
 
@@ -1675,6 +1674,7 @@ lv_obj_t* lv_label_create_empty(lv_obj_t *par) {
 lv_obj_t* lv_label_create(lv_obj_t *par, const char *text) {
   lv_obj_t *label = lv_label_create_empty(par);
   if (text) lv_label_set_text(label, text);
+  lv_obj_set_style(label, &tft_style_label_rel);
   return label;
 }
 

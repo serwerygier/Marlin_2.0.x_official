@@ -223,6 +223,7 @@ void lv_draw_ready_print(void) {
 
     //Malderin
     // Create image buttons
+
     #if HAS_HEATED_BED
       lv_obj_t *buttonBedstate = lv_img_create(scr, nullptr);
       lv_img_set_src(buttonBedstate, "F:/bmp_bed_state.bin");
@@ -255,15 +256,19 @@ void lv_draw_ready_print(void) {
       lv_label_set_text(labelBed, public_buf_l);
     #endif
 
-    sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[0].celsius, (int)thermalManager.temp_hotend[0].target);
-    lv_label_set_text(labelExt1, public_buf_l);
+      sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[0].celsius, (int)thermalManager.temp_hotend[0].target);
+      lv_label_set_text(labelExt1, public_buf_l);
 
     #if HAS_MULTI_EXTRUDER
       sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[1].celsius, (int)thermalManager.temp_hotend[1].target);
       lv_label_set_text(labelExt2, public_buf_l);
     #endif
+
+//    thermalManager.start_watching_bed();
+//    thermalManager.start_watching_hotend();
   }
 }
+
 
 void lv_clear_ready_print() {
   #if HAS_ROTARY_ENCODER

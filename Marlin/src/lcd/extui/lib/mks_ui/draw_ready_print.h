@@ -34,6 +34,7 @@ extern void disp_det_ok();
 extern void lv_clear_ready_print();
 extern void disp_ext_temp();
 extern void disp_bed_temp();
+extern void lv_temp_info();
 
 //extern void disp_temp_ready_print();
 #ifdef __cplusplus

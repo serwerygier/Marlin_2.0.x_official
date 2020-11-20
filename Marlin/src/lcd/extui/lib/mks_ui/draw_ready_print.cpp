@@ -274,7 +274,7 @@ void lv_temp_refr() {
 
 void lv_clear_ready_print() {
   #if HAS_ROTARY_ENCODER
-    if (gCfgItems.encoder_enable == true) lv_group_remove_all_objs(g);
+    if (gCfgItems.encoder_enable) lv_group_remove_all_objs(g);
   #endif
   lv_obj_del(scr);
 }

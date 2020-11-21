@@ -25,7 +25,7 @@
  * MKS Robin Lite 3 (STM32F103RCT6) board pin assignments
  */
 
-#if NOT_TARGET(__STM32F1__)
+#ifndef __STM32F1__
   #error "Oops! Select an STM32F1 board in 'Tools > Board.'"
 #elif HOTENDS > 2 || E_STEPPERS > 2
   #error "MKS Robin Lite3 supports up to 2 hotends / E-steppers. Comment out this line to continue."
@@ -96,7 +96,7 @@
 //
 // LCD Pins
 //
-#if HAS_WIRED_LCD
+#if HAS_SPI_LCD
 
   #define BEEPER_PIN                        PC1
   #define BTN_ENC                           PC3
@@ -115,16 +115,12 @@
     #define DOGLCD_SCK                      PB13
     #define DOGLCD_MOSI                     PB15
 
-  #elif IS_TFTGLCD_PANEL
-
-    #if ENABLED(TFTGLCD_PANEL_SPI)
-      #define TFTGLCD_CS                    PB11
-    #endif
+    #undef SHOW_BOOTSCREEN
 
   #else                                           // !MKS_MINI_12864
 
     #define LCD_PINS_D4                     PA6
-    #if IS_ULTIPANEL
+    #if ENABLED(ULTIPANEL)
       #define LCD_PINS_D5                   PA7
       #define LCD_PINS_D6                   PC4
       #define LCD_PINS_D7                   PC5
@@ -132,7 +128,7 @@
 
   #endif // !MKS_MINI_12864
 
-#endif // HAS_WIRED_LCD
+#endif // HAS_SPI_LCD
 
 //
 // SD Card

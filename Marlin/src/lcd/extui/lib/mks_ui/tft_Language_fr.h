@@ -29,7 +29,6 @@
 #define PRINT_TEXT_FR                 "Impression"
 #define EXTRUDE_TEXT_FR               "Extruder"
 #define LEVELING_TEXT_FR              "Leveling"
-#define MLEVELING_TEXT_FR              "Leveling"
 #define AUTO_LEVELING_TEXT_FR         "AutoLevel"
 #define SET_TEXT_FR                   "Config"
 #define MORE_TEXT_FR                  "Plus"
@@ -51,7 +50,6 @@
 #define TOOL_MOVE_FR                  "Déplace"
 #define TOOL_HOME_FR                  "Acceuil"
 #define TOOL_LEVELING_FR              "Leveling"
-#define TOOL_MLEVELING_FR              "Leveling"
 #define TOOL_AUTO_LEVELING_FR         "AutoLevel"
 #define TOOL_FILAMENT_FR              "Filament"
 #define TOOL_MORE_FR                  "Plus"
@@ -210,6 +208,10 @@
 #define STEP_5PERCENT_FR              "5%"
 #define STEP_10PERCENT_FR             "10%"
 
+#define ZOFFSET_FR                    "Z Offset"
+#define ZOFFSET_INC_FR                "Ajouter"
+#define ZOFFSET_DEC_FR                "Réduire"
+
 #define TITLE_READYPRINT_FR           "Prête"
 #define TITLE_PREHEAT_FR              "Préchauffe"
 #define TITLE_MOVE_FR                 "Déplace"
@@ -232,6 +234,7 @@
 #define TITLE_CLOUD_TEXT_FR           "Cloud"
 #define TITLE_DIALOG_CONFIRM_FR       "Confirm"
 #define TITLE_FILESYS_FR              "FileSys"
+#define TITLE_ZOFFSET_FR              "Z Offset"
 
 #define DIALOG_CLOSE_MACHINE_FR       "Closing machine......"
 
@@ -281,11 +284,3 @@
 #define EEPROM_STORE_TIPS_FR  "Stocker les paramètres dans l'EEPROM?"
 #define EEPROM_READ_TIPS_FR   "Lire les paramètres de l'EEPROM?"
 #define EEPROM_REVERT_TIPS_FR "Rétablir les paramètres par défaut d'usine?"
-
-#define MORE_CUSTOM1_TEXT_FR  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_FR  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_FR  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_FR  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_FR  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_FR  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_FR  USER_DESC_7

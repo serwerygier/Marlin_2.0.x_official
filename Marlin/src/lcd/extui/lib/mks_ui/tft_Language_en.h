@@ -46,8 +46,8 @@
 
 #define MACHINE_PARA_TITLE_EN       "Config"
 #define MACHINE_TYPE_CNOFIG_EN      "Machine settings"
+#define TEMPERATURE_CONFIG_EN       "Temperature settings"
 #define MOTOR_CONFIG_EN             "Motor settings"
-#define MACHINE_LEVELING_CONFIG_EN  "Leveling settings"
 #define ADVANCE_CONFIG_EN           "Adavance settings"
 
 #define MACHINE_CONFIG_TITLE_EN     "Machine Settings"
@@ -56,6 +56,7 @@
 #define MACHINE_HOMEDIR_EN          "Home direction"
 #define MACHINE_ENDSTOP_TYPE_EN     "Endstop type"
 #define MACHINE_FILAMENT_CONFIG_EN  "Filament settings"
+#define MACHINE_LEVELING_CONFIG_EN  "Leveling settings"
 
 #define MACHINE_TYPE_CONFIG_TITLE_EN    "Machine Settings>Machine type"
 #define MACHINE_TYPE_XYZ_EN             "XYZ Machine"
@@ -90,18 +91,18 @@
 #define ENDSTOP_OPENED_EN               "Open"
 #define ENDSTOP_CLOSED_EN               "Close"
 
-#define FILAMENT_CONF_TITLE_EN          "Machine Settings>Filament settings"
+#define FILAMENT_CONF_TITLE_EN          "Filament settings"
+#define FILAMENT_IN_TEMPERATURE_EN      "Load temperature"
 #define FILAMENT_IN_LENGTH_EN           "Load length"
 #define FILAMENT_IN_SPEED_EN            "Load speed"
-#define FILAMENT_TEMPERATURE_EN         "Filament temperature"
+#define FILAMENT_OUT_TEMPERATURE_EN     "Unload temperature"
 #define FILAMENT_OUT_LENGTH_EN          "Unload length"
 #define FILAMENT_OUT_SPEED_EN           "Unload speed"
 
-#define LEVELING_CONF_TITLE_EN          "Machine Settings>Leveling settings"
+#define LEVELING_CONF_TITLE_EN          "Leveling settings"
 #define LEVELING_PARA_CONF_EN           "Leveling settings"
-#define LEVELING_MANUAL_POS_EN          "Manual leveling coordinate settings"
-#define LEVELING_AUTO_COMMAND_EN        "AutoLeveling command settings"
-#define LEVELING_AUTO_ZOFFSET_EN        "Nozzle-to-probe offsets settings"
+#define LEVELING_DELTA_EN               "delta machine leveling"
+#define LEVELING_XYZ_EN                 "Manual leveling coordinate settings"
 
 #define LEVELING_PARA_CONF_TITLE_EN     "leveling setting"
 #define AUTO_LEVELING_ENABLE_EN         "Enable auto leveling"
@@ -225,9 +226,6 @@
 #define HAVE_UPS_EN                     "Has UPS power supply"
 #define Z2_AND_Z2ENDSTOP_CONF_EN        "Z2 Settings"
 #define ENABLE_PINS_CONF_EN             "Enable pins level settings"
-#define WIFI_SETTINGS_EN                "Wi-Fi parameter settings"
-#define HOMING_SENSITIVITY_CONF_EN      "Homing sensitivity settings"
-#define ENCODER_SETTINGS_EN             "Rotary encoder settings"
 
 #define Z2_AND_Z2ENDSTOP_CONF_TITLE_EN  "Z2 Settings"
 #define Z2_ENABLE_EN                    "Z2 Enable"
@@ -245,29 +243,6 @@
 #define PAUSE_POSITION_Y_EN  "Y axis position (Absolute position,-1 invalid)"
 #define PAUSE_POSITION_Z_EN  "Z axis position (Relative position,-1 invalid)"
 
-#define WIFI_SETTINGS_TITLE_EN    "Machine Settings>Wi-Fi Parameter"
-#define WIFI_SETTINGS_MODE_EN     "Wi-Fi Mode"
-#define WIFI_SETTINGS_NAME_EN     "Wi-Fi Name: "
-#define WIFI_SETTINGS_PASSWORD_EN "Wi-Fi Password: "
-#define WIFI_SETTINGS_CLOUD_EN    "Do you use cloud services?"
-#define WIFI_SETTINGS_CONFIG_EN   "Config"
-#define WIFI_SETTINGS_EDIT_EN     "Edit"
-#define WIFI_CONFIG_TIPS_EN       "Wi-Fi configuration?"
-
-#define OFFSET_TITLE_EN  "Machine Settings>Offset"
-#define OFFSET_X_EN      "X offset"
-#define OFFSET_Y_EN      "Y offset"
-#define OFFSET_Z_EN      "Z offset"
-
-#define HOMING_SENSITIVITY_CONF_TITLE_EN      "Machine Settings>Sensitivity"
-#define X_SENSITIVITY_EN                      "X Axis Sensitivity"
-#define Y_SENSITIVITY_EN                      "Y Axis Sensitivity"
-#define Z_SENSITIVITY_EN                      "Z Axis Sensitivity"
-#define Z2_SENSITIVITY_EN                     "Z2 Axis Sensitivity"
-
-#define ENCODER_CONF_TITLE_EN                 "Machine Settings>Rotary encoder settings"
-#define ENCODER_CONF_TEXT_EN                  "Is the encoder function used?"
-
 #define TOOL_TEXT_EN            "Tool"
 #define PREHEAT_TEXT_EN         "Preheat"
 #define MOVE_TEXT_EN            "Move"
@@ -275,7 +250,6 @@
 #define PRINT_TEXT_EN           "Printing"
 #define EXTRUDE_TEXT_EN         "Extrusion"
 #define LEVELING_TEXT_EN        "Leveling"
-#define MLEVELING_TEXT_EN        "Leveling"
 #define AUTO_LEVELING_TEXT_EN   "AutoLevel"
 #define SET_TEXT_EN             "Settings"
 #define MORE_TEXT_EN            "More"
@@ -297,7 +271,6 @@
 #define TOOL_MOVE_EN            "Move"
 #define TOOL_HOME_EN            "Home"
 #define TOOL_LEVELING_EN        "Leveling"
-#define TOOL_MLEVELING_EN        "Leveling"
 #define TOOL_AUTO_LEVELING_EN   "AutoLevel"
 #define TOOL_FILAMENT_EN        "Filament"
 #define TOOL_MORE_EN            "More"
@@ -456,6 +429,10 @@
 #define STEP_5PERCENT_EN                    "5%"
 #define STEP_10PERCENT_EN                   "10%"
 
+#define ZOFFSET_EN                          "Z Offset"
+#define ZOFFSET_INC_EN                      "Add"
+#define ZOFFSET_DEC_EN                      "Dec"
+
 #define TITLE_READYPRINT_EN                 "ReadyPrint"
 #define TITLE_PREHEAT_EN                    "Preheat"
 #define TITLE_MOVE_EN                       "Move"
@@ -478,6 +455,7 @@
 #define TITLE_CLOUD_TEXT_EN                 "Cloud"
 #define TITLE_DIALOG_CONFIRM_EN             "Confirm"
 #define TITLE_FILESYS_EN                    "FileSys"
+#define TITLE_ZOFFSET_EN                    "Z Offset"
 
 #define AUTO_SHUTDOWN_EN                    "Auto"
 #define MANUAL_SHUTDOWN_EN                  "Manual"
@@ -516,9 +494,11 @@
 #define TEXT_WIFI_SYMBOL_EN     "#+="
 #define TEXT_WIFI_PASSWORD_EN   "Password"
 
-#define TEXT_WIFI_JOINING_EN  "Joining Network..."
-#define TEXT_WIFI_FAILED_JOIN_EN  "Failed to Join Wi-Fi"
-#define TEXT_WIFI_WIFI_CONECTED_EN "Wi-Fi Connected"
+#define TEXT_WIFI_POINT_BOLD_EN "`"
+
+#define TEXT_WIFI_JOINING_EN        "Joining\nNetwork..."
+#define TEXT_WIFI_FAILED_JOIN_EN    "Failed to\nJoin Wi-Fi"
+#define TEXT_WIFI_WIFI_CONECTED_EN  "Wi-Fi\nConnected"
 
 #define TEXT_BUTTON_DISCONECTED_EN  "Disconnect"
 #define TEXT_WIFI_FORGET_EN         "Forget Network"
@@ -766,11 +746,3 @@
 #define EEPROM_STORE_TIPS_EN  "Store settings to EEPROM?"
 #define EEPROM_READ_TIPS_EN   "Read settings from EEPROM?"
 #define EEPROM_REVERT_TIPS_EN "Revert settings to factory defaults?"
-
-#define MORE_CUSTOM1_TEXT_EN  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_EN  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_EN  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_EN  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_EN  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_EN  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_EN  USER_DESC_7

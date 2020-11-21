@@ -29,7 +29,6 @@
 #define PRINT_TEXT_SP           "Imprimir"
 #define EXTRUDE_TEXT_SP         "Extrusor"
 #define LEVELING_TEXT_SP        "Leveling"//"nivelac\nión"
-#define MLEVELING_TEXT_SP        "Leveling"//"nivelac\nión"
 #define AUTO_LEVELING_TEXT_SP   "Autolevel"//"auto\nnivelación"
 #define SET_TEXT_SP             "Config"
 #define MORE_TEXT_SP            "Más"
@@ -51,7 +50,6 @@
 #define TOOL_MOVE_SP            "Mover"
 #define TOOL_HOME_SP            "Origen"
 #define TOOL_LEVELING_SP        "Leveling"
-#define TOOL_MLEVELING_SP        "Leveling"
 #define TOOL_AUTO_LEVELING_SP   "Autolevel"
 #define TOOL_FILAMENT_SP        "Filamento"
 #define TOOL_MORE_SP            "Más"
@@ -208,6 +206,10 @@
 #define STEP_5PERCENT_SP            "5%"
 #define STEP_10PERCENT_SP           "10%"
 
+#define ZOFFSET_SP                  "Z Offset"
+#define ZOFFSET_INC_SP              "Más"
+#define ZOFFSET_DEC_SP              "Menos"
+
 #define TITLE_READYPRINT_SP         "Inicio"
 #define TITLE_PREHEAT_SP            "Precalentar"
 #define TITLE_MOVE_SP               "Mover"
@@ -231,6 +233,7 @@
 #define TITLE_CLOUD_TEXT_SP         "Cloud"
 #define TITLE_DIALOG_CONFIRM_SP     "Confirmar"
 #define TITLE_FILESYS_SP            "Puerto"
+#define TITLE_ZOFFSET_SP            "Z Offset"
 
 #define AUTO_SHUTDOWN_SP            "Auto"
 #define MANUAL_SHUTDOWN_SP          "manual"
@@ -284,11 +287,3 @@
 #define EEPROM_STORE_TIPS_SP  "¿Guardar ajustes en EEPROM?"
 #define EEPROM_READ_TIPS_SP   "Leer la configuración de EEPROM?"
 #define EEPROM_REVERT_TIPS_SP "Revert settings to factory defaults?"
-
-#define MORE_CUSTOM1_TEXT_SP  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_SP  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_SP  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_SP  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_SP  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_SP  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_SP  USER_DESC_7

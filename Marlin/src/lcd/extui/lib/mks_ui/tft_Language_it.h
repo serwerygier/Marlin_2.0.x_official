@@ -29,7 +29,6 @@
 #define PRINT_TEXT_IT                 "Stampa"
 #define EXTRUDE_TEXT_IT               "Estrude"
 #define LEVELING_TEXT_IT              "Leveling"
-#define MLEVELING_TEXT_IT              "Leveling"
 #define AUTO_LEVELING_TEXT_IT         "AutoLevel"
 #define SET_TEXT_IT                   "Imposta"
 #define MORE_TEXT_IT                  "Di più"
@@ -51,7 +50,6 @@
 #define TOOL_MOVE_IT                  "Muovi"
 #define TOOL_HOME_IT                  "Home"
 #define TOOL_LEVELING_IT              "Leveling"
-#define TOOL_MLEVELING_IT              "Leveling"
 #define TOOL_AUTO_LEVELING_IT         "Autolevel"
 #define TOOL_FILAMENT_IT              "Filamento"
 #define TOOL_MORE_IT                  "Di più"
@@ -207,6 +205,10 @@
 #define STEP_5PERCENT_IT                  "5%"
 #define STEP_10PERCENT_IT                 "10%"
 
+#define ZOFFSET_IT                        "Z Offset"
+#define ZOFFSET_INC_IT                    "Add"
+#define ZOFFSET_DEC_IT                    "Dec"
+
 #define TITLE_READYPRINT_IT               "Pronto"
 #define TITLE_PREHEAT_IT                  "Preris"
 #define TITLE_MOVE_IT                     "Muovi"
@@ -229,6 +231,7 @@
 #define TITLE_CLOUD_TEXT_IT               "Cloud"
 #define TITLE_DIALOG_CONFIRM_IT           "Confirm"
 #define TITLE_FILESYS_IT                  "FileSys"
+#define TITLE_ZOFFSET_IT                  "Z Offset"
 
 #define AUTO_SHUTDOWN_IT                  "Auto"
 #define MANUAL_SHUTDOWN_IT                "Manuale"
@@ -276,11 +279,3 @@
 #define EEPROM_STORE_TIPS_IT              "Memorizzare le impostazioni su EEPROM?"
 #define EEPROM_READ_TIPS_IT               "Leggi le impostazioni dalla EEPROM?"
 #define EEPROM_REVERT_TIPS_IT             "Ripristinare le impostazioni predefinite?"
-
-#define MORE_CUSTOM1_TEXT_IT  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_IT  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_IT  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_IT  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_IT  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_IT  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_IT  USER_DESC_7

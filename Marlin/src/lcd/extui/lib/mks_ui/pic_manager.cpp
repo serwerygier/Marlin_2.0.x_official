@@ -36,7 +36,6 @@
 #include "../../../../MarlinCore.h"
 
 extern uint16_t DeviceCode;
-extern unsigned char bmp_public_buf[17 * 1024];
 
 #if ENABLED(SDSUPPORT)
   extern char *createFilename(char * const buffer, const dir_t &p);
@@ -55,7 +54,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_preHeat.bin",
   "bmp_extruct.bin",
   "bmp_mov.bin",
-  // "bmp_Zero.bin",
+  // "bmp_zero.bin",
   "bmp_leveling.bin",
   "bmp_filamentchange.bin",
   "bmp_more.bin",
@@ -183,19 +182,17 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
 
   // settings screen
   "bmp_about.bin",
-  //"bmp_Language.bin",
-  //"bmp_Fan.bin",
+  "bmp_eeprom_settings.bin",
+  "bmp_machine_para.bin",
+  "bmp_function1.bin",
   //"bmp_manual_off.bin",
+  //"bmp_Fan.bin",
+  //"bmp_Language.bin",
 
   //start screen
   "bmp_printing.bin",
   "bmp_set.bin",
   "bmp_tool.bin",
-
-  // settings screen
-  "bmp_eeprom_settings.bin",
-  "bmp_machine_para.bin",
-  "bmp_function1.bin",
 
   // base icons
   "bmp_arrow.bin",
@@ -209,12 +206,18 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   #if ENABLED(MKS_WIFI_MODULE)
     // wifi screen
     "bmp_wifi.bin",
+    "bmp_cloud.bin",
   #endif
 
   // babystep screen
   "bmp_baby_move0_01.bin",
   "bmp_baby_move0_05.bin",
   "bmp_baby_move0_1.bin",
+
+  // presets screen
+  //"bmp_preHeat.bin",
+  //"bmp_preHeat.bin",
+  //"bmp_Fan.bin",
 
   // more screen
   "bmp_custom1.bin",
@@ -382,8 +385,6 @@ uint32_t Pic_Info_Write(uint8_t *P_name, uint32_t P_size) {
 
   return Pic_SaveAddr;
 }
-
-uint8_t public_buf[512];
 
 #if ENABLED(SDSUPPORT)
 

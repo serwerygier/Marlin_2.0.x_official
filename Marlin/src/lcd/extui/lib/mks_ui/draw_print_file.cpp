@@ -25,10 +25,6 @@
 
 #include "draw_ui.h"
 #include <lv_conf.h>
-//#include "../lvgl/src/lv_objx/lv_imgbtn.h"
-//#include "../lvgl/src/lv_objx/lv_img.h"
-//#include "../lvgl/src/lv_core/lv_disp.h"
-//#include "../lvgl/src/lv_core/lv_refr.h"
 
 #include "../../../../sd/cardreader.h"
 #include "../../../../inc/MarlinConfig.h"
@@ -49,7 +45,6 @@ int8_t curDirLever = 0;
 LIST_FILE list_file;
 DIR_OFFSET dir_offset[10];
 
-extern uint8_t public_buf[512];
 extern char public_buf_m[100];
 
 uint8_t sel_id = 0;
@@ -58,7 +53,7 @@ uint8_t sel_id = 0;
 
   static uint8_t search_file() {
     int valid_name_cnt = 0;
-    //char tmp[SHORT_NEME_LEN*MAX_DIR_LEVEL+1];
+    //char tmp[SHORT_NAME_LEN*MAX_DIR_LEVEL+1];
 
     list_file.Sd_file_cnt = 0;
     //list_file.Sd_file_offset = dir_offset[curDirLever].cur_page_first_offset;
@@ -243,7 +238,7 @@ void lv_draw_print_file(void) {
   }
   */
 }
-static char test_public_buf_l[40];
+static char test_public_buf_l[FILE_NUM][SHORT_NAME_LEN + 6];
 void disp_gcode_icon(uint8_t file_num) {
   uint8_t i;
 
@@ -294,12 +289,14 @@ void disp_gcode_icon(uint8_t file_num) {
 
           //lv_obj_set_event_cb_mks(buttonGcode[i], event_handler, (i + 1), list_file.file_name[i], 1);
 
-          strcpy(test_public_buf_l, "S:");
-          strcat(test_public_buf_l, list_file.file_name[i]);
-          char *temp = strstr(test_public_buf_l, ".GCO");
+          char *cur_name = strrchr(list_file.file_name[i], '/');
+          test_public_buf_l[i][0] = '\0';
+          strcat(test_public_buf_l[i],"S:");
+          strcat(test_public_buf_l[i],cur_name);
+          char *temp = strstr(test_public_buf_l[i],".GCO");
           if (temp) strcpy(temp, ".bin");
           lv_obj_set_event_cb_mks(buttonGcode[i], event_handler, (i + 1), "", 0);
-          lv_imgbtn_set_src_both(buttonGcode[i], test_public_buf_l);
+          lv_imgbtn_set_src_both(buttonGcode[i], test_public_buf_l[i]);
           if (i < 3) {
             lv_obj_set_pos(buttonGcode[i], BTN_X_PIXEL * i + INTERVAL_V * (i + 1) + FILE_PRE_PIC_X_OFFSET, titleHeight + FILE_PRE_PIC_Y_OFFSET);
             buttonText[i] = lv_btn_create(scr, nullptr);

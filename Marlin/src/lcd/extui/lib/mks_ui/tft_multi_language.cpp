@@ -136,6 +136,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_CN;
     machine_menu.enable               = ENABLE_CN;
     machine_menu.disable              = DISABLE_CN;
+    machine_menu.locked               = LOCKED_CN;
     machine_menu.z_min                = Z_MIN_CN;
     machine_menu.z_max                = Z_MAX_CN;
 
@@ -369,6 +370,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_T_CN;
     machine_menu.enable               = ENABLE_T_CN;
     machine_menu.disable              = DISABLE_T_CN;
+    machine_menu.locked               = LOCKED_T_CN;
     machine_menu.z_min                = Z_MIN_T_CN;
     machine_menu.z_max                = Z_MAX_T_CN;
 
@@ -605,6 +607,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_EN;
     machine_menu.enable               = ENABLE_EN;
     machine_menu.disable              = DISABLE_EN;
+    machine_menu.locked               = LOCKED_EN;
     machine_menu.z_min                = Z_MIN_EN;
     machine_menu.z_max                = Z_MAX_EN;
 
@@ -861,7 +864,7 @@ void disp_language_init() {
     tips_menu.joining      = TEXT_WIFI_JOINING_EN;
     tips_menu.failedJoin   = TEXT_WIFI_FAILED_JOIN_EN;
     tips_menu.wifiConected = TEXT_WIFI_WIFI_CONECTED_EN;
-  #endif  //MKS_WIFI_MODULE
+  #endif
   machine_setting_disp();
 
   operation_menu.babystep = TEXT_BABY_STEP_EN;
@@ -883,7 +886,7 @@ void disp_language_init() {
       main_menu.print        = PRINT_TEXT_CN;
       main_menu.extrude      = EXTRUDE_TEXT_CN;
       main_menu.leveling     = LEVELING_TEXT_CN;
-      main_menu.mleveling     = MLEVELING_TEXT_CN;
+      main_menu.mleveling    = MLEVELING_TEXT_CN;
       main_menu.autoleveling = AUTO_LEVELING_TEXT_CN;
       main_menu.fan          = FAN_TEXT_CN;
       main_menu.set          = SET_TEXT_CN;
@@ -896,7 +899,7 @@ void disp_language_init() {
       tool_menu.move         = TOOL_MOVE_CN;
       tool_menu.home         = TOOL_HOME_CN;
       tool_menu.leveling     = TOOL_LEVELING_CN;
-      tool_menu.mleveling     = TOOL_MLEVELING_CN;
+      tool_menu.mleveling    = TOOL_MLEVELING_CN;
       tool_menu.autoleveling = TOOL_AUTO_LEVELING_CN;
       tool_menu.filament     = TOOL_FILAMENT_CN;
       tool_menu.more         = TOOL_MORE_CN;
@@ -978,7 +981,7 @@ void disp_language_init() {
       #endif
       #if ENABLED(USER_CMD_5_ENABLE)
         more_menu.custom5 = MORE_CUSTOM5_TEXT_CN;
-        #endif
+      #endif
       #if ENABLED(USER_CMD_6_ENABLE)
         more_menu.custom6 = MORE_CUSTOM6_TEXT_CN;
       #endif
@@ -999,6 +1002,7 @@ void disp_language_init() {
       cloud_menu.unbind       = CLOUD_UNBIND_CN;
       cloud_menu.unbinding    = CLOUD_UNBINDED_CN;
       cloud_menu.disconnected = CLOUD_DISCONNECTED_CN;
+      cloud_menu.unbinded     = CLOUD_UNBINDED_CN;
       cloud_menu.disable      = CLOUD_DISABLE_CN;
       //
       about_menu.title   = ABOUT_TEXT_CN;
@@ -1080,9 +1084,9 @@ void disp_language_init() {
 
       // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_CN;
       print_file_dialog_menu.confirm               = DIALOG_CONFIRM_CN;
-      print_file_dialog_menu.cancle                = DIALOG_CANCLE_CN;
+      print_file_dialog_menu.cancel                = DIALOG_CANCLE_CN;
       print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_CN;
-      print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_CN;
+      print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_CN;
       print_file_dialog_menu.retry                 = DIALOG_RETRY_CN;
       print_file_dialog_menu.stop                  = DIALOG_STOP_CN;
       print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_CN;
@@ -1137,7 +1141,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_T_CN;
             main_menu.extrude      = EXTRUDE_TEXT_T_CN;
             main_menu.leveling     = LEVELING_TEXT_T_CN;
-            main_menu.mleveling     = MLEVELING_TEXT_T_CN;
+            main_menu.mleveling    = MLEVELING_TEXT_T_CN;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_T_CN;
             main_menu.fan          = FAN_TEXT_T_CN;
             main_menu.set          = SET_TEXT_T_CN;
@@ -1150,7 +1154,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_T_CN;
             tool_menu.home         = TOOL_HOME_T_CN;
             tool_menu.leveling     = TOOL_LEVELING_T_CN;
-            tool_menu.mleveling     = TOOL_MLEVELING_T_CN;
+            tool_menu.mleveling    = TOOL_MLEVELING_T_CN;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_T_CN;
             tool_menu.filament     = TOOL_FILAMENT_T_CN;
             tool_menu.more         = TOOL_MORE_T_CN;
@@ -1251,6 +1255,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_T_CN;
             cloud_menu.unbinding    = CLOUD_UNBINDED_T_CN;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_T_CN;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_T_CN;
             cloud_menu.disable      = CLOUD_DISABLE_T_CN;
             //
             about_menu.title   = ABOUT_TEXT_T_CN;
@@ -1332,9 +1337,9 @@ void disp_language_init() {
 
             // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_CN;
             print_file_dialog_menu.confirm               = DIALOG_CONFIRM_T_CN;
-            print_file_dialog_menu.cancle                = DIALOG_CANCLE_T_CN;
+            print_file_dialog_menu.cancel                = DIALOG_CANCLE_T_CN;
             print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_T_CN;
-            print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_T_CN;
+            print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_T_CN;
             print_file_dialog_menu.retry                 = DIALOG_RETRY_T_CN;
             print_file_dialog_menu.stop                  = DIALOG_STOP_T_CN;
             print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_T_CN;
@@ -1384,7 +1389,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_EN;
             main_menu.extrude      = EXTRUDE_TEXT_EN;
             main_menu.leveling     = LEVELING_TEXT_EN;
-            main_menu.mleveling     = MLEVELING_TEXT_EN;
+            main_menu.mleveling    = MLEVELING_TEXT_EN;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_EN;
             main_menu.fan          = FAN_TEXT_EN;
             main_menu.set          = SET_TEXT_EN;
@@ -1453,8 +1458,7 @@ void disp_language_init() {
             set_menu.shutdown     = SHUTDOWN_TEXT_EN;
             set_menu.machine_para = MACHINE_PARA_EN;
             set_menu.eepromSet    = EEPROM_SETTINGS_EN;
-            //
-            more_menu.title   = TITLE_MORE_EN;
+            more_menu.title       = TITLE_MORE_EN;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
             #endif
@@ -1476,6 +1480,7 @@ void disp_language_init() {
             #if ENABLED(USER_CMD_7_ENABLE)
               more_menu.custom7 = MORE_CUSTOM7_TEXT_EN;
             #endif
+
             //
             filesys_menu.title   = TITLE_FILESYS_EN;
             filesys_menu.sd_sys  = SD_CARD_TEXT_EN;
@@ -1494,6 +1499,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_EN;
             cloud_menu.unbinding    = CLOUD_UNBINDED_EN;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_EN;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_EN;
             cloud_menu.disable      = CLOUD_DISABLE_EN;
             //
             about_menu.title   = TITLE_ABOUT_EN;
@@ -1572,9 +1578,9 @@ void disp_language_init() {
 
             // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_EN;
             print_file_dialog_menu.confirm               = DIALOG_CONFIRM_EN;
-            print_file_dialog_menu.cancle                = DIALOG_CANCLE_EN;
+            print_file_dialog_menu.cancel                = DIALOG_CANCLE_EN;
             print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_EN;
-            print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_EN;
+            print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_EN;
             print_file_dialog_menu.retry                 = DIALOG_RETRY_EN;
             print_file_dialog_menu.stop                  = DIALOG_STOP_EN;
             print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_EN;
@@ -1623,7 +1629,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_RU;
             main_menu.extrude      = EXTRUDE_TEXT_RU;
             main_menu.leveling     = LEVELING_TEXT_RU;
-            main_menu.mleveling     = MLEVELING_TEXT_RU;
+            main_menu.mleveling    = MLEVELING_TEXT_RU;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_RU;
             main_menu.fan          = FAN_TEXT_RU;
             main_menu.set          = SET_TEXT_RU;
@@ -1636,7 +1642,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_RU;
             tool_menu.home         = TOOL_HOME_RU;
             tool_menu.leveling     = TOOL_LEVELING_RU;
-            tool_menu.mleveling     = TOOL_MLEVELING_RU;
+            tool_menu.mleveling    = TOOL_MLEVELING_RU;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_RU;
             tool_menu.filament     = TOOL_FILAMENT_RU;
             tool_menu.more         = TOOL_MORE_RU;
@@ -1692,8 +1698,7 @@ void disp_language_init() {
             set_menu.shutdown     = SHUTDOWN_TEXT_RU;
             set_menu.machine_para = MACHINE_PARA_RU;
             set_menu.eepromSet    = EEPROM_SETTINGS_RU;
-            //
-            more_menu.title   = TITLE_MORE_RU;
+            more_menu.title       = TITLE_MORE_RU;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_RU;
             #endif
@@ -1727,19 +1732,19 @@ void disp_language_init() {
             wifi_menu.cloud     = CLOUD_TEXT_RU;
             wifi_menu.reconnect = WIFI_RECONNECT_TEXT_RU;
 
-//Start Malderin translate
+            // Start Malderin translate
             machine_menu.next          = NEXT_RU;
             machine_menu.previous      = PREVIOUS_RU;
             machine_menu.enable        = ENABLE_RU;
             machine_menu.disable       = DISABLE_RU;
             machine_menu.key_confirm   = KEY_CONFIRM_RU;
 
-			      MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_RU;
-            MachinePara_menu.title              = MACHINE_PARA_TITLE_RU;
-            machine_menu.MachineConfigTitle     = MACHINE_CONFIG_TITLE_RU;
-			      MachinePara_menu.MotorSetting       = MOTOR_CONFIG_RU;
-			      MachinePara_menu.leveling           = MACHINE_LEVELING_CONFIG_RU;
-			      MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_RU;
+            MachinePara_menu.MachineSetting    = MACHINE_TYPE_CNOFIG_RU;
+            MachinePara_menu.title             = MACHINE_PARA_TITLE_RU;
+            machine_menu.MachineConfigTitle    = MACHINE_CONFIG_TITLE_RU;
+            MachinePara_menu.MotorSetting      = MOTOR_CONFIG_RU;
+            MachinePara_menu.leveling          = MACHINE_LEVELING_CONFIG_RU;
+            MachinePara_menu.AdvanceSetting    = ADVANCE_CONFIG_RU;
             machine_menu.MotorConfTitle        = MOTOR_CONF_TITLE_RU;
             machine_menu.MaxFeedRateConf       = MAXFEEDRATE_CONF_RU;
             machine_menu.AccelerationConf      = ACCELERATION_CONF_RU;
@@ -1755,8 +1760,8 @@ void disp_language_init() {
             machine_menu.LevelingParaConfTitle   = LEVELING_CONF_TITLE_RU;
             machine_menu.LevelingParaConf        = LEVELING_PARA_CONF_RU;
             machine_menu.LevelingManuPosConf     = LEVELING_MANUAL_POS_RU;
-        	  machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_RU;
-        	  machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_RU;
+            machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_RU;
+            machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_RU;
 
             machine_menu.AccelerationConfTitle = ACCELERATION_CONF_TITLE_RU;
             machine_menu.PrintAcceleration     = PRINT_ACCELERATION_RU;
@@ -1822,7 +1827,7 @@ void disp_language_init() {
             machine_menu.EncoderConfTitle    = ENCODER_CONF_TITLE_RU;
             machine_menu.EncoderConfText     = ENCODER_CONF_TEXT_RU;
 
-//End Malderin translate
+            // End Malderin translate
 
             cloud_menu.title        = TITLE_CLOUD_TEXT_RU;
             cloud_menu.bind         = CLOUD_BINDED_RU;
@@ -1830,6 +1835,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_RU;
             cloud_menu.unbinding    = CLOUD_UNBINDED_RU;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_RU;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_RU;
             cloud_menu.disable      = CLOUD_DISABLE_RU;
             //
             about_menu.title   = ABOUT_TEXT_RU;
@@ -1907,9 +1913,9 @@ void disp_language_init() {
             printing_more_menu.temp       = PRINTING_TEMP_RU;
             // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_RU;
             print_file_dialog_menu.confirm               = DIALOG_CONFIRM_RU;
-            print_file_dialog_menu.cancle                = DIALOG_CANCLE_RU;
+            print_file_dialog_menu.cancel                = DIALOG_CANCLE_RU;
             print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_RU;
-            print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_RU;
+            print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_RU;
             print_file_dialog_menu.retry                 = DIALOG_RETRY_RU;
             print_file_dialog_menu.stop                  = DIALOG_STOP_RU;
             print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_RU;
@@ -1958,7 +1964,7 @@ void disp_language_init() {
             main_menu.print        = PRINT_TEXT_SP;
             main_menu.extrude      = EXTRUDE_TEXT_SP;
             main_menu.leveling     = LEVELING_TEXT_SP;
-            main_menu.mleveling     = MLEVELING_TEXT_SP;
+            main_menu.mleveling    = MLEVELING_TEXT_SP;
             main_menu.autoleveling = AUTO_LEVELING_TEXT_SP;
             main_menu.fan          = FAN_TEXT_SP;
             main_menu.set          = SET_TEXT_SP;
@@ -1971,7 +1977,7 @@ void disp_language_init() {
             tool_menu.move         = TOOL_MOVE_SP;
             tool_menu.home         = TOOL_HOME_SP;
             tool_menu.leveling     = TOOL_LEVELING_SP;
-            tool_menu.mleveling     = TOOL_MLEVELING_SP;
+            tool_menu.mleveling    = TOOL_MLEVELING_SP;
             tool_menu.autoleveling = TOOL_AUTO_LEVELING_SP;
             tool_menu.filament     = TOOL_FILAMENT_SP;
             tool_menu.more         = TOOL_MORE_SP;
@@ -2031,8 +2037,7 @@ void disp_language_init() {
             set_menu.shutdown     = SHUTDOWN_TEXT_SP;
             set_menu.machine_para = MACHINE_PARA_SP;
             set_menu.eepromSet    = EEPROM_SETTINGS_SP;
-            //
-            more_menu.title   = TITLE_MORE_SP;
+            more_menu.title       = TITLE_MORE_SP;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_SP;
             #endif
@@ -2073,6 +2078,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_SP;
             cloud_menu.unbinding    = CLOUD_UNBINDED_SP;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_SP;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_SP;
             cloud_menu.disable      = CLOUD_DISABLE_SP;
             //
             about_menu.title   = ABOUT_TEXT_SP;
@@ -2151,9 +2157,9 @@ void disp_language_init() {
 
             // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_SP;
             print_file_dialog_menu.confirm               = DIALOG_CONFIRM_SP;
-            print_file_dialog_menu.cancle                = DIALOG_CANCLE_SP;
+            print_file_dialog_menu.cancel                = DIALOG_CANCLE_SP;
             print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_SP;
-            print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_SP;
+            print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_SP;
             print_file_dialog_menu.retry                 = DIALOG_RETRY_SP;
             print_file_dialog_menu.stop                  = DIALOG_STOP_SP;
             print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_SP;
@@ -2206,7 +2212,7 @@ void disp_language_init() {
           main_menu.print        = PRINT_TEXT_FR;
           main_menu.extrude      = EXTRUDE_TEXT_FR;
           main_menu.leveling     = LEVELING_TEXT_FR;
-          main_menu.mleveling     = MLEVELING_TEXT_FR;
+          main_menu.mleveling    = MLEVELING_TEXT_FR;
           main_menu.autoleveling = AUTO_LEVELING_TEXT_FR;
           main_menu.fan          = FAN_TEXT_FR;
           main_menu.set          = SET_TEXT_FR;
@@ -2219,7 +2225,7 @@ void disp_language_init() {
           tool_menu.move         = TOOL_MOVE_FR;
           tool_menu.home         = TOOL_HOME_FR;
           tool_menu.leveling     = TOOL_LEVELING_FR;
-          tool_menu.mleveling     = TOOL_MLEVELING_FR;
+          tool_menu.mleveling    = TOOL_MLEVELING_FR;
           tool_menu.autoleveling = TOOL_AUTO_LEVELING_FR;
           tool_menu.filament     = TOOL_FILAMENT_FR;
           tool_menu.more         = TOOL_MORE_FR;
@@ -2272,29 +2278,28 @@ void disp_language_init() {
           set_menu.shutdown     = SHUTDOWN_TEXT_FR;
           set_menu.machine_para = MACHINE_PARA_FR;
           set_menu.eepromSet    = EEPROM_SETTINGS_FR;
-          //
-          more_menu.title   = TITLE_MORE_FR;
-            #if ENABLED(USER_CMD_1_ENABLE)
-              more_menu.custom1 = MORE_CUSTOM1_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
-              more_menu.custom2 = MORE_CUSTOM2_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
-              more_menu.custom3 = MORE_CUSTOM3_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
-              more_menu.custom4 = MORE_CUSTOM4_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
-              more_menu.custom5 = MORE_CUSTOM5_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
-              more_menu.custom6 = MORE_CUSTOM6_TEXT_FR;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_FR;
-            #endif
+          more_menu.title       = TITLE_MORE_FR;
+          #if ENABLED(USER_CMD_1_ENABLE)
+            more_menu.custom1 = MORE_CUSTOM1_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_2_ENABLE)
+            more_menu.custom2 = MORE_CUSTOM2_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_3_ENABLE)
+            more_menu.custom3 = MORE_CUSTOM3_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_4_ENABLE)
+            more_menu.custom4 = MORE_CUSTOM4_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_5_ENABLE)
+            more_menu.custom5 = MORE_CUSTOM5_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_6_ENABLE)
+            more_menu.custom6 = MORE_CUSTOM6_TEXT_FR;
+          #endif
+          #if ENABLED(USER_CMD_7_ENABLE)
+            more_menu.custom7 = MORE_CUSTOM7_TEXT_FR;
+          #endif
           //
           filesys_menu.title          = TITLE_FILESYS_FR;
           filesys_menu.sd_sys         = SD_CARD_TEXT_FR;
@@ -2317,6 +2322,7 @@ void disp_language_init() {
           cloud_menu.unbind       = CLOUD_UNBIND_FR;
           cloud_menu.unbinding    = CLOUD_UNBINDED_FR;
           cloud_menu.disconnected = CLOUD_DISCONNECTED_FR;
+          cloud_menu.unbinded     = CLOUD_UNBINDED_FR;
           cloud_menu.disable      = CLOUD_DISABLE_FR;
           //
           about_menu.title   = ABOUT_TEXT_FR;
@@ -2393,9 +2399,9 @@ void disp_language_init() {
 
           // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_SP;
           print_file_dialog_menu.confirm               = DIALOG_CONFIRM_FR;
-          print_file_dialog_menu.cancle                = DIALOG_CANCLE_FR;
+          print_file_dialog_menu.cancel                = DIALOG_CANCLE_FR;
           print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_FR;
-          print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_FR;
+          print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_FR;
           print_file_dialog_menu.retry                 = DIALOG_RETRY_FR;
           print_file_dialog_menu.stop                  = DIALOG_STOP_FR;
           print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_FR;
@@ -2446,7 +2452,7 @@ void disp_language_init() {
           main_menu.print        = PRINT_TEXT_IT;
           main_menu.extrude      = EXTRUDE_TEXT_IT;
           main_menu.leveling     = LEVELING_TEXT_IT;
-          main_menu.mleveling     = MLEVELING_TEXT_IT;
+          main_menu.mleveling    = MLEVELING_TEXT_IT;
           main_menu.autoleveling = AUTO_LEVELING_TEXT_IT;
           main_menu.fan          = FAN_TEXT_IT;
           main_menu.set          = SET_TEXT_IT;
@@ -2459,7 +2465,7 @@ void disp_language_init() {
           tool_menu.move         = TOOL_MOVE_IT;
           tool_menu.home         = TOOL_HOME_IT;
           tool_menu.leveling     = TOOL_LEVELING_IT;
-          tool_menu.mleveling     = TOOL_MLEVELING_IT;
+          tool_menu.mleveling    = TOOL_MLEVELING_IT;
           tool_menu.autoleveling = TOOL_AUTO_LEVELING_IT;
           tool_menu.filament     = TOOL_FILAMENT_IT;
           tool_menu.more         = TOOL_MORE_IT;
@@ -2515,29 +2521,28 @@ void disp_language_init() {
           set_menu.shutdown     = SHUTDOWN_TEXT_IT;
           set_menu.machine_para = MACHINE_PARA_IT;
           set_menu.eepromSet    = EEPROM_SETTINGS_IT;
-          //
-          more_menu.title   = TITLE_MORE_IT;
-            #if ENABLED(USER_CMD_1_ENABLE)
-              more_menu.custom1 = MORE_CUSTOM1_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
-              more_menu.custom2 = MORE_CUSTOM2_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
-              more_menu.custom3 = MORE_CUSTOM3_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
-              more_menu.custom4 = MORE_CUSTOM4_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
-              more_menu.custom5 = MORE_CUSTOM5_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
-              more_menu.custom6 = MORE_CUSTOM6_TEXT_IT;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_IT;
-            #endif
+          more_menu.title       = TITLE_MORE_IT;
+          #if ENABLED(USER_CMD_1_ENABLE)
+            more_menu.custom1 = MORE_CUSTOM1_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_2_ENABLE)
+            more_menu.custom2 = MORE_CUSTOM2_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_3_ENABLE)
+            more_menu.custom3 = MORE_CUSTOM3_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_4_ENABLE)
+            more_menu.custom4 = MORE_CUSTOM4_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_5_ENABLE)
+            more_menu.custom5 = MORE_CUSTOM5_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_6_ENABLE)
+            more_menu.custom6 = MORE_CUSTOM6_TEXT_IT;
+          #endif
+          #if ENABLED(USER_CMD_7_ENABLE)
+            more_menu.custom7 = MORE_CUSTOM7_TEXT_IT;
+          #endif
           //
           filesys_menu.title   = TITLE_FILESYS_IT;
           filesys_menu.sd_sys  = SD_CARD_TEXT_IT;
@@ -2557,6 +2562,7 @@ void disp_language_init() {
           cloud_menu.unbind       = CLOUD_UNBIND_IT;
           cloud_menu.unbinding    = CLOUD_UNBINDED_IT;
           cloud_menu.disconnected = CLOUD_DISCONNECTED_IT;
+          cloud_menu.unbinded     = CLOUD_UNBINDED_IT;
           cloud_menu.disable      = CLOUD_DISABLE_IT;
           //
           about_menu.title   = ABOUT_TEXT_IT;
@@ -2633,9 +2639,9 @@ void disp_language_init() {
 
           // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_SP;
           print_file_dialog_menu.confirm               = DIALOG_CONFIRM_IT;
-          print_file_dialog_menu.cancle                = DIALOG_CANCLE_IT;
+          print_file_dialog_menu.cancel                = DIALOG_CANCLE_IT;
           print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_IT;
-          print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_IT;
+          print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_IT;
           print_file_dialog_menu.retry                 = DIALOG_RETRY_IT;
           print_file_dialog_menu.stop                  = DIALOG_STOP_IT;
           print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_IT;
@@ -2687,7 +2693,7 @@ void disp_language_init() {
       main_menu.print        = PRINT_TEXT_EN;
       main_menu.extrude      = EXTRUDE_TEXT_EN;
       main_menu.leveling     = LEVELING_TEXT_EN;
-      main_menu.mleveling     = MLEVELING_TEXT_EN;
+      main_menu.mleveling    = MLEVELING_TEXT_EN;
       main_menu.autoleveling = AUTO_LEVELING_TEXT_EN;
       main_menu.fan          = FAN_TEXT_EN;
       main_menu.set          = SET_TEXT_EN;
@@ -2700,7 +2706,7 @@ void disp_language_init() {
       tool_menu.move         = TOOL_MOVE_EN;
       tool_menu.home         = TOOL_HOME_EN;
       tool_menu.leveling     = TOOL_LEVELING_EN;
-      tool_menu.mleveling     = TOOL_MLEVELING_EN;
+      tool_menu.mleveling    = TOOL_MLEVELING_EN;
       tool_menu.autoleveling = TOOL_AUTO_LEVELING_EN;
       tool_menu.filament     = TOOL_FILAMENT_EN;
       tool_menu.more         = TOOL_MORE_EN;
@@ -2757,6 +2763,7 @@ void disp_language_init() {
       set_menu.machine_para = MACHINE_PARA_EN;
       set_menu.eepromSet    = EEPROM_SETTINGS_EN;
       //
+      more_menu.title   = TITLE_MORE_EN;
       #if ENABLED(USER_CMD_1_ENABLE)
         more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
       #endif
@@ -2796,6 +2803,7 @@ void disp_language_init() {
       cloud_menu.unbind       = CLOUD_UNBIND_EN;
       cloud_menu.unbinding    = CLOUD_UNBINDED_EN;
       cloud_menu.disconnected = CLOUD_DISCONNECTED_EN;
+      cloud_menu.unbinded     = CLOUD_UNBINDED_EN;
       cloud_menu.disable      = CLOUD_DISABLE_EN;
       //
       about_menu.title   = TITLE_ABOUT_EN;
@@ -2874,9 +2882,9 @@ void disp_language_init() {
 
       // print_file_dialog_menu.title = TITLE_DIALOG_CONFIRM_EN;
       print_file_dialog_menu.confirm               = DIALOG_CONFIRM_EN;
-      print_file_dialog_menu.cancle                = DIALOG_CANCLE_EN;
+      print_file_dialog_menu.cancel                = DIALOG_CANCLE_EN;
       print_file_dialog_menu.print_file            = DIALOG_PRINT_MODEL_EN;
-      print_file_dialog_menu.cancle_print          = DIALOG_CANCEL_PRINT_EN;
+      print_file_dialog_menu.cancel_print          = DIALOG_CANCEL_PRINT_EN;
       print_file_dialog_menu.retry                 = DIALOG_RETRY_EN;
       print_file_dialog_menu.stop                  = DIALOG_STOP_EN;
       print_file_dialog_menu.no_file_print_tips    = DIALOG_ERROR_TIPS1_EN;

@@ -100,6 +100,7 @@ uint8_t sel_id = 0;
 
 #endif // SDSUPPORT
 
+/*
 bool have_pre_pic(char *path) {
   #if ENABLED(SDSUPPORT)
     char *ps1, *ps2, *cur_name = strrchr(path, '/');
@@ -112,6 +113,22 @@ bool have_pre_pic(char *path) {
     if (ps1 || ps2) return true;
   #endif
 
+  return false;
+}
+*/
+bool have_pre_pic(char *path) {
+  #if ENABLED(SDSUPPORT)
+    char *ps1, *ps2, *cur_name = strrchr(path, '/');
+    if (!cur_name) return false;
+    public_buf[511] = 0;
+    card.openFileRead(cur_name);
+    card.read(public_buf, 511);
+    ps1 = strstr((char *)public_buf, ";simage:");
+    card.read(public_buf, 511);
+    ps2 = strstr((char *)public_buf, ";simage:");
+    card.closefile();
+    if (ps1 || ps2) return true;
+  #endif
   return false;
 }
 

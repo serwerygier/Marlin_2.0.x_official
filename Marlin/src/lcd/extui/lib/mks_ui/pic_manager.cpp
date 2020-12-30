@@ -36,7 +36,6 @@
 #include "../../../../MarlinCore.h"
 
 extern uint16_t DeviceCode;
-extern unsigned char bmp_public_buf[17 * 1024];
 
 #if ENABLED(SDSUPPORT)
   extern char *createFilename(char * const buffer, const dir_t &p);
@@ -55,7 +54,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_preHeat.bin",
   "bmp_extruct.bin",
   "bmp_mov.bin",
-  // "bmp_Zero.bin",
   "bmp_leveling.bin",
   "bmp_filamentchange.bin",
   "bmp_more.bin",
@@ -66,13 +64,8 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_speed255.bin",
   "bmp_speed127.bin",
   "bmp_speed0.bin",
-
-  //preheat screen
-  // "bmp_Add.bin",
-  // "bmp_Dec.bin",
   "bmp_speed0.bin",
-  // "bmp_Extru2.bin",
-  // "bmp_Extru1.bin",
+
   "bmp_bed.bin",
   "bmp_step1_degree.bin",
   "bmp_step5_degree.bin",
@@ -114,7 +107,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   //operation screen
   "bmp_auto_off.bin",
   "bmp_speed.bin",
-  //"bmp_Mamual.bin", //TODO: didn't find it.. changed to bmp_manual_off.bin
   "bmp_fan.bin",
   "bmp_temp.bin",
   "bmp_extrude_opr.bin",
@@ -126,7 +118,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_step10_percent.bin",
   "bmp_extruct_sel.bin",
   "bmp_mov_changespeed.bin",
-  // "bmp_extrude_opr.bin", equal to "bmp_Extruct.bin"
   "bmp_mov_sel.bin",
   "bmp_speed_extruct.bin",
 
@@ -183,19 +174,14 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
 
   // settings screen
   "bmp_about.bin",
-  //"bmp_Language.bin",
-  //"bmp_Fan.bin",
-  //"bmp_manual_off.bin",
+  "bmp_eeprom_settings.bin",
+  "bmp_machine_para.bin",
+  "bmp_function1.bin",
 
   //start screen
   "bmp_printing.bin",
   "bmp_set.bin",
   "bmp_tool.bin",
-
-  // settings screen
-  "bmp_eeprom_settings.bin",
-  "bmp_machine_para.bin",
-  "bmp_function1.bin",
 
   // base icons
   "bmp_arrow.bin",
@@ -209,6 +195,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   #if ENABLED(MKS_WIFI_MODULE)
     // wifi screen
     "bmp_wifi.bin",
+    "bmp_cloud.bin",
   #endif
 
   // babystep screen
@@ -382,8 +369,6 @@ uint32_t Pic_Info_Write(uint8_t *P_name, uint32_t P_size) {
 
   return Pic_SaveAddr;
 }
-
-uint8_t public_buf[512];
 
 #if ENABLED(SDSUPPORT)
 

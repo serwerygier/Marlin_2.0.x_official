@@ -25,10 +25,6 @@
 
 #include "draw_ui.h"
 #include <lv_conf.h>
-//#include "../lvgl/src/lv_objx/lv_imgbtn.h"
-//#include "../lvgl/src/lv_objx/lv_img.h"
-//#include "../lvgl/src/lv_core/lv_disp.h"
-//#include "../lvgl/src/lv_core/lv_refr.h"
 
 #include "../../../../MarlinCore.h" // for marlin_state
 #include "../../../../module/temperature.h"
@@ -78,10 +74,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_PAUSE:
       if (uiCfg.print_state == WORKING) {
-        // #if ENABLED(PARK_HEAD_ON_PAUSE)
-        // queue.inject_P(PSTR("M25 P\nM24"));
         #if ENABLED(SDSUPPORT)
-          // queue.inject_P(PSTR("M25\nG91\nG1 Z10\nG90"));
           card.pauseSDPrint();
           stop_print_time();
           uiCfg.print_state = PAUSING;
@@ -102,7 +95,6 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
           lv_imgbtn_set_src_both(obj, "F:/bmp_pause.bin");
           lv_label_set_text(labelPause, printing_menu.pause);
           lv_obj_align(labelPause, buttonPause, LV_ALIGN_CENTER, 30, 0);
-          // recovery.resume();
           print_time.minutes = recovery.info.print_job_elapsed / 60;
           print_time.seconds = recovery.info.print_job_elapsed % 60;
           print_time.hours   = print_time.minutes / 60;
@@ -187,7 +179,6 @@ void lv_draw_printing(void) {
     }
   #endif
 
-  // Create labels on the image buttons
   labelExt1 = lv_label_create(scr, 250, 146, nullptr);
 
   #if HAS_MULTI_EXTRUDER
@@ -272,12 +263,10 @@ void disp_fan_Zpos() {
 }
 
 void reset_print_time() {
-  // print_time.days = 0;
   print_time.hours   = 0;
   print_time.minutes = 0;
   print_time.seconds = 0;
   print_time.ms_10   = 0;
-  // print_time.start = 1;
 }
 
 void start_print_time() { print_time.start = 1; }
@@ -300,7 +289,6 @@ void setProBarRate() {
     #endif
     rate = (rate_tmp_r - (PREVIEW_SIZE + To_pre_view)) * 100 / (gCfgItems.curFilesize - (PREVIEW_SIZE + To_pre_view));
   }
-  // gCurFileState.totalSend = rate;
 
   if (rate <= 0) return;
 

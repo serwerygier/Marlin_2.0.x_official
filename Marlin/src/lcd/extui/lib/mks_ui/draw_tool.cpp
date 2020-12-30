@@ -62,9 +62,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       lv_draw_preHeat();
       break;
     case ID_T_EXTRUCT:
-//      lv_clear_tool();
       lv_draw_extrusion_m();
-      lv_draw_extrusion();
       break;
     case ID_T_MOV:
       lv_draw_move_motor();
@@ -82,40 +80,24 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         lv_draw_manualLevel();
       #endif
       break;
-//    case ID_T_FILAMENT:  //Malderin
-//      uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
-//      lv_clear_tool();
-//      lv_draw_filament_change();
-//      break;
-//    case ID_T_MORE: break;
-case ID_T_FILAMENT:
-  uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
-  lv_draw_filament_change();
-  break;
-case ID_T_MORE: break;
+//case ID_T_FILAMENT:
+//  uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
+//  lv_draw_filament_change();
+//  break;
 case ID_T_MORE:
   #if ENABLED(CUSTOM_USER_MENUS)
-      lv_clear_tool();
       lv_draw_more();
   #endif
   break;
 case ID_T_MLEVELING:
   #if ENABLED(BLTOUCH)
-    //queue.enqueue_one_P(PSTR("G28"));
-    //queue.enqueue_one_P(PSTR("G29"));
-//    get_gcode_command(AUTO_LEVELING_COMMAND_ADDR,(uint8_t *)public_buf_m);
-//    public_buf_m[sizeof(public_buf_m)-1] = 0;
-//    queue.inject_P(PSTR(public_buf_m));
-//  #else
     #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
       uiCfg.leveling_first_time = 1;
-      lv_clear_tool();
       lv_draw_manualLevel();
     #endif
   #endif
   break;
-
-    case ID_T_RETURN:
+case ID_T_RETURN:
       TERN_(MKS_TEST, curent_disp_ui = 1);
       lv_draw_ready_print();
       break;

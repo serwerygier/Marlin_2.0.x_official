@@ -74,7 +74,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       lv_draw_set();
       break;
     case ID_INFO:
-      lv_clear_ready_print();
+//      lv_clear_ready_print();
       //lv_temp_info();
       lv_draw_preHeat();
       break;
@@ -218,7 +218,7 @@ void lv_temp_info() {
 
   #if HAS_HEATED_BED
     labelBed = lv_label_create(scr, 70, 270, nullptr);
-    #endif
+  #endif
 
     labelExt1 = lv_label_create(scr, 230, 270, nullptr);
 
@@ -236,6 +236,7 @@ void lv_temp_refr() {
 
   sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[0].celsius, (int)thermalManager.temp_hotend[0].target);
   lv_label_set_text(labelExt1, public_buf_l);
+
 
 #if HAS_MULTI_EXTRUDER
   sprintf(public_buf_l, printing_menu.temp1, (int)thermalManager.temp_hotend[1].celsius, (int)thermalManager.temp_hotend[1].target);

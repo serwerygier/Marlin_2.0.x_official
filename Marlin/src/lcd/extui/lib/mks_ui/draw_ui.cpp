@@ -811,8 +811,15 @@ void GUI_RefreshPage() {
         disp_desire_temp();
       }
       break;
+//    case PRINT_READY_UI:
+//      break;
     case PRINT_READY_UI:
-      break;
+//Malderin
+  if (temps_update_flag) {
+    temps_update_flag = false;
+    lv_temp_refr();
+  }
+  break;
     case PRINT_FILE_UI: break;
     case PRINTING_UI:
       if (temps_update_flag) {

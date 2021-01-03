@@ -54,33 +54,42 @@ enum {
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
-  lv_clear_set();
+//  lv_clear_set();
   switch (obj->mks_obj_id) {
     case ID_S_FAN:
+      lv_clear_set();
       lv_draw_fan();
       break;
     case ID_S_ABOUT:
+      lv_clear_set();
       lv_draw_about();
       break;
-    case ID_S_CONTINUE: return;
+    case ID_S_CONTINUE:
+      lv_clear_set();
+      return;
     case ID_S_MOTOR_OFF:
       TERN(HAS_SUICIDE, suicide(), queue.enqueue_now_P(PSTR("M84")));
-      return;
+      break;
     case ID_S_LANGUAGE:
+      lv_clear_set();
       lv_draw_language();
       break;
     case ID_S_MACHINE_PARA:
+      lv_clear_set();
       lv_draw_machine_para();
       break;
     case ID_S_EEPROM_SET:
+      lv_clear_set();
       lv_draw_eeprom_settings();
       break;
     case ID_S_RETURN:
+      lv_clear_set();
       lv_draw_ready_print();
       break;
 
     #if ENABLED(MKS_WIFI_MODULE)
       case ID_S_WIFI:
+        lv_clear_set();
         if (gCfgItems.wifi_mode_sel == STA_MODEL) {
           if (wifi_link_state == WIFI_CONNECTED) {
             last_disp_state = SET_UI;

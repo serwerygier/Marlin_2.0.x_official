@@ -34,7 +34,7 @@ extern lv_group_t * g;
 static lv_obj_t * scr;
 
 enum {
-  ID_GCODE = 1,
+//  ID_GCODE = 1,
   ID_CUSTOM_1,
   ID_CUSTOM_2,
   ID_CUSTOM_3,

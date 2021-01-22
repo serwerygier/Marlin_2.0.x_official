@@ -74,7 +74,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       lv_draw_set();
       break;
     case ID_INFO:
-      lv_clear_ready_print();
+//      lv_clear_ready_print();
       //lv_temp_info();
       lv_draw_preHeat();
       break;

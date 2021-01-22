@@ -3318,7 +3318,7 @@
 /**
  * User-defined menu items that execute custom GCode
  */
-//#define CUSTOM_USER_MENUS
+#define CUSTOM_USER_MENUS
 #if ENABLED(CUSTOM_USER_MENUS)
   //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   #define USER_SCRIPT_DONE "M117 User Script Done"
@@ -3334,19 +3334,12 @@
   #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
   #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
-  #define USER_DESC_4 "Heat Bed/Home/Level"
-  #define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
+  #define USER_DESC_4 "охлаждение"
+  #define USER_GCODE_4 "M108\nM106 255"
 
-  #define USER_DESC_5 "Home & Info"
-  #define USER_GCODE_5 "G28\nM503"
+  #define USER_DESC_5 "оси X30 Y60"
+  #define USER_GCODE_5 "G28 X0 Y0\nG1 X30 Y60.1 F4000"
 
-//  #define USER_CMD_4_ENABLE
-//  #define USER_DESC_4 "охлаждение"
-//  #define USER_GCODE_4 "M108\nM106 255"
-
-//  #define USER_CMD_5_ENABLE
-//  #define USER_DESC_5 "оси X30 Y60"
-//  #define USER_GCODE_5 "G28 X0 Y0\nG1 X30 Y60.1 F4000"
 #endif
 
 /**

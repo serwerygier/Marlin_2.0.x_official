@@ -68,13 +68,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         lv_draw_manualLevel();
       #endif
       break;
-//    case ID_T_FILAMENT:  //Malderin
-//      uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
-//      lv_clear_tool();
-//      lv_draw_filament_change();
-//      break;
-//    case ID_T_MORE: break;
-case ID_T_MORE:
+  case ID_T_MORE:
   #if ENABLED(CUSTOM_USER_MENUS)
 //      lv_clear_tool();
       lv_draw_more();

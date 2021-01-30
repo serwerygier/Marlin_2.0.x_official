@@ -896,7 +896,7 @@ void GUI_RefreshPage() {
               lv_draw_wifi_tips();
 
             }
-            if (tips_disp.timer_count >= 30 * 1000) {
+            if (tips_disp.timer_count >= SEC_TO_MS(30)) {
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
               lv_clear_wifi_tips();
@@ -905,7 +905,7 @@ void GUI_RefreshPage() {
             }
             break;
           case TIPS_TYPE_TAILED_JOIN:
-            if (tips_disp.timer_count >= 3 * 1000) {
+            if (tips_disp.timer_count >= SEC_TO_MS(3)) {
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
 
@@ -915,7 +915,7 @@ void GUI_RefreshPage() {
             }
             break;
           case TIPS_TYPE_WIFI_CONECTED:
-            if (tips_disp.timer_count >= 3 * 1000) {
+            if (tips_disp.timer_count >= SEC_TO_MS(3)) {
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
 

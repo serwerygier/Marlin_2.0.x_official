@@ -3336,11 +3336,11 @@
     #define USER_GCODE_1 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED)
 
     #define USER_CMD_2_ENABLE
-    #define USER_DESC_2 "Преднагрев\n для " PREHEAT_1_LABEL
+    #define USER_DESC_2 "преднагрев\n для " PREHEAT_1_LABEL
     #define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
 
     #define USER_CMD_3_ENABLE
-    #define USER_DESC_3 "Преднагрев\n для " PREHEAT_2_LABEL
+    #define USER_DESC_3 "преднагрев\n для " PREHEAT_2_LABEL
     #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
     #define USER_CMD_4_ENABLE

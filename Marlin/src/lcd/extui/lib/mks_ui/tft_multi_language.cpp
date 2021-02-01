@@ -945,6 +945,8 @@ void disp_language_init() {
       filesys_menu.usb_sys = U_DISK_TEXT_CN;
       //
       more_menu.title       = TITLE_MORE_CN;
+      more_menu.gcode       = MORE_GCODE_CN;
+      more_menu.entergcode  = MORE_ENTER_GCODE_CN;
       TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_CN);
       TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_CN);
       TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_CN);
@@ -1179,6 +1181,8 @@ void disp_language_init() {
             filesys_menu.usb_sys  = U_DISK_TEXT_T_CN;
             //
             more_menu.title       = TITLE_MORE_T_CN;
+            more_menu.gcode       = MORE_GCODE_T_CN;
+            more_menu.entergcode  = MORE_ENTER_GCODE_T_CN;
             TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_T_CN);
             TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_T_CN);
             TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_T_CN);
@@ -1400,6 +1404,8 @@ void disp_language_init() {
             set_menu.eepromSet    = EEPROM_SETTINGS_EN;
             //
             more_menu.title       = TITLE_MORE_EN;
+            more_menu.gcode       = MORE_GCODE_EN;
+            more_menu.entergcode  = MORE_ENTER_GCODE_EN;
             TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_EN);
             TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_EN);
             TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_EN);
@@ -1622,6 +1628,8 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_RU;
             set_menu.eepromSet    = EEPROM_SETTINGS_RU;
             more_menu.title       = TITLE_MORE_RU;
+            more_menu.gcode       = MORE_GCODE_RU;
+            more_menu.entergcode  = MORE_ENTER_GCODE_RU;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_RU;
             #endif
@@ -1954,6 +1962,8 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_SP;
             set_menu.eepromSet    = EEPROM_SETTINGS_SP;
             more_menu.title       = TITLE_MORE_SP;
+            more_menu.gcode       = MORE_GCODE_SP;
+            more_menu.entergcode  = MORE_ENTER_GCODE_SP;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_SP;
             #endif
@@ -2191,6 +2201,8 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_FR;
           set_menu.eepromSet    = EEPROM_SETTINGS_FR;
           more_menu.title       = TITLE_MORE_FR;
+          more_menu.gcode       = MORE_GCODE_FR;
+          more_menu.entergcode  = MORE_ENTER_GCODE_FR;
           #if ENABLED(USER_CMD_1_ENABLE)
             more_menu.custom1 = MORE_CUSTOM1_TEXT_FR;
           #endif
@@ -2429,6 +2441,8 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_IT;
           set_menu.eepromSet    = EEPROM_SETTINGS_IT;
           more_menu.title       = TITLE_MORE_IT;
+          more_menu.gcode       = MORE_GCODE_IT;
+          more_menu.entergcode  = MORE_ENTER_GCODE_IT;
           #if ENABLED(USER_CMD_1_ENABLE)
             more_menu.custom1 = MORE_CUSTOM1_TEXT_IT;
           #endif
@@ -2667,6 +2681,8 @@ void disp_language_init() {
       set_menu.eepromSet    = EEPROM_SETTINGS_EN;
       //
       more_menu.title       = TITLE_MORE_EN;
+      more_menu.gcode       = MORE_GCODE_EN;
+      more_menu.entergcode  = MORE_ENTER_GCODE_EN;
       TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_EN);
       TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_EN);
       TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_EN);

@@ -1406,14 +1406,25 @@ void disp_language_init() {
             more_menu.title       = TITLE_MORE_EN;
             more_menu.gcode       = MORE_GCODE_EN;
             more_menu.entergcode  = MORE_ENTER_GCODE_EN;
-            TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_EN);
-            TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_EN);
-            TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_EN);
-            TERN_(USER_CMD_4_ENABLE, more_menu.custom4 = MORE_CUSTOM4_TEXT_EN);
-            TERN_(USER_CMD_5_ENABLE, more_menu.custom5 = MORE_CUSTOM5_TEXT_EN);
-            TERN_(USER_CMD_6_ENABLE, more_menu.custom6 = MORE_CUSTOM6_TEXT_EN);
-            TERN_(USER_CMD_7_ENABLE, more_menu.custom7 = MORE_CUSTOM7_TEXT_EN);
 
+            #ifdef USER_DESC_1
+              more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
+            #endif
+            #ifdef USER_DESC_2
+              more_menu.custom2 = MORE_CUSTOM2_TEXT_EN;
+            #endif
+            #ifdef USER_DESC_3
+              more_menu.custom3 = MORE_CUSTOM3_TEXT_EN;
+            #endif
+            #ifdef USER_DESC_4
+              more_menu.custom4 = MORE_CUSTOM4_TEXT_EN;
+            #endif
+            #ifdef USER_DESC_5
+              more_menu.custom5 = MORE_CUSTOM5_TEXT_EN;
+            #endif
+            #ifdef USER_DESC_6
+              more_menu.custom6 = MORE_CUSTOM6_TEXT_EN;
+            #endif
             //
             filesys_menu.title   = TITLE_FILESYS_EN;
             filesys_menu.sd_sys  = SD_CARD_TEXT_EN;
@@ -1630,6 +1641,7 @@ void disp_language_init() {
             more_menu.title       = TITLE_MORE_RU;
             more_menu.gcode       = MORE_GCODE_RU;
             more_menu.entergcode  = MORE_ENTER_GCODE_RU;
+/*
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_RU;
             #endif
@@ -1651,6 +1663,7 @@ void disp_language_init() {
             #if ENABLED(USER_CMD_7_ENABLE)
               more_menu.custom7 = MORE_CUSTOM7_TEXT_RU;
             #endif
+*/
             //
             filesys_menu.title   = TITLE_FILESYS_RU;
             filesys_menu.sd_sys  = SD_CARD_TEXT_RU;
@@ -2683,13 +2696,24 @@ void disp_language_init() {
       more_menu.title       = TITLE_MORE_EN;
       more_menu.gcode       = MORE_GCODE_EN;
       more_menu.entergcode  = MORE_ENTER_GCODE_EN;
-      TERN_(USER_CMD_1_ENABLE, more_menu.custom1 = MORE_CUSTOM1_TEXT_EN);
-      TERN_(USER_CMD_2_ENABLE, more_menu.custom2 = MORE_CUSTOM2_TEXT_EN);
-      TERN_(USER_CMD_3_ENABLE, more_menu.custom3 = MORE_CUSTOM3_TEXT_EN);
-      TERN_(USER_CMD_4_ENABLE, more_menu.custom4 = MORE_CUSTOM4_TEXT_EN);
-      TERN_(USER_CMD_5_ENABLE, more_menu.custom5 = MORE_CUSTOM5_TEXT_EN);
-      TERN_(USER_CMD_6_ENABLE, more_menu.custom6 = MORE_CUSTOM6_TEXT_EN);
-      TERN_(USER_CMD_7_ENABLE, more_menu.custom7 = MORE_CUSTOM7_TEXT_EN);
+      #ifdef USER_DESC_1
+        more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
+      #endif
+      #ifdef USER_DESC_2
+        more_menu.custom2 = MORE_CUSTOM2_TEXT_EN;
+      #endif
+      #ifdef USER_DESC_3
+        more_menu.custom3 = MORE_CUSTOM3_TEXT_EN;
+      #endif
+      #ifdef USER_DESC_4
+        more_menu.custom4 = MORE_CUSTOM4_TEXT_EN;
+      #endif
+      #ifdef USER_DESC_5
+        more_menu.custom5 = MORE_CUSTOM5_TEXT_EN;
+      #endif
+      #ifdef USER_DESC_6
+        more_menu.custom6 = MORE_CUSTOM6_TEXT_EN;
+      #endif
       //
       filesys_menu.title   = TITLE_FILESYS_EN;
       filesys_menu.sd_sys  = SD_CARD_TEXT_EN;

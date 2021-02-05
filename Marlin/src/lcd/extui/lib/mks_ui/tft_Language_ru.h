@@ -370,4 +370,9 @@
 #define ENCODER_CONF_TITLE_RU           "Hастройки принтера>Hастройки энкодера"
 #define ENCODER_CONF_TEXT_RU            "энкодер используется?"
 
-//end of Malderin translate
+#define MORE_CUSTOM1_TEXT_RU  USER_DESC_1
+#define MORE_CUSTOM2_TEXT_RU  USER_DESC_2
+#define MORE_CUSTOM3_TEXT_RU  USER_DESC_3
+#define MORE_CUSTOM4_TEXT_RU  USER_DESC_4
+#define MORE_CUSTOM5_TEXT_RU  USER_DESC_5
+#define MORE_CUSTOM6_TEXT_RU  USER_DESC_6

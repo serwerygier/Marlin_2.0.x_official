@@ -490,8 +490,5 @@ void GcodeSuite::G28() {
     }
   #endif
 
-  //BLTOUCH Malderin
-  #if ENABLED(BLTOUCH)
-    set_bed_leveling_enabled(true);
-  #endif
+  TERN_(HAS_LEVELING, set_bed_leveling_enabled(true));
 }

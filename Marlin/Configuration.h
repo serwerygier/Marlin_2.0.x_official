@@ -2455,7 +2455,7 @@
 //
 // ADS7843/XPT2046 ADC Touchscreen such as ILI9341 2.8
 //
-//#define TOUCH_SCREEN
+#define TOUCH_SCREEN
 #if ENABLED(TOUCH_SCREEN)
   #define BUTTON_DELAY_EDIT  50 // (ms) Button repeat delay for edit screens
   #define BUTTON_DELAY_MENU 250 // (ms) Button repeat delay for menus
@@ -2625,6 +2625,7 @@
 // Edit servo angles with M281 and save to EEPROM with M500
 //#define EDITABLE_SERVO_ANGLES
 
+/*
 //Malderin
 #if ENABLED(TFT_LVGL_UI)
   #define TOUCH_CALIBRATION_X -17253
@@ -2632,3 +2633,4 @@
   #define TOUCH_OFFSET_X       514
   #define TOUCH_OFFSET_Y       -24
 #endif
+*/

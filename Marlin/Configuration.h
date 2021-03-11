@@ -407,7 +407,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 13
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -497,9 +497,15 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-  #define DEFAULT_Kp 26.1
-  #define DEFAULT_Ki 2.76
-  #define DEFAULT_Kd 61.70
+  //Мой боуден
+//  #define DEFAULT_Kp 26.1
+//  #define DEFAULT_Ki 2.76
+//  #define DEFAULT_Kd 61.70
+
+  #define DEFAULT_Kp 18.68
+  #define DEFAULT_Ki 1.69
+  #define DEFAULT_Kd 51.68
+
   #endif
 #endif // PIDTEMP
 
@@ -791,7 +797,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 804, 421 }
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 804, 421 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 804, 350.8 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1042,7 +1049,7 @@
  *     O-- FRONT --+
  */
 //#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
-#define NOZZLE_TO_PROBE_OFFSET { -27, 0, -2.05 }
+#define NOZZLE_TO_PROBE_OFFSET { -27, 0, -2.38 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1184,7 +1191,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false

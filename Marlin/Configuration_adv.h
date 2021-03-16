@@ -3434,22 +3434,28 @@
   //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   #define USER_SCRIPT_DONE "M117 User Script Done"
   #define USER_SCRIPT_AUDIBLE_FEEDBACK
-  //#define USER_SCRIPT_RETURN  // Return to status screen after a script
+  //#define USER_SCRIPT_RETURN    // Return to status screen after a script
+  #define CUSTOM_MENU_ONLY_IDLE   // Only show custom menu when the machine is idle
 
     #define USER_DESC_1 "стол PETG"
     #define USER_GCODE_1 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED)
+    #define USER_CONFIRM_1        // Show a confirmation dialog before this action
 
     #define USER_DESC_2 "преднагрев\n для " PREHEAT_1_LABEL
     #define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
+    #define USER_CONFIRM_2
 
     #define USER_DESC_3 "преднагрев\n для " PREHEAT_2_LABEL
     #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+    #define USER_CONFIRM_3
 
     #define USER_DESC_4 "охлаждение"
     #define USER_GCODE_4 "M108\nM106 255"
+    #define USER_CONFIRM_4
 
     #define USER_DESC_5 "оси X30 Y60"
     #define USER_GCODE_5 "G28 X0 Y0\nG1 X30 Y60.1 F4000\nM84"
+    #define USER_CONFIRM_5
 #endif
 
 /**

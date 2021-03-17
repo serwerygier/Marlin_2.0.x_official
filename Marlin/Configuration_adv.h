@@ -3454,7 +3454,7 @@
     #define USER_CONFIRM_4
 
     #define USER_DESC_5 "оси X30 Y60"
-    #define USER_GCODE_5 "G28 X0 Y0\nG1 X30 Y60.1 F4000\nM84"
+    #define USER_GCODE_5 "G28 X0 Y0\nG1 X32 Y62.1 F4000\nM84"
     #define USER_CONFIRM_5
 #endif
 

@@ -314,6 +314,7 @@ typedef struct main_menu_disp {
   const char *print;
   const char *extrude;
   const char *leveling;
+  const char *mleveling;
   const char *autoleveling;
   const char *fan;
   const char *set;
@@ -698,6 +699,7 @@ typedef struct tool_menu_disp {
   const char *move;
   const char *home;
   const char *leveling;
+  const char *mleveling;
   const char *autoleveling;
   const char *filament;
   const char *more;

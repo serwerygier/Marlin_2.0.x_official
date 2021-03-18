@@ -122,8 +122,8 @@ void gCfgItems_init() {
   gCfgItems.curFilesize       = 0;
   gCfgItems.finish_power_off  = false;
   gCfgItems.pause_reprint     = false;
-  gCfgItems.pausePosX         = -1;
-  gCfgItems.pausePosY         = -1;
+  gCfgItems.pausePosX         = 10;
+  gCfgItems.pausePosY         = 10;
   gCfgItems.pausePosZ         = 5;
   gCfgItems.levelingPos[0][0] = X_MIN_POS + 30;
   gCfgItems.levelingPos[0][1] = Y_MIN_POS + 30;
@@ -486,6 +486,9 @@ char *getDispText(int index) {
     case EXTRUSION_UI:
       strcpy(public_buf_l, extrude_menu.title);
       break;
+    case EXTRUSION_UI_M:
+        strcpy(public_buf_l, extrude_menu.title);
+        break;
     case CHANGE_SPEED_UI:
       strcpy(public_buf_l, speed_menu.title);
       break;
@@ -798,6 +801,7 @@ void GUI_RefreshPage() {
         disp_hotend_temp();
       }
       break;
+    case EXTRUSION_UI_M: break;
     case PRE_HEAT_UI:
       if (temps_update_flag) {
         temps_update_flag = false;
@@ -805,10 +809,13 @@ void GUI_RefreshPage() {
       }
       break;
     case PRINT_READY_UI:
+//Malderin
+      if (temps_update_flag) {
+        temps_update_flag = false;
+        lv_temp_refr();
+      }
       break;
-
     case PRINT_FILE_UI: break;
-
     case PRINTING_UI:
       if (temps_update_flag) {
         temps_update_flag = false;
@@ -945,6 +952,7 @@ void clear_cur_ui() {
     case OPERATE_UI:                  lv_clear_operation(); break;
     case PAUSE_UI:                    break;
     case EXTRUSION_UI:                lv_clear_extrusion(); break;
+    case EXTRUSION_UI_M:                lv_clear_extrusion_m(); break;
     case PRE_HEAT_UI:                 lv_clear_preHeat(); break;
     case CHANGE_SPEED_UI:             lv_clear_change_speed(); break;
     case FAN_UI:                      lv_clear_fan(); break;
@@ -1051,6 +1059,7 @@ void draw_return_ui() {
       case OPERATE_UI:                  lv_draw_operation(); break;
       case PAUSE_UI:                    break;
       case EXTRUSION_UI:                lv_draw_extrusion(); break;
+      case EXTRUSION_UI_M:                lv_draw_extrusion_m(); break;
       case PRE_HEAT_UI:                 lv_draw_preHeat(); break;
       case CHANGE_SPEED_UI:             lv_draw_change_speed(); break;
       case FAN_UI:                      lv_draw_fan(); break;

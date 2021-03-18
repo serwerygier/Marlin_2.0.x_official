@@ -39,7 +39,8 @@ enum {
   ID_T_MOV,
   ID_T_HOME,
   ID_T_LEVELING,
-  ID_T_FILAMENT,
+//  ID_T_FILAMENT,
+  ID_T_MLEVELING, //Malderin
   ID_T_MORE,
   ID_T_RETURN
 };
@@ -54,7 +55,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
     lv_clear_tool();
   switch (obj->mks_obj_id) {
     case ID_T_PRE_HEAT: lv_draw_preHeat(); break;
-    case ID_T_EXTRUCT:  lv_draw_extrusion(); break;
+    case ID_T_EXTRUCT:  lv_draw_extrusion_m(); break;
     case ID_T_MOV:      lv_draw_move_motor(); break;
     case ID_T_HOME:     lv_draw_home(); break;
     case ID_T_LEVELING:
@@ -67,12 +68,18 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         lv_draw_manualLevel();
       #endif
       break;
-    case ID_T_FILAMENT:
-      uiCfg.hotendTargetTempBak = thermalManager.degTargetHotend(uiCfg.extruderIndex);
-      lv_draw_filament_change();
-      break;
-    case ID_T_MORE:
-      lv_draw_more();
+//    case ID_T_FILAMENT:
+//      uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
+//      lv_draw_filament_change();
+//      break;
+    case ID_T_MORE: lv_draw_more(); break;
+    case ID_T_MLEVELING:
+      #if ENABLED(BLTOUCH)
+        #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
+          uiCfg.leveling_first_time = 1;
+          lv_draw_manualLevel();
+        #endif
+      #endif
       break;
     case ID_T_RETURN:
       TERN_(MKS_TEST, curent_disp_ui = 1);
@@ -83,12 +90,17 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 
 void lv_draw_tool() {
   scr = lv_screen_create(TOOL_UI);
+//  lv_refr_now(lv_refr_get_disp_refreshing());
   lv_big_button_create(scr, "F:/bmp_preHeat.bin", tool_menu.preheat, INTERVAL_V, titleHeight, event_handler, ID_T_PRE_HEAT);
   lv_big_button_create(scr, "F:/bmp_extruct.bin", tool_menu.extrude, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight, event_handler, ID_T_EXTRUCT);
   lv_big_button_create(scr, "F:/bmp_mov.bin", tool_menu.move, BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight, event_handler, ID_T_MOV);
   lv_big_button_create(scr, "F:/bmp_zero.bin", tool_menu.home, BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight, event_handler, ID_T_HOME);
   lv_big_button_create(scr, "F:/bmp_leveling.bin", tool_menu.TERN(AUTO_BED_LEVELING_BILINEAR, autoleveling, leveling), INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_LEVELING);
-  lv_big_button_create(scr, "F:/bmp_filamentchange.bin", tool_menu.filament, BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler,ID_T_FILAMENT);
+
+  #if ENABLED(BLTOUCH)
+    lv_big_button_create(scr, "F:/bmp_leveling.bin", tool_menu.mleveling, BTN_X_PIXEL+INTERVAL_V*2, BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler, ID_T_MLEVELING);
+  #endif
+
   lv_big_button_create(scr, "F:/bmp_more.bin", tool_menu.more, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_MORE);
   lv_big_button_create(scr, "F:/bmp_return.bin", common_menu.text_back, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
 }

@@ -28,9 +28,9 @@
 
 #include "../../../../inc/MarlinConfig.h"
 
-extern lv_group_t *g;
-static lv_obj_t *scr;
-static lv_obj_t *fw_type, *board;
+extern lv_group_t * g;
+static lv_obj_t * scr;
+static lv_obj_t * fw_type, *board, *fw_version; //*fw_version;
 
 enum { ID_A_RETURN = 1 };
 
@@ -48,11 +48,14 @@ void lv_draw_about() {
   scr = lv_screen_create(ABOUT_UI);
   lv_big_button_create(scr, "F:/bmp_return.bin", common_menu.text_back, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_A_RETURN);
 
+  fw_version = lv_label_create(scr, "Telegramm: " WEBSITE_URL);
+  lv_obj_align(fw_version, nullptr, LV_ALIGN_CENTER, 0, 0);
+
   fw_type = lv_label_create(scr, "Firmware: Marlin " SHORT_BUILD_VERSION);
-  lv_obj_align(fw_type, nullptr, LV_ALIGN_CENTER, 0, -20);
+  lv_obj_align(fw_type, nullptr, LV_ALIGN_CENTER, 0, -40);
 
   board = lv_label_create(scr, "Board: " BOARD_INFO_NAME);
-  lv_obj_align(board, nullptr, LV_ALIGN_CENTER, 0, -60);
+  lv_obj_align(board, nullptr, LV_ALIGN_CENTER, 0, -80);
 }
 
 void lv_clear_about() {

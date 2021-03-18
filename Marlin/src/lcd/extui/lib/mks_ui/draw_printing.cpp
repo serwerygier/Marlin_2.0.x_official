@@ -47,7 +47,7 @@ static lv_obj_t *scr;
 static lv_obj_t *labelExt1, *labelFan, *labelZpos, *labelTime;
 static lv_obj_t *labelPause, *labelStop, *labelOperat;
 static lv_obj_t *bar1, *bar1ValueText;
-static lv_obj_t *buttonPause, *buttonOperat, *buttonStop;
+static lv_obj_t *buttonPause, *buttonOperat, *buttonStop, *buttonExt1, *buttonExt2, *buttonBedstate, *buttonFanstate, *buttonZpos;
 
 TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2);
 
@@ -58,7 +58,10 @@ TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2);
 enum {
   ID_PAUSE = 1,
   ID_STOP,
-  ID_OPTION
+  ID_OPTION,
+  ID_TEMP,
+  ID_BABYSTEP,
+  ID_FAN
 };
 
 bool once_flag; // = false
@@ -107,6 +110,18 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       lv_clear_printing();
       lv_draw_operation();
       break;
+    case ID_TEMP:
+        lv_clear_printing();
+        lv_draw_preHeat();
+        break;
+    case ID_BABYSTEP:
+            lv_clear_printing();
+            lv_draw_baby_stepping();
+            break;
+    case ID_FAN:
+            lv_clear_printing();
+            lv_draw_fan();
+            break;
   }
 }
 
@@ -116,33 +131,38 @@ void lv_draw_printing() {
   scr = lv_screen_create(PRINTING_UI);
 
   // Create image buttons
-  lv_obj_t *buttonExt1 = lv_img_create(scr, nullptr);
-  lv_img_set_src(buttonExt1, "F:/bmp_ext1_state.bin");
-  lv_obj_set_pos(buttonExt1, 205, 136);
+//  lv_obj_t *buttonExt1 = lv_img_create(scr, nullptr);
+//  lv_img_set_src(buttonExt1, "F:/bmp_ext1_state.bin");
+//  lv_obj_set_pos(buttonExt1, 205, 136);
+  buttonExt1 = lv_imgbtn_create(scr, "F:/bmp_ext1_state.bin", 205, 136, event_handler, ID_TEMP);
 
   #if HAS_MULTI_EXTRUDER
-    lv_obj_t *buttonExt2 = lv_img_create(scr, nullptr);
-    lv_img_set_src(buttonExt2, "F:/bmp_ext2_state.bin");
-    lv_obj_set_pos(buttonExt2, 350, 136);
+//    lv_obj_t *buttonExt2 = lv_img_create(scr, nullptr);
+//    lv_img_set_src(buttonExt2, "F:/bmp_ext2_state.bin");
+//    lv_obj_set_pos(buttonExt2, 350, 136);
+    buttonExt2 = lv_imgbtn_create(scr, "F:/bmp_ext2_state.bin", 350, 136, event_handler, ID_TEMP);
   #endif
 
   #if HAS_HEATED_BED
-    lv_obj_t *buttonBedstate = lv_img_create(scr, nullptr);
-    lv_img_set_src(buttonBedstate, "F:/bmp_bed_state.bin");
-    lv_obj_set_pos(buttonBedstate, 205, 186);
+//    lv_obj_t *buttonBedstate = lv_img_create(scr, nullptr);
+//    lv_img_set_src(buttonBedstate, "F:/bmp_bed_state.bin");
+//    lv_obj_set_pos(buttonBedstate, 205, 186);
+    buttonBedstate = lv_imgbtn_create(scr, "F:/bmp_bed_state.bin", 205, 186, event_handler, ID_TEMP);
   #endif
 
-  lv_obj_t *buttonFanstate = lv_img_create(scr, nullptr);
-  lv_img_set_src(buttonFanstate, "F:/bmp_fan_state.bin");
-  lv_obj_set_pos(buttonFanstate, 350, 186);
+//  lv_obj_t *buttonFanstate = lv_img_create(scr, nullptr);
+//  lv_img_set_src(buttonFanstate, "F:/bmp_fan_state.bin");
+//  lv_obj_set_pos(buttonFanstate, 350, 186);
+  buttonFanstate = lv_imgbtn_create(scr, "F:/bmp_fan_state.bin", 350, 186, event_handler, ID_FAN);
 
   lv_obj_t *buttonTime = lv_img_create(scr, nullptr);
   lv_img_set_src(buttonTime, "F:/bmp_time_state.bin");
   lv_obj_set_pos(buttonTime, 205, 86);
 
-  lv_obj_t *buttonZpos = lv_img_create(scr, nullptr);
-  lv_img_set_src(buttonZpos, "F:/bmp_zpos_state.bin");
-  lv_obj_set_pos(buttonZpos, 350, 86);
+//  lv_obj_t *buttonZpos = lv_img_create(scr, nullptr);
+//  lv_img_set_src(buttonZpos, "F:/bmp_zpos_state.bin");
+//  lv_obj_set_pos(buttonZpos, 350, 86);
+  buttonZpos = lv_imgbtn_create(scr, "F:/bmp_zpos_state.bin", 350, 86, event_handler, ID_BABYSTEP);
 
   buttonPause = lv_imgbtn_create(scr, uiCfg.print_state == WORKING ? "F:/bmp_pause.bin" : "F:/bmp_resume.bin", 5, 240, event_handler, ID_PAUSE);
   buttonStop = lv_imgbtn_create(scr, "F:/bmp_stop.bin", 165, 240, event_handler, ID_STOP);
@@ -153,6 +173,9 @@ void lv_draw_printing() {
       lv_group_add_obj(g, buttonPause);
       lv_group_add_obj(g, buttonStop);
       lv_group_add_obj(g, buttonOperat);
+      lv_group_add_obj(g, buttonPause);
+      lv_group_add_obj(g, buttonPause);
+      lv_group_add_obj(g, buttonPause);
     }
   #endif
 

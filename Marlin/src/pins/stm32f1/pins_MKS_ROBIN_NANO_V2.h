@@ -198,15 +198,15 @@
   //#define MKSPWC
   #ifdef MKSPWC
     #define SUICIDE_PIN                     PB2   // Enable MKSPWC SUICIDE PIN
-    #define SUICIDE_PIN_INVERTING          false  // Enable MKSPWC PIN STATE
+    #define SUICIDE_PIN_INVERTING           false  // Enable MKSPWC PIN STATE
     #define KILL_PIN                        PA2   // Enable MKSPWC DET PIN
     #define KILL_PIN_STATE                  true  // Enable MKSPWC PIN STATE
   #endif
 
-  #define MT_DET_1_PIN                      PA4   // LVGL UI FILAMENT RUNOUT1 PIN
-  #define MT_DET_2_PIN                      PE6   // LVGL UI FILAMENT RUNOUT2 PIN
-  #define MT_DET_PIN_INVERTING             false  // LVGL UI filament RUNOUT PIN STATE
-
+  //#define MT_DET_1_PIN                      PA4   // LVGL UI FILAMENT RUNOUT1 PIN
+  //#define MT_DET_2_PIN                      PE6   // LVGL UI FILAMENT RUNOUT2 PIN
+  #define MT_DET_PIN_INVERTING              true  // LVGL UI filament RUNOUT PIN STATE
+  //#define FIL_RUNOUT_PIN                    PA4 //Malderin
   #define WIFI_IO0_PIN                      PC13  // MKS ESP WIFI IO0 PIN
   #define WIFI_IO1_PIN                      PC7   // MKS ESP WIFI IO1 PIN
   #define WIFI_RESET_PIN                    PE9   // MKS ESP WIFI RESET PIN
@@ -219,7 +219,7 @@
   //#define POWER_LOSS_PIN                  PA2   // PW_DET
   //#define PS_ON_PIN                       PB2   // PW_OFF
   #define FIL_RUNOUT_PIN                    PA4
-  #define FIL_RUNOUT2_PIN                   PE6
+//  #define FIL_RUNOUT2_PIN                   PE6
 #endif
 
 //#define LED_PIN                           PB2
